@@ -12,21 +12,21 @@ import { CONTACT } from '../../utils/constants';
   </div>
   <div class="container relative z-10 mx-auto px-6 text-center">
     <h2 class="text-3xl md:text-4xl lg:text-5xl font-bold mb-6 text-[var(--color-platinum)]">
-      Faça um orçamento!
+      Ready to get started?
     </h2>
     <p class="text-lg md:text-xl text-[var(--color-platinum)]/85 mb-10 max-w-2xl mx-auto">
-      Preencha o formulário ou fale conosco pelo WhatsApp e solicite seu orçamento gratuito.
+      Send the quote form or message us on WhatsApp — both use contact values from `constants.ts`.
     </p>
     <div class="flex flex-col sm:flex-row gap-4 justify-center">
       <Button href="/orcamento" variant="primary" size="lg">
-        Quero um orçamento
+        Request a quote
       </Button>
       <Button href={`https://wa.me/${CONTACT.whatsapp}`} variant="outline" size="lg" target="_blank" rel="noopener noreferrer">
-        Falar no WhatsApp
+        WhatsApp
       </Button>
     </div>
     <p class="mt-8 text-[var(--color-platinum)]/60 text-sm">
-      Ou ligue: <a href={`tel:+55${CONTACT.phone.replace(/\D/g, '')}`} class="text-[var(--color-cyan)] hover:underline">{CONTACT.phone}</a>
+      Or call: <a href={`tel:${CONTACT.phoneTel}`} class="text-[var(--color-cyan)] hover:underline">{CONTACT.phoneDisplay}</a>
     </p>
   </div>
 </section>

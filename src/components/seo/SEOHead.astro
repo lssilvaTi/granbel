@@ -1,5 +1,11 @@
 ---
-import { CONTACT } from '../../utils/constants';
+import {
+  CONTACT,
+  SITE_URL,
+  SITE_NAME,
+  DEFAULT_OG_IMAGE,
+  LOGO_PATH,
+} from '../../utils/constants';
 
 interface Props {
   title: string;
@@ -16,11 +22,11 @@ interface Props {
 const {
   title,
   description,
-  image = '/banner-og.png',
-  url = 'https://rntransportesbh.com.br',
+  image = DEFAULT_OG_IMAGE,
+  url = SITE_URL,
   type = 'website',
-  keywords = 'mudanças BH, transporte de mudanças, mudanças interestaduais, mudanças comerciais, mudanças residenciais, RN Transportes, Belo Horizonte',
-  author = 'RN Transportes',
+  keywords = 'your industry, your city, YOUR_SITE_NAME, services, contact',
+  author = SITE_NAME,
   noindex = false,
   canonical,
 } = Astro.props;
@@ -28,6 +34,7 @@ const {
 const siteUrl = url;
 const pageUrl = canonical || siteUrl + Astro.url.pathname;
 const ogImage = image.startsWith('http') ? image : siteUrl + image;
+const logoAbsolute = siteUrl + LOGO_PATH;
 ---
 
 <!-- Primary Meta Tags -->
@@ -39,7 +46,7 @@ const ogImage = image.startsWith('http') ? image : siteUrl + image;
 <meta name="keywords" content={keywords} />
 <meta name="author" content={author} />
 <meta name="robots" content={noindex ? 'noindex, nofollow' : 'index, follow'} />
-<meta name="language" content="Portuguese" />
+<meta name="language" content="English" />
 <meta name="revisit-after" content="7 days" />
 
 <!-- Canonical URL -->
@@ -52,12 +59,12 @@ const ogImage = image.startsWith('http') ? image : siteUrl + image;
 <meta property="og:description" content={description} />
 <meta property="og:image" content={ogImage} />
 <meta property="og:image:secure_url" content={ogImage} />
-<meta property="og:image:type" content="image/png" />
+<meta property="og:image:type" content="image/svg+xml" />
 <meta property="og:image:width" content="1200" />
 <meta property="og:image:height" content="630" />
-<meta property="og:image:alt" content="RN Transportes e Mudanças" />
-<meta property="og:site_name" content="RN Transportes" />
-<meta property="og:locale" content="pt_BR" />
+<meta property="og:image:alt" content={SITE_NAME} />
+<meta property="og:site_name" content={SITE_NAME} />
+<meta property="og:locale" content="en_US" />
 
 <!-- Twitter -->
 <meta name="twitter:card" content="summary_large_image" />
@@ -65,13 +72,10 @@ const ogImage = image.startsWith('http') ? image : siteUrl + image;
 <meta name="twitter:title" content={title} />
 <meta name="twitter:description" content={description} />
 <meta name="twitter:image" content={ogImage} />
-<meta name="twitter:image:alt" content="RN Transportes e Mudanças" />
+<meta name="twitter:image:alt" content={SITE_NAME} />
 
-<!-- Favicons (ícone RN) -->
-<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
-<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
-<link rel="shortcut icon" href="/favicon-32x32.png" />
-<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+<!-- Favicon -->
+<link rel="icon" href="/favicon.svg" type="image/svg+xml" />
 
 <!-- Web App Manifest -->
 <link rel="manifest" href="/site.webmanifest" />
@@ -80,31 +84,31 @@ const ogImage = image.startsWith('http') ? image : siteUrl + image;
 <script type="application/ld+json" set:html={JSON.stringify({
   "@context": "https://schema.org",
   "@type": "Organization",
-  "name": "RN Transportes e Mudanças",
+  "name": SITE_NAME,
   "url": siteUrl,
-  "logo": siteUrl + "/favicon-32x32.png",
+  "logo": logoAbsolute,
   "description": description,
   "address": {
     "@type": "PostalAddress",
     "streetAddress": CONTACT.address,
-    "addressLocality": "Belo Horizonte",
-    "addressRegion": "MG",
-    "postalCode": CONTACT.cep
+    "addressLocality": CONTACT.city,
+    "addressRegion": CONTACT.region,
+    "postalCode": CONTACT.postalCode
   },
   "contactPoint": {
     "@type": "ContactPoint",
-    "telephone": "+55" + CONTACT.phone.replace(/\D/g, ''),
+    "telephone": CONTACT.phoneTel,
     "email": CONTACT.email,
     "contactType": "customer service",
-    "availableLanguage": ["Portuguese"],
-    "areaServed": "BR"
+    "availableLanguage": ["English"],
+    "areaServed": "US"
   }
 })} />
 
 <script type="application/ld+json" set:html={JSON.stringify({
   "@context": "https://schema.org",
   "@type": "WebSite",
-  "name": "RN Transportes e Mudanças",
+  "name": SITE_NAME,
   "url": siteUrl,
   "description": description
 })} />

@@ -1,15 +1,15 @@
 @import "tailwindcss";
 
 @theme {
-  /* RN Transportes - Paleta das imagens de referência */
+  /* Default marketing palette — change hex values per client (see README: Branding defaults). */
   --color-dark-blue: #1f3e8f;
   --color-cyan: #00a7e0;
   --color-yellow: #ffee00;
 
-  /* Header e Footer - azul escuro fixo (sempre) */
+  /* Header / footer bar (often kept on-brand in both themes) */
   --color-header-bg: #1f3e8f;
 
-  /* Aliases para componentes (mapeados à nova paleta) */
+  /* Aliases used by section components */
   --color-indigo-velvet: #1f3e8f;
   --color-bondi-blue: #00a7e0;
   --color-prussian-blue: #0d1b36;
@@ -23,14 +23,14 @@
   --color-background-dark: var(--color-ink-black);
   --color-surface: var(--color-platinum);
 
-  /* Typography - sans para visual de transportes/logística */
+  /* Typography */
   --font-serif: 'Source Serif 4', serif;
   --font-sans: 'Inter', sans-serif;
   --font-family-serif: 'Source Serif 4', serif;
   --font-family-sans: 'Inter', sans-serif;
 }
 
-/* Tema claro - estilo da referência (fundo branco, limpo) */
+/* Light theme */
 [data-theme="light"] {
   --color-background: #ffffff;
   --color-background-dark: #f5f5f5;
@@ -38,7 +38,7 @@
   --color-surface: #1f2937;
 }
 
-/* Tema escuro */
+/* Dark theme */
 [data-theme="dark"] {
   --color-background: #0d1b36;
   --color-background-dark: #0a1428;
@@ -63,7 +63,7 @@ body {
   transition: background-color 0.3s ease, color 0.3s ease;
 }
 
-/* Títulos - sans para visual mais industrial/transportes */
+/* Headings */
 h1, h2, h3, h4, h5, h6 {
   font-family: var(--font-sans);
   font-weight: 700;
@@ -78,13 +78,13 @@ body, p, span, a, button, input, textarea, select {
   font-weight: 400;
 }
 
-/* Sombra no texto para legibilidade sobre imagens de fundo (hero) */
+/* Hero / image overlays: improve text contrast */
 .text-drop-shadow {
   text-shadow: 0 1px 3px rgba(0, 0, 0, 0.5), 0 2px 6px rgba(0, 0, 0, 0.4);
 }
 
-/* Logo Porto Seguro: no modo escuro ganha fundo claro para boa leitura */
-[data-theme="dark"] .porto-seguro-logo-wrap {
+/* Partner / certification logo: light backdrop in dark mode for contrast */
+[data-theme="dark"] .partner-logo-wrap {
   background: rgba(255, 255, 255, 0.95);
   box-shadow: 0 4px 24px rgba(0, 0, 0, 0.35);
 }

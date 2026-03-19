@@ -1,27 +1,33 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
 import Button from '../components/ui/Button.astro';
-import { CONTACT } from '../utils/constants';
+import {
+  CONTACT,
+  SITE_URL,
+  SITE_NAME,
+  DEFAULT_OG_IMAGE,
+  PLACEHOLDER_IMAGES,
+} from '../utils/constants';
 
-const mapsEmbedUrl = 'https://www.google.com/maps?q=' + encodeURIComponent(CONTACT.address) + '&output=embed';
+const mapsEmbedUrl =
+  'https://www.google.com/maps?q=' + encodeURIComponent(`${CONTACT.address}, ${CONTACT.addressLine2}`) + '&output=embed';
 const TURNSTILE_SITE_KEY = import.meta.env.PUBLIC_TURNSTILE_SITE_KEY || '';
+const pageUrl = `${SITE_URL}/contato`;
 ---
 
 <BaseLayout
-  title="Contato | RN Transportes e Mudanças"
-  description="Fale conosco. Preencha o formulário ou entre em contato por telefone, email e WhatsApp. RN Transportes - Belo Horizonte."
-  keywords="contato RN Transportes, mudanças BH contato, orçamento mudanças, telefone mudanças"
-  canonical="https://rntransportesbh.com.br/contato"
-  image="/banner-og.png"
-  url="https://rntransportesbh.com.br/contato"
+  title={`Contact | ${SITE_NAME}`}
+  description="Reach us via the form, phone, email, or WhatsApp. Update all contact fields in `src/utils/constants.ts`."
+  keywords="contact, YOUR_SITE_NAME, email, phone"
+  canonical={pageUrl}
+  image={DEFAULT_OG_IMAGE}
+  url={pageUrl}
   loadTurnstile={!!TURNSTILE_SITE_KEY}
 >
-  <!-- 1. Primeira sessão: imagem de fundo (mulher apontando) + título integrado ao formulário -->
   <section
     class="relative pt-24 pb-16 md:pt-28 md:pb-20 min-h-[640px] md:min-h-[720px] flex items-center bg-cover bg-no-repeat bg-right"
-    style="background-image: url('/assets/contato/hero-contato.png');"
+    style={`background-image: url('${PLACEHOLDER_IMAGES.heroSlide}');`}
   >
-    <!-- Overlay: mais escuro à esquerda (onde fica o card), mais suave à direita (mulher visível) -->
     <div class="absolute inset-0 bg-gradient-to-r from-[var(--color-dark-blue)]/92 via-[var(--color-dark-blue)]/70 to-[var(--color-dark-blue)]/35" aria-hidden="true"></div>
     <div class="section-shapes absolute inset-0 pointer-events-none hidden md:block z-0" aria-hidden="true">
       <div class="absolute left-[2%] top-[18%] w-7 h-7 bg-[var(--color-yellow)] opacity-50 rotate-12"></div>
@@ -33,20 +39,19 @@ const TURNSTILE_SITE_KEY = import.meta.env.PUBLIC_TURNSTILE_SITE_KEY || '';
       <div class="max-w-xl">
         <div class="bg-[var(--color-background-dark)]/95 backdrop-blur-sm rounded-xl p-6 md:p-8 border border-[var(--color-platinum)]/25 shadow-2xl">
           <h1 class="text-3xl md:text-4xl font-bold mb-2 text-[var(--color-platinum)]">
-            Fale Conosco
+            Contact us
           </h1>
           <p class="text-[var(--color-platinum)]/85 mb-6 leading-relaxed">
-            Preencha o formulário que entraremos em contato com você.
+            Fill out the form and we will get back to you shortly.
           </p>
           <form id="contato-form" class="space-y-4" novalidate>
-            <!-- Honeypot: invisível para usuários, preenchido por bots -->
             <div class="absolute -left-[9999px] w-px h-px overflow-hidden opacity-0" aria-hidden="true">
               <input type="text" name="company_website" autocomplete="off" tabindex="-1" />
             </div>
 
             <div>
               <label for="contato-name" class="block text-[var(--color-platinum)] mb-1.5 text-sm font-medium">
-                Nome completo <span class="text-red-400">*</span>
+                Full name <span class="text-red-400">*</span>
               </label>
               <input
                 type="text"
@@ -54,25 +59,25 @@ const TURNSTILE_SITE_KEY = import.meta.env.PUBLIC_TURNSTILE_SITE_KEY || '';
                 name="name"
                 required
                 class="w-full px-4 py-2.5 bg-[var(--color-background)] border border-[var(--color-platinum)]/25 rounded-lg text-[var(--color-platinum)] focus:outline-none focus:ring-2 focus:ring-[var(--color-cyan)] focus:border-transparent text-sm"
-                placeholder="Seu nome"
+                placeholder="Your name"
               />
             </div>
             <div>
               <label for="contato-address" class="block text-[var(--color-platinum)] mb-1.5 text-sm font-medium">
-                Endereço
+                Address (optional)
               </label>
               <input
                 type="text"
                 id="contato-address"
                 name="address"
                 class="w-full px-4 py-2.5 bg-[var(--color-background)] border border-[var(--color-platinum)]/25 rounded-lg text-[var(--color-platinum)] focus:outline-none focus:ring-2 focus:ring-[var(--color-cyan)] focus:border-transparent text-sm"
-                placeholder="Rua, número, bairro"
+                placeholder="Street, city"
               />
             </div>
             <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
               <div>
                 <label for="contato-phone" class="block text-[var(--color-platinum)] mb-1.5 text-sm font-medium">
-                  Telefone <span class="text-red-400">*</span>
+                  Phone <span class="text-red-400">*</span>
                 </label>
                 <input
                   type="tel"
@@ -80,7 +85,7 @@ const TURNSTILE_SITE_KEY = import.meta.env.PUBLIC_TURNSTILE_SITE_KEY || '';
                   name="phone"
                   required
                   class="w-full px-4 py-2.5 bg-[var(--color-background)] border border-[var(--color-platinum)]/25 rounded-lg text-[var(--color-platinum)] focus:outline-none focus:ring-2 focus:ring-[var(--color-cyan)] focus:border-transparent text-sm"
-                  placeholder="(31) 99999-9999"
+                  placeholder="(555) 000-0000"
                 />
               </div>
               <div>
@@ -93,13 +98,13 @@ const TURNSTILE_SITE_KEY = import.meta.env.PUBLIC_TURNSTILE_SITE_KEY || '';
                   name="email"
                   required
                   class="w-full px-4 py-2.5 bg-[var(--color-background)] border border-[var(--color-platinum)]/25 rounded-lg text-[var(--color-platinum)] focus:outline-none focus:ring-2 focus:ring-[var(--color-cyan)] focus:border-transparent text-sm"
-                  placeholder="seu@email.com"
+                  placeholder="you@example.com"
                 />
               </div>
             </div>
             <div>
               <label for="contato-message" class="block text-[var(--color-platinum)] mb-1.5 text-sm font-medium">
-                Deixe aqui sua mensagem <span class="text-red-400">*</span>
+                Message <span class="text-red-400">*</span>
               </label>
               <textarea
                 id="contato-message"
@@ -107,7 +112,7 @@ const TURNSTILE_SITE_KEY = import.meta.env.PUBLIC_TURNSTILE_SITE_KEY || '';
                 required
                 rows="3"
                 class="w-full px-4 py-2.5 bg-[var(--color-background)] border border-[var(--color-platinum)]/25 rounded-lg text-[var(--color-platinum)] focus:outline-none focus:ring-2 focus:ring-[var(--color-cyan)] focus:border-transparent resize-none text-sm"
-                placeholder="Como podemos ajudar?"
+                placeholder="How can we help?"
               ></textarea>
             </div>
 
@@ -117,7 +122,7 @@ const TURNSTILE_SITE_KEY = import.meta.env.PUBLIC_TURNSTILE_SITE_KEY || '';
 
             <div id="contato-form-message" class="hidden p-3 rounded-lg text-sm"></div>
             <Button variant="primary" size="lg" class="w-full" type="submit">
-              Enviar
+              Send
             </Button>
           </form>
         </div>
@@ -125,7 +130,6 @@ const TURNSTILE_SITE_KEY = import.meta.env.PUBLIC_TURNSTILE_SITE_KEY || '';
     </div>
   </section>
 
-  <!-- 2. Endereço e Contatos – mesma linha, em caixas centralizadas -->
   <section class="relative py-12 md:py-16 bg-[var(--color-background)]">
     <div class="section-shapes absolute inset-0 pointer-events-none hidden md:block z-0" aria-hidden="true">
       <div class="absolute left-[2%] top-[22%] w-6 h-6 bg-[var(--color-yellow)] opacity-60 rotate-6"></div>
@@ -135,23 +139,23 @@ const TURNSTILE_SITE_KEY = import.meta.env.PUBLIC_TURNSTILE_SITE_KEY || '';
       <div class="grid grid-cols-1 md:grid-cols-2 gap-6 lg:gap-8 max-w-4xl mx-auto">
         <div class="p-6 md:p-8 bg-[var(--color-background-dark)] rounded-lg border border-[var(--color-platinum)]/20 hover:border-[var(--color-cyan)]/40 transition-all duration-300">
           <h2 class="text-xl md:text-2xl font-bold mb-4 text-[var(--color-cyan)]">
-            Endereço
+            Address
           </h2>
           <p class="text-[var(--color-platinum)]/90 leading-relaxed">
-            Rua Nigéria, 78, Loja B – Canaã<br />
-            Belo Horizonte/MG<br />
-            CEP: {CONTACT.cep}
+            {CONTACT.address}<br />
+            {CONTACT.addressLine2}<br />
+            ZIP: {CONTACT.postalCode}
           </p>
         </div>
         <div class="p-6 md:p-8 bg-[var(--color-background-dark)] rounded-lg border border-[var(--color-platinum)]/20 hover:border-[var(--color-cyan)]/40 transition-all duration-300">
           <h2 class="text-xl md:text-2xl font-bold mb-4 text-[var(--color-cyan)]">
-            Contatos
+            Contact
           </h2>
           <ul class="space-y-3 text-[var(--color-platinum)]/90">
             <li>
-              <a href={`tel:+55${CONTACT.phone.replace(/\D/g, '')}`} class="hover:text-[var(--color-cyan)] transition-colors inline-flex items-center gap-3">
+              <a href={`tel:${CONTACT.phoneTel}`} class="hover:text-[var(--color-cyan)] transition-colors inline-flex items-center gap-3">
                 <i class="fas fa-phone text-[var(--color-cyan)] w-5"></i>
-                {CONTACT.phone}
+                {CONTACT.phoneDisplay}
               </a>
             </li>
             <li>
@@ -172,7 +176,6 @@ const TURNSTILE_SITE_KEY = import.meta.env.PUBLIC_TURNSTILE_SITE_KEY || '';
     </div>
   </section>
 
-  <!-- 3. Como chegar – sessão horizontal sozinha -->
   <section class="relative py-12 md:py-16 bg-[var(--color-background)]">
     <div class="section-shapes absolute inset-0 pointer-events-none hidden md:block z-0" aria-hidden="true">
       <div class="absolute left-[2%] top-[30%] w-7 h-9 bg-[var(--color-cyan)] opacity-55 -rotate-3"></div>
@@ -180,7 +183,7 @@ const TURNSTILE_SITE_KEY = import.meta.env.PUBLIC_TURNSTILE_SITE_KEY || '';
     </div>
     <div class="container relative z-10 mx-auto px-6">
       <h2 class="text-2xl md:text-3xl font-bold mb-6 text-[var(--color-platinum)] text-center">
-        Como chegar
+        Find us
       </h2>
       <div class="w-full rounded-xl overflow-hidden border border-[var(--color-platinum)]/20 shadow-lg">
         <iframe
@@ -191,18 +194,22 @@ const TURNSTILE_SITE_KEY = import.meta.env.PUBLIC_TURNSTILE_SITE_KEY || '';
           allowfullscreen=""
           loading="lazy"
           referrerpolicy="no-referrer-when-downgrade"
-          title="Localização RN Transportes e Mudanças"
+          title={`Map — ${SITE_NAME}`}
         ></iframe>
       </div>
       <p class="mt-3 text-sm text-[var(--color-platinum)]/60">
-        <a href={`https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(CONTACT.address)}`} target="_blank" rel="noopener noreferrer" class="text-[var(--color-cyan)] hover:underline">
-          Abrir no Google Maps →
+        <a
+          href={`https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(`${CONTACT.address}, ${CONTACT.addressLine2}`)}`}
+          target="_blank"
+          rel="noopener noreferrer"
+          class="text-[var(--color-cyan)] hover:underline"
+        >
+          Open in Google Maps →
         </a>
       </p>
     </div>
   </section>
 
-  <!-- 4. CTA -->
   <section class="relative py-20 md:py-24 bg-gradient-to-br from-[var(--color-dark-blue)]/15 via-[var(--color-background)] to-[var(--color-cyan)]/15">
     <div class="section-shapes absolute inset-0 pointer-events-none hidden md:block z-0" aria-hidden="true">
       <div class="absolute left-[2%] top-[22%] w-6 h-6 bg-[var(--color-yellow)] opacity-60 rotate-6"></div>
@@ -212,13 +219,13 @@ const TURNSTILE_SITE_KEY = import.meta.env.PUBLIC_TURNSTILE_SITE_KEY || '';
     </div>
     <div class="container relative z-10 mx-auto px-6 text-center">
       <h2 class="text-3xl md:text-4xl lg:text-5xl font-bold mb-6 text-[var(--color-platinum)]">
-        Faça um orçamento!
+        Prefer a structured brief?
       </h2>
       <p class="text-lg md:text-xl text-[var(--color-platinum)]/85 mb-10 max-w-2xl mx-auto">
-        Preencha o formulário e solicite seu orçamento gratuito.
+        Use the quote form for project details — same EmailJS wiring as this page.
       </p>
       <Button href="/orcamento" variant="primary" size="lg">
-        Quero um orçamento
+        Request a quote
       </Button>
     </div>
   </section>
@@ -244,20 +251,18 @@ const TURNSTILE_SITE_KEY = import.meta.env.PUBLIC_TURNSTILE_SITE_KEY || '';
     const phoneInput = form.querySelector('#contato-phone') as HTMLInputElement | null;
     const emailInput = form.querySelector('#contato-email') as HTMLInputElement | null;
 
-    const formatPhoneBR = (value: string): string => {
-      const digits = value.replace(/\D/g, '').slice(0, 11);
-      if (digits.length <= 2) return digits;
-      if (digits.length <= 6) return `(${digits.slice(0, 2)}) ${digits.slice(2)}`;
-      if (digits.length <= 10) {
-        return `(${digits.slice(0, 2)}) ${digits.slice(2, 6)}-${digits.slice(6)}`;
-      }
-      return `(${digits.slice(0, 2)}) ${digits.slice(2, 7)}-${digits.slice(7)}`;
+    /** US-style mask (10 digits) — replace with your locale if needed. */
+    const formatPhoneUS = (value: string): string => {
+      const digits = value.replace(/\D/g, '').slice(0, 10);
+      if (digits.length <= 3) return digits;
+      if (digits.length <= 6) return `(${digits.slice(0, 3)}) ${digits.slice(3)}`;
+      return `(${digits.slice(0, 3)}) ${digits.slice(3, 6)}-${digits.slice(6)}`;
     };
 
     if (phoneInput) {
       phoneInput.addEventListener('input', (event) => {
         const target = event.target as HTMLInputElement;
-        target.value = formatPhoneBR(target.value);
+        target.value = formatPhoneUS(target.value);
       });
     }
 
@@ -268,17 +273,15 @@ const TURNSTILE_SITE_KEY = import.meta.env.PUBLIC_TURNSTILE_SITE_KEY || '';
 
       const formData = new FormData(form);
 
-      // Honeypot: se preenchido, é bot — não envia (retorna em silêncio)
       if (formData.get('company_website')) return;
 
-      // Validação simples de email
       const email = String(formData.get('email') || '').trim();
       const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
       if (!emailPattern.test(email)) {
         if (messageDiv) {
           messageDiv.className =
             'p-4 rounded-lg bg-red-100 border-2 border-red-700 text-red-900 text-sm font-medium';
-          messageDiv.textContent = 'Insira um email válido.';
+          messageDiv.textContent = 'Please enter a valid email address.';
           messageDiv.classList.remove('hidden');
         }
         if (emailInput) emailInput.focus();
@@ -298,20 +301,19 @@ const TURNSTILE_SITE_KEY = import.meta.env.PUBLIC_TURNSTILE_SITE_KEY || '';
         if (messageDiv) {
           messageDiv.className =
             'p-4 rounded-lg bg-amber-100 border-2 border-amber-600 text-amber-900 text-sm font-medium';
-          messageDiv.innerHTML = `Formulário não configurado. Envie sua mensagem pelo <a href="https://wa.me/${CONTACT.whatsapp}" target="_blank" rel="noopener" class="underline font-medium">WhatsApp</a>.`;
+          messageDiv.innerHTML = `Form not configured. Message us on <a href="https://wa.me/${CONTACT.whatsapp}" target="_blank" rel="noopener" class="underline font-medium">WhatsApp</a>.`;
           messageDiv.classList.remove('hidden');
         }
         return;
       }
 
-      // Turnstile: exige verificação quando a chave está configurada
       if (TURNSTILE_SITE_KEY) {
         const turnstileResponse = (form.querySelector('[name="cf-turnstile-response"]') as HTMLInputElement | HTMLTextAreaElement)?.value;
         if (!turnstileResponse || !turnstileResponse.trim()) {
           if (messageDiv) {
             messageDiv.className =
               'p-4 rounded-lg bg-amber-100 border-2 border-amber-600 text-amber-900 text-sm font-medium';
-            messageDiv.textContent = 'Complete a verificação antes de enviar.';
+            messageDiv.textContent = 'Please complete the verification before submitting.';
             messageDiv.classList.remove('hidden');
           }
           return;
@@ -320,7 +322,7 @@ const TURNSTILE_SITE_KEY = import.meta.env.PUBLIC_TURNSTILE_SITE_KEY || '';
 
       if (submitButton) {
         submitButton.disabled = true;
-        submitButton.innerHTML = '<i class="fas fa-spinner fa-spin mr-2"></i>Enviando...';
+        submitButton.innerHTML = '<i class="fas fa-spinner fa-spin mr-2"></i>Sending...';
       }
       if (messageDiv) messageDiv.classList.add('hidden');
 
@@ -330,12 +332,11 @@ const TURNSTILE_SITE_KEY = import.meta.env.PUBLIC_TURNSTILE_SITE_KEY || '';
         if (messageDiv) {
           messageDiv.className =
             'p-4 rounded-lg bg-green-100 border-2 border-green-700 text-green-900 text-sm font-medium';
-          messageDiv.innerHTML = '<i class="fas fa-check-circle mr-2"></i>Mensagem enviada! Entraremos em contato em breve.';
+          messageDiv.innerHTML = '<i class="fas fa-check-circle mr-2"></i>Message sent. We will be in touch shortly.';
           messageDiv.classList.remove('hidden');
         }
         form.reset();
 
-        // Resetar Turnstile para permitir novo envio
         if (TURNSTILE_SITE_KEY && typeof window !== 'undefined' && (window as any).turnstile) {
           try { (window as any).turnstile.reset(); } catch (_) {}
         }
@@ -344,13 +345,13 @@ const TURNSTILE_SITE_KEY = import.meta.env.PUBLIC_TURNSTILE_SITE_KEY || '';
         if (messageDiv) {
           messageDiv.className =
             'p-4 rounded-lg bg-red-100 border-2 border-red-700 text-red-900 text-sm font-medium';
-          messageDiv.innerHTML = `<i class="fas fa-exclamation-circle mr-2"></i>Erro ao enviar. Tente pelo <a href="https://wa.me/${CONTACT.whatsapp}" target="_blank" rel="noopener" class="underline">WhatsApp</a>.`;
+          messageDiv.innerHTML = `<i class="fas fa-exclamation-circle mr-2"></i>Something went wrong. Try <a href="https://wa.me/${CONTACT.whatsapp}" target="_blank" rel="noopener" class="underline">WhatsApp</a>.`;
           messageDiv.classList.remove('hidden');
         }
       } finally {
         if (submitButton) {
           submitButton.disabled = false;
-          submitButton.innerHTML = 'Enviar';
+          submitButton.innerHTML = 'Send';
         }
       }
     });

@@ -3,24 +3,24 @@ import FAQSchema from '../seo/FAQSchema.astro';
 
 const faqItems = [
   {
-    question: 'A RN Transportes atende em todo o Brasil?',
-    answer: 'Sim. Realizamos mudanças interestaduais para todo o Brasil, com frota própria de caminhões baú e equipe qualificada. Também atendemos mudanças locais em Belo Horizonte e região.',
+    question: 'What areas do you serve?',
+    answer: 'Replace with your coverage model (local, national, remote). This template ships with placeholder contact details in `src/utils/constants.ts`.',
   },
   {
-    question: 'Como solicito um orçamento?',
-    answer: 'Você pode preencher o formulário no site, enviar uma mensagem pelo WhatsApp ou ligar para (31) 3454-9283. Analisamos sua necessidade e retornamos com um orçamento personalizado.',
+    question: 'How do I request a quote?',
+    answer: 'Use the quote page (`/orcamento`), the contact form (`/contato`), WhatsApp, or phone — all wired from `CONTACT` in `constants.ts`.',
   },
   {
-    question: 'Quais tipos de mudança a RN realiza?',
-    answer: 'Realizamos mudanças residenciais, comerciais, industriais, transporte de veículos (carros e motos), aproveitamento de carga e serviço de guarda-móveis. Cada projeto é avaliado de forma individual.',
+    question: 'What services do you offer?',
+    answer: 'The homepage pulls service cards from the `SERVICES` array in `constants.ts`. Add or remove entries to match the client.',
   },
   {
-    question: 'A empresa possui frota própria?',
-    answer: 'Sim. Contamos com frota própria de caminhões baú, material adequado para embalagem e transporte, e equipe treinada para montagem e desmontagem de móveis com segurança.',
+    question: 'Do you work with businesses or consumers?',
+    answer: 'State your ideal customer here (B2B, B2C, both). Adjust tone sitewide when localizing for another language.',
   },
   {
-    question: 'Quanto tempo demora para agendar uma mudança?',
-    answer: 'Depende da disponibilidade e da complexidade do serviço. Após o orçamento aprovado, definimos a data e o horário que melhor se adequem à sua necessidade.',
+    question: 'How soon can we start?',
+    answer: 'Describe typical lead times and what affects scheduling — replace this copy per project.',
   },
 ];
 ---
@@ -36,7 +36,7 @@ const faqItems = [
   </div>
   <div class="container relative z-10 mx-auto px-6 max-w-3xl">
     <h2 class="text-3xl md:text-4xl lg:text-5xl font-bold text-center mb-14 md:mb-16 text-[var(--color-platinum)]">
-      Perguntas Frequentes
+      Frequently asked questions
     </h2>
     <div class="space-y-4">
       {faqItems.map((item) => (

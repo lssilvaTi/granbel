@@ -1,13 +1,13 @@
 ---
 const testimonials = [
   {
-    name: 'Marcela Vilas Boas',
-    text: 'A nossa primeira mudança com a RN Transportes e Mudanças foi saindo da cidade de Além Paraíba, Minas Gerais indo até Altamira estado Pará. Não obtivemos nenhum transtorno ou dano, tudo sob os cuidados do Sr. Raimundo, sempre atencioso! Desde então, duas outras mudanças já foram para nós realizadas com o mesmo zelo, responsabilidade e profissionalismo que a RN oferece!',
+    name: 'Alex Morgan',
+    text: 'Placeholder testimonial — swap for a real quote. The layout supports two columns on desktop and star ratings.',
     rating: 5,
   },
   {
-    name: 'Daniel',
-    text: 'Precisamos do serviço de transporte e desde o primeiro contato sentimos muita confiança pela forma como foram feitas todas as tratativas, bem como a equipe que realizou a mobilização da mudança, todos fizeram o trabalho muito bem feito e minha mudança chegou sem nenhuma avaria.',
+    name: 'Jordan Lee',
+    text: 'Second sample card. Import testimonials from `constants.ts` if you want editors to update them in one place.',
     rating: 5,
   },
 ];
@@ -22,7 +22,7 @@ const testimonials = [
   </div>
   <div class="container relative z-10 mx-auto px-6">
     <h2 class="text-3xl md:text-4xl lg:text-5xl font-bold text-center mb-14 md:mb-16 text-[var(--color-platinum)]">
-      Feedback dos Clientes
+      Client feedback
     </h2>
     <div class="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto">
       {testimonials.map((t) => (
@@ -39,7 +39,7 @@ const testimonials = [
             <div class="w-12 h-12 rounded-full bg-[var(--color-dark-blue)] flex items-center justify-center text-white font-semibold mr-4">
               {t.name.charAt(0)}
             </div>
-            <p class="font-semibold text-[var(--color-platinum)]">{t.name}</p>
+            <span class="text-[var(--color-platinum)] font-medium">{t.name}</span>
           </div>
         </div>
       ))}

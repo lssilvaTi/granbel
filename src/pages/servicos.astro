@@ -1,51 +1,58 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
 import Button from '../components/ui/Button.astro';
+import {
+  SITE_URL,
+  SITE_NAME,
+  DEFAULT_OG_IMAGE,
+  PLACEHOLDER_IMAGES,
+} from '../utils/constants';
 
 const servicos = [
   {
-    id: 'residencial-comercial',
-    title: 'Mudanças Comerciais e Residenciais',
-    text: 'Somos especialistas em mudanças comerciais e residenciais! Nós sabemos o quanto é importante essa nova fase para você e/ou sua família. Por isso, conte conosco! Somos uma empresa especializada em mudanças, com tradição no mercado e nossos serviços são personalizados de acordo com a sua necessidade.',
-    image: '/assets/servicos/mudanca-residencial.png',
-    imageAlt: 'Mudança residencial com caixas e pertences',
+    id: 'primary',
+    title: 'Primary offering',
+    text: 'Long-form description for your main service. Move this array to `constants.ts` if you want a single source of truth with the homepage cards.',
+    image: PLACEHOLDER_IMAGES.portrait,
+    imageAlt: 'Service illustration placeholder',
   },
   {
-    id: 'aproveitamento',
-    title: 'Aproveitamento de Carga',
-    text: 'As mudanças por Aproveitamento de Carga seguem juntas por uma rota de atendimento da empresa. Neste tipo de sistema, as mudanças são enviadas para o nosso guarda-móveis após a retirada no endereço de origem e entregamos no destino dentro do prazo acordado. Realizamos um inventário detalhado dos bens a serem transportados para maior controle e transparência. A vantagem deste sistema é a possibilidade de uma redução no custo do transporte.',
-    image: '/assets/servicos/aproveitamento-de-carga.png',
-    imageAlt: 'Aproveitamento de carga',
+    id: 'secondary',
+    title: 'Bundled or follow-on service',
+    text: 'Explain deliverables, timeline, and what the client can expect. Replace images under `public/assets/` or point `image` to your CDN.',
+    image: PLACEHOLDER_IMAGES.portrait,
+    imageAlt: 'Service illustration placeholder',
   },
   {
-    id: 'transporte-veiculos',
-    title: 'Transporte de Veículos',
-    text: 'Ao realizar uma mudança pode surgir a preocupação de como levar o seu veículo. As estradas em sua maioria são mal sinalizadas e apresentam perigos para quem não costuma transitar por elas. Portanto, você pode contar com o nosso serviço de Transporte de Veículos, que leva o seu automóvel com total segurança até o destino final de sua mudança!',
-    image: '/assets/servicos/transporte-veiculos.png',
-    imageAlt: 'Transporte de veículos com carreta especializada',
+    id: 'specialty',
+    title: 'Specialty or niche',
+    text: 'Use this block for a vertical-specific page. Delete rows from `servicos` if the client needs fewer sections.',
+    image: PLACEHOLDER_IMAGES.portrait,
+    imageAlt: 'Service illustration placeholder',
   },
   {
-    id: 'interestadual',
-    title: 'Mudanças Interestaduais',
-    text: 'Nesse processo estão envolvidos diversos pontos extremamente importantes para o sucesso de sua mudança interestadual tais como: o planejamento da mudança, o manuseio e proteção de seus bens, o rastreamento, o seguro contra perdas e acidentes, o tempo de chegada e o mais importante à escolha correta de uma empresa de transporte.',
-    image: '/assets/servicos/mudanca-interestadual.png',
-    imageAlt: 'Mudança interestadual',
+    id: 'coverage',
+    title: 'Coverage and scale',
+    text: 'Describe geographic reach, remote vs on-site, SLAs, or compliance — whatever differentiates you at the proposal stage.',
+    image: PLACEHOLDER_IMAGES.portrait,
+    imageAlt: 'Service illustration placeholder',
   },
 ];
+
+const pageUrl = `${SITE_URL}/servicos`;
 ---
 
 <BaseLayout
-  title="Serviços | RN Transportes e Mudanças"
-  description="Mudanças residenciais, comerciais, interestaduais, aproveitamento de carga e transporte de veículos. Carga segurada pela Porto Seguro. Orçamento grátis em Belo Horizonte."
-  keywords="mudanças BH, mudanças residenciais, mudanças comerciais, mudanças interestaduais, aproveitamento de carga, transporte de veículos, RN Transportes, Porto Seguro"
-  canonical="https://rntransportesbh.com.br/servicos"
-  image="/banner-og.png"
-  url="https://rntransportesbh.com.br/servicos"
+  title={`Services | ${SITE_NAME}`}
+  description="Template services page — replace meta and body copy per client. Images use shared placeholders until you add real assets."
+  keywords="services, YOUR_SITE_NAME, template"
+  canonical={pageUrl}
+  image={DEFAULT_OG_IMAGE}
+  url={pageUrl}
 >
-  <!-- 1. Primeira seção: imagem de fundo (hero-servicos) – padrão contato -->
   <section
     class="relative pt-24 pb-16 md:pt-28 md:pb-20 min-h-[640px] md:min-h-[720px] flex items-center bg-cover bg-no-repeat bg-center"
-    style="background-image: url('/assets/servicos/hero-servicos.png');"
+    style={`background-image: url('${PLACEHOLDER_IMAGES.heroSlide}');`}
   >
     <div class="absolute inset-0 bg-gradient-to-r from-[var(--color-dark-blue)]/96 via-[var(--color-dark-blue)]/85 to-[var(--color-dark-blue)]/50" aria-hidden="true"></div>
     <div class="section-shapes absolute inset-0 pointer-events-none hidden md:block z-0" aria-hidden="true">
@@ -57,19 +64,18 @@ const servicos = [
     <div class="container relative z-10 mx-auto px-6">
       <div class="max-w-2xl hero-text-contrast">
         <h1 class="text-3xl md:text-4xl lg:text-5xl font-bold mb-6 text-white text-drop-shadow">
-          Conheça nossos serviços
+          Our services
         </h1>
         <p class="text-white/95 text-base md:text-lg leading-relaxed mb-8 text-drop-shadow">
-          Mudanças residenciais, comerciais, interestaduais, aproveitamento de carga e transporte de veículos. Tudo com a qualidade e segurança que você merece.
+          Summarize the catalog in one paragraph, then scroll for detail blocks — or trim this page for a lighter site.
         </p>
         <Button href="/orcamento" variant="secondary" size="lg">
-          Quero um orçamento
+          Request a quote
         </Button>
       </div>
     </div>
   </section>
 
-  <!-- 2. Blocos de serviços (texto + imagem, alternando lados) -->
   {servicos.map((s, i) => {
     const imageLeft = i % 2 === 0;
     return (
@@ -105,7 +111,6 @@ const servicos = [
     );
   })}
 
-  <!-- 3. Comodidade e Segurança (Porto Seguro) -->
   <section class="relative py-20 md:py-24 bg-gradient-to-br from-[var(--color-dark-blue)]/20 via-[var(--color-background)] to-[var(--color-cyan)]/15">
     <div class="section-shapes absolute inset-0 pointer-events-none hidden md:block z-0" aria-hidden="true">
       <div class="absolute left-[2%] top-[22%] w-6 h-6 bg-[var(--color-yellow)] opacity-60 rotate-6"></div>
@@ -116,15 +121,15 @@ const servicos = [
     <div class="container relative z-10 mx-auto px-6">
       <div class="max-w-3xl mx-auto text-center">
         <h2 class="text-2xl md:text-3xl font-bold mb-6 text-[var(--color-platinum)]">
-          Comodidade e Segurança
+          Trust and coverage
         </h2>
         <p class="text-xl md:text-2xl text-[var(--color-platinum)]/90 font-medium mb-10">
-          Todas as nossas cargas são seguradas pela Porto Seguro.
+          Optional block for insurance, certifications, or partner logos — replace copy and image for each client.
         </p>
-        <div class="porto-seguro-logo-wrap inline-block p-2 md:p-3 rounded-xl">
+        <div class="partner-logo-wrap inline-block p-2 md:p-3 rounded-xl">
           <img
-            src="/assets/servicos/porto-seguro-logo.png"
-            alt="Porto Seguro"
+            src={PLACEHOLDER_IMAGES.partnerLogo}
+            alt="Partner or certification placeholder"
             class="inline-block w-32 h-32 md:w-40 md:h-40 object-contain opacity-90"
             width="160"
             height="160"
@@ -134,7 +139,6 @@ const servicos = [
     </div>
   </section>
 
-  <!-- 4. CTA -->
   <section class="relative py-20 md:py-24 bg-gradient-to-br from-[var(--color-dark-blue)]/15 via-[var(--color-background)] to-[var(--color-cyan)]/15">
     <div class="section-shapes absolute inset-0 pointer-events-none hidden md:block z-0" aria-hidden="true">
       <div class="absolute left-[2%] top-[22%] w-6 h-6 bg-[var(--color-yellow)] opacity-60 rotate-6"></div>
@@ -144,13 +148,13 @@ const servicos = [
     </div>
     <div class="container relative z-10 mx-auto px-6 text-center">
       <h2 class="text-3xl md:text-4xl lg:text-5xl font-bold mb-6 text-[var(--color-platinum)]">
-        Faça um orçamento!
+        Request a quote
       </h2>
       <p class="text-lg md:text-xl text-[var(--color-platinum)]/85 mb-10 max-w-2xl mx-auto">
-        Preencha o formulário e solicite seu orçamento gratuito.
+        Short CTA — drives to the quote form route (`/orcamento` in this template).
       </p>
       <Button href="/orcamento" variant="primary" size="lg">
-        Quero um orçamento
+        Get started
       </Button>
     </div>
   </section>

@@ -1,10 +1,5 @@
-# robots.txt for Axory Studio
+# Template — update sitemap URL when `SITE_URL` / production domain is set
 User-agent: *
 Allow: /
 
-# Sitemap
-Sitemap: https://axory.dev/sitemap.xml
-
-# Disallow admin or private areas if any
-# Disallow: /admin/
-# Disallow: /private/
+Sitemap: https://example.com/sitemap.xml

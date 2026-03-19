@@ -1,21 +1,17 @@
 {
-  "name": "Axory Studio - Premium Web Development",
-  "short_name": "Axory Studio",
-  "description": "Premium web development studio specializing in custom websites",
+  "name": "YOUR_SITE_NAME",
+  "short_name": "YOUR_SITE_NAME",
+  "description": "Replace with your site description (see README — Branding defaults).",
   "icons": [
     {
-      "src": "/android-chrome-192x192.png",
-      "sizes": "192x192",
-      "type": "image/png"
-    },
-    {
-      "src": "/android-chrome-512x512.png",
-      "sizes": "512x512",
-      "type": "image/png"
+      "src": "/favicon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any"
     }
   ],
-  "theme_color": "#020617",
-  "background_color": "#0F172A",
+  "theme_color": "#1f3e8f",
+  "background_color": "#0d1b36",
   "display": "standalone",
   "start_url": "/",
   "scope": "/"

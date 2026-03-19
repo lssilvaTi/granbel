@@ -11,15 +11,15 @@ import { SERVICES } from '../../utils/constants';
   </div>
   <div class="container relative z-10 mx-auto px-6">
     <h2 class="text-3xl md:text-4xl lg:text-5xl font-bold text-center mb-4 text-[var(--color-dark-blue)]">
-      Nossos Serviços
+      Our services
     </h2>
     <p class="text-center text-[var(--color-cyan)] mb-10 md:mb-16 text-lg md:text-xl max-w-2xl mx-auto font-medium">
-      Como podemos te ajudar?
+      How we can help
     </p>
     <div class="grid grid-cols-1 md:grid-cols-2 gap-5 md:gap-8 lg:gap-10 max-w-5xl mx-auto">
       {SERVICES.map((service) => (
         <div class="flex flex-col items-center text-center p-6 md:p-8 bg-[var(--color-background-dark)] rounded-lg border border-[var(--color-platinum)]/20 hover:border-[var(--color-cyan)]/40 transition-all duration-300">
-          <!-- Ícone em quadrado amarelo (estilo da referência) -->
+          <!-- Icon tile (brand accent) -->
           <div class="w-16 h-16 mb-4 md:mb-6 rounded-sm bg-[var(--color-yellow)] flex items-center justify-center flex-shrink-0">
             <i class={`fas ${service.icon} text-2xl text-[var(--color-dark-blue)]`}></i>
           </div>

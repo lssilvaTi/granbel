@@ -1,20 +1,19 @@
 ---
 import Button from '../ui/Button.astro';
+import { PLACEHOLDER_IMAGES } from '../../utils/constants';
 
 const carouselImages = [
-  '/assets/carousel/carousel-1.png',
-  '/assets/carousel/carousel-2.png',
-  '/assets/carousel/carousel-3.png',
-  '/assets/carousel/carousel-4.png',
+  PLACEHOLDER_IMAGES.heroSlide,
+  PLACEHOLDER_IMAGES.heroSlide,
+  PLACEHOLDER_IMAGES.heroSlide,
+  PLACEHOLDER_IMAGES.heroSlide,
 ];
 ---
 
-<!-- Primeira seção: carrossel como fundo em tela cheia (padrão contato) -->
 <section
   class="hero-transport relative pt-24 pb-16 md:pt-28 md:pb-20 min-h-[78vh] flex items-center bg-cover bg-no-repeat bg-center overflow-hidden"
   aria-label="Hero"
 >
-  <!-- Carrossel como fundo -->
   <div class="hero-bg-carousel absolute inset-0">
     {carouselImages.map((src, i) => (
       <div
@@ -25,7 +24,6 @@ const carouselImages = [
       />
     ))}
   </div>
-  <!-- Overlay: legibilidade (mesmo padrão do contato) -->
   <div class="absolute inset-0 bg-gradient-to-r from-[var(--color-dark-blue)]/92 via-[var(--color-dark-blue)]/70 to-[var(--color-dark-blue)]/40" aria-hidden="true"></div>
   <div class="section-shapes absolute inset-0 pointer-events-none hidden md:block z-0" aria-hidden="true">
     <div class="absolute left-[2%] top-[18%] w-7 h-7 bg-[var(--color-yellow)] opacity-50 rotate-12"></div>
@@ -36,21 +34,21 @@ const carouselImages = [
   <div class="container relative z-10 mx-auto px-6">
     <div class="max-w-xl">
       <h1 class="hero-title text-4xl sm:text-5xl md:text-6xl font-extrabold mb-5 leading-snug tracking-wide text-white">
-        Transporte e mudanças para todo o Brasil
+        Clear headline for your offer
       </h1>
       <p class="text-lg md:text-xl text-white/95 mb-5 max-w-lg leading-relaxed">
-        Segurança e eficiência para sua mudança com excelência garantida. Confie na nossa experiência e dedicação.
+        Supporting line that explains who you help and the outcome you deliver — edit in `Hero.astro` or move copy to `constants.ts`.
       </p>
       <p class="text-base md:text-lg text-white/80 mb-8 max-w-md">
-        Entre em contato e transforme sua experiência hoje mesmo!
+        Replace carousel images under `public/` (see `PLACEHOLDER_IMAGES` in `constants.ts`).
       </p>
       <div class="flex flex-col sm:flex-row gap-3">
-        <Button href="#contact" variant="secondary" size="lg">Fale conosco</Button>
-        <Button href="/orcamento" variant="outline" size="lg" class="!text-white !border-white/90 hover:!bg-white/15">Solicitar orçamento</Button>
+        <Button href="#contact" variant="secondary" size="lg">Get in touch</Button>
+        <Button href="/orcamento" variant="outline" size="lg" class="!text-white !border-white/90 hover:!bg-white/15">Request a quote</Button>
       </div>
       <p class="mt-5">
         <a href="/#services" class="text-[var(--color-yellow)] hover:underline inline-flex items-center gap-2 font-medium">
-          Nossos serviços <i class="fas fa-arrow-down text-sm"></i>
+          Our services <i class="fas fa-arrow-down text-sm"></i>
         </a>
       </p>
     </div>
@@ -58,51 +56,29 @@ const carouselImages = [
 </section>
 
 <style>
-  .hero-transport {
-    background-color: var(--color-dark-blue);
-  }
-
-  .hero-bg-carousel {
-    position: absolute;
-    inset: 0;
-  }
-
+  .hero-bg-carousel { z-index: 0; }
   .hero-bg-slide {
     position: absolute;
     inset: 0;
     background-size: cover;
     background-position: center;
-    background-repeat: no-repeat;
     opacity: 0;
-    transition: opacity 1s ease-in-out;
+    transition: opacity 1.2s ease-in-out;
   }
-
   .hero-bg-slide.active {
     opacity: 1;
-    z-index: 1;
-  }
-
-  .hero-title {
-    text-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
   }
 </style>
 
 <script>
   document.addEventListener('DOMContentLoaded', () => {
-    const SLIDE_INTERVAL = 5000;
     const slides = document.querySelectorAll('.hero-bg-slide');
     if (slides.length < 2) return;
     let current = 0;
-    function goToNext() {
+    setInterval(() => {
       slides[current].classList.remove('active');
-      slides[current].setAttribute('aria-hidden', 'true');
       current = (current + 1) % slides.length;
       slides[current].classList.add('active');
-      slides[current].setAttribute('aria-hidden', 'false');
-    }
-    const timer = setInterval(goToNext, SLIDE_INTERVAL);
-    document.addEventListener('visibilitychange', () => {
-      if (document.hidden) clearInterval(timer);
-    });
+    }, 6000);
   });
 </script>

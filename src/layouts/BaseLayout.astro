@@ -5,6 +5,7 @@ import Header from '../components/layout/Header.astro';
 import Footer from '../components/layout/Footer.astro';
 import WhatsAppButton from '../components/layout/WhatsAppButton.astro';
 import SEOHead from '../components/seo/SEOHead.astro';
+import { SITE_TAGLINE } from '../utils/constants';
 
 interface Props {
   title: string;
@@ -20,7 +21,7 @@ interface Props {
 
 const { 
   title, 
-  description = 'RN Transportes e Mudanças em Belo Horizonte. Mais de 15 anos de tradição em mudanças residenciais, comerciais, interestaduais e transporte de veículos. Orçamento grátis.',
+  description = SITE_TAGLINE,
   image,
   url,
   type,
@@ -32,7 +33,7 @@ const {
 ---
 
 <!doctype html>
-<html lang="pt-BR" data-theme="light">
+<html lang="en" data-theme="light">
   <head>
     <SEOHead 
       title={title}
@@ -96,7 +97,7 @@ const {
 </style>
 
 <script>
-  // Theme management - versão sutil
+  // Theme preference (localStorage + system hint)
   (function() {
     function getThemePreference() {
       const saved = localStorage.getItem('theme');

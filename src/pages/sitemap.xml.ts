@@ -1,8 +1,10 @@
 import type { APIRoute } from 'astro';
+import { SITE_URL } from '../utils/constants';
 
-const SITE_URL = 'https://rntransportesbh.com.br';
-
-// Páginas do site
+/**
+ * Sitemap URL list — the `pages` array MUST mirror real file-based routes under `src/pages/`.
+ * When you add or remove `.astro` routes, update this list and `Header.astro` / `Footer.astro` links.
+ */
 const pages = [
   {
     url: '/',

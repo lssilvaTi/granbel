@@ -1,26 +1,20 @@
 ---
+import { LOGO_PATH, SITE_NAME } from '../../utils/constants';
+
 interface Props {
   variant?: 'full' | 'full-dark' | 'full-light' | 'wordmark-dark' | 'wordmark-light' | 'mono-dark' | 'mono-light';
   class?: string;
 }
 
-const { variant = 'full', class: className = '' } = Astro.props;
-
-const logoMap = {
-  full: '/assets/logos/logo-full-light.png',
-  'full-dark': '/assets/logos/logo-full-dark.png',
-  'full-light': '/assets/logos/logo-full-light.png',
-  'wordmark-dark': '/assets/logos/wordmark-dark.png',
-  'wordmark-light': '/assets/logos/wordmark-light.png',
-  'mono-dark': '/assets/logos/logo-mono-dark.png',
-  'mono-light': '/assets/logos/logo-mono-light.png',
-};
-
-const logoPath = logoMap[variant];
+/**
+ * All variants map to the same placeholder asset in the template.
+ * Split into multiple files per client if you need theme-specific marks.
+ */
+const { variant: _variant = 'full', class: className = '' } = Astro.props;
 ---
 
 <img 
-  src={logoPath} 
-  alt="Axory Studio" 
+  src={LOGO_PATH} 
+  alt={SITE_NAME} 
   class={`h-8 ${className}`}
 />
