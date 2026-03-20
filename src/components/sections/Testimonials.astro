@@ -15,14 +15,14 @@ import { TESTIMONIALS } from '../../utils/constants';
         <div class="testimonial bg-[var(--color-background-dark)] rounded-xl p-6 md:p-8 border border-[var(--color-platinum)]/10 hover:border-[var(--color-cyan)]/30 transition-colors duration-300">
           <div class="flex mb-4">
             {[...Array(t.rating)].map(() => (
-              <i class="fas fa-star text-[var(--color-yellow)]"></i>
+              <i class="fas fa-star text-[var(--color-primary)]"></i>
             ))}
           </div>
           <p class="text-[var(--color-platinum)]/85 mb-6 italic leading-relaxed font-sans">
             &quot;{t.text}&quot;
           </p>
           <div class="flex items-center">
-            <div class="w-12 h-12 rounded-full bg-[var(--color-dark-blue)] flex items-center justify-center text-white font-semibold mr-4 font-sans">
+            <div class="w-12 h-12 rounded-full bg-[var(--color-primary)] flex items-center justify-center text-[var(--color-on-primary)] font-semibold mr-4 font-sans">
               {t.name.charAt(0)}
             </div>
             <span class="text-[var(--color-platinum)] font-medium font-sans">{t.name}</span>

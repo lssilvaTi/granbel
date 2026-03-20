@@ -19,11 +19,15 @@ const {
   type = 'button'
 } = Astro.props;
 
-const baseClasses = 'inline-flex items-center justify-center font-medium rounded-lg transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-offset-2';
+const baseClasses =
+  'inline-flex items-center justify-center font-medium rounded-lg transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-[var(--color-background)]';
 const variantClasses = {
-  primary: 'bg-[var(--color-dark-blue)] text-white hover:bg-[var(--color-dark-blue)]/90 focus:ring-[var(--color-dark-blue)]',
-  secondary: 'bg-[var(--color-cyan)] text-white hover:bg-[var(--color-cyan)]/90 focus:ring-[var(--color-cyan)]',
-  outline: 'border-2 border-[var(--color-cyan)] text-[var(--color-cyan)] hover:bg-[var(--color-cyan)]/10 focus:ring-[var(--color-cyan)]',
+  primary:
+    'bg-[var(--color-primary)] text-[var(--color-on-primary)] hover:bg-[var(--color-primary-hover)] focus:ring-[var(--color-primary)]',
+  secondary:
+    'bg-[var(--color-primary-hover)] text-[var(--color-on-primary)] hover:bg-[var(--color-primary)] focus:ring-[var(--color-primary-hover)]',
+  outline:
+    'border-2 border-[var(--color-primary)] text-[var(--color-primary)] hover:bg-[var(--color-primary)]/10 focus:ring-[var(--color-primary)]',
 };
 const sizeClasses = {
   sm: 'px-4 py-2 text-sm',

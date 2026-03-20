@@ -33,8 +33,8 @@ import Button from '../ui/Button.astro';
       <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 max-w-5xl mx-auto">
         {DIFFERENTIALS.map((d) => (
           <div class="flex items-start gap-4 p-5 rounded-xl bg-[var(--color-background-dark)] border border-[var(--color-platinum)]/20 hover:border-[var(--color-cyan)]/45 transition-all duration-300">
-            <div class="flex-shrink-0 w-12 h-12 rounded-lg bg-[var(--color-yellow)] flex items-center justify-center">
-              <i class={`fas ${d.icon} text-lg text-[var(--color-dark-blue)]`}></i>
+            <div class="flex-shrink-0 w-12 h-12 rounded-lg bg-[var(--color-primary)] flex items-center justify-center">
+              <i class={`fas ${d.icon} text-lg text-[var(--color-on-primary)]`}></i>
             </div>
             <p class="text-[var(--color-platinum)]/90 font-medium pt-1 font-sans text-left">
               {d.title}

@@ -1,61 +1,113 @@
 @import "tailwindcss";
 
-/*
- * Paleta verde — cuidado, confiança (mudanças / logística).
- * Tokens: @theme; texturas: --rgb-decor-* e .bg-cardboard / .packaging-tape-diagonal.
+/**
+ * Granbel — tokens por tema + aliases legados (--color-platinum, --color-cyan, etc.).
+ * --color-accent: reservado para alertas / ações destrutivas (evitar fundos grandes).
  */
 
 @theme {
-  --color-dark-blue: #2f6f52;
-  --color-cyan: #4a9b7c;
-  --color-yellow: #b8e070;
-
-  --color-header-bg: #1a3d32;
-
-  --color-indigo-velvet: #2f6f52;
-  --color-bondi-blue: #4a9b7c;
-  --color-prussian-blue: #152822;
-  --color-ink-black: #0c1612;
-  --color-platinum: #e8f2ea;
-
-  --color-primary: var(--color-dark-blue);
-  --color-secondary: var(--color-cyan);
-  --color-accent: var(--color-yellow);
-  --color-background: var(--color-prussian-blue);
-  --color-background-dark: var(--color-ink-black);
-  --color-surface: var(--color-platinum);
-
   --font-serif: 'Fraunces', Georgia, serif;
   --font-sans: 'DM Sans', system-ui, sans-serif;
   --font-family-serif: var(--font-serif);
   --font-family-sans: var(--font-sans);
 }
 
-/* RGB para texturas / sombras (grade, fita, stats, FAQ, post-its) */
 :root {
   font-family: var(--font-sans);
-  --rgb-decor-deep: 26 61 50;
-  --rgb-decor-a: 47 111 82;
-  --rgb-decor-b: 74 155 124;
-  --rgb-decor-c: 184 224 112;
-  --rgb-decor-sage: 92 143 114;
-  --postit-bg-amber: 242 248 240;
-  --postit-bg-sage: 236 244 239;
-  --postit-bg-clay: 238 245 241;
+  color-scheme: light;
+
+  --color-background: #f4f6fa;
+  --color-background-dark: #e8ecf4;
+  --color-surface: #ffffff;
+  --color-primary: #153f7b;
+  --color-primary-hover: #0f2f5c;
+  --color-accent: #ae0001;
+  --color-text-primary: #1a1a1a;
+  --color-text-secondary: #4a5568;
+  --color-border: #d6dce5;
+  --color-on-primary: #f5f7fa;
+  --color-overlay-deep: #0c1018;
+  --color-overlay-mid: #121a26;
+
+  /* Aliases usados no markup existente */
+  --color-platinum: var(--color-text-primary);
+  --color-cyan: var(--color-primary);
+  --color-dark-blue: var(--color-primary);
+  --color-secondary: var(--color-primary-hover);
+  --color-header-bg: var(--color-primary);
+  --color-indigo-velvet: var(--color-primary);
+  --color-bondi-blue: var(--color-primary-hover);
+  --color-prussian-blue: var(--color-background);
+  --color-ink-black: var(--color-overlay-deep);
+  --color-yellow: var(--color-primary);
+
+  --rgb-decor-deep: 21 63 123;
+  --rgb-decor-a: 21 63 123;
+  --rgb-decor-b: 74 111 165;
+  --rgb-decor-c: 168 196 232;
+  --rgb-decor-sage: 74 85 104;
+  --postit-bg-amber: 244 246 250;
+  --postit-bg-sage: 232 236 244;
+  --postit-bg-clay: 238 242 248;
 }
 
 [data-theme="light"] {
-  --color-background: #f0f9f4;
-  --color-background-dark: #e2f0e8;
-  --color-platinum: #1a3026;
-  --color-surface: #1a3026;
+  color-scheme: light;
+  --color-background: #f4f6fa;
+  --color-background-dark: #e8ecf4;
+  --color-surface: #ffffff;
+  --color-primary: #153f7b;
+  --color-primary-hover: #0f2f5c;
+  --color-accent: #ae0001;
+  --color-text-primary: #1a1a1a;
+  --color-text-secondary: #4a5568;
+  --color-border: #d6dce5;
+  --color-on-primary: #f5f7fa;
+
+  --color-platinum: var(--color-text-primary);
+  --color-cyan: var(--color-primary);
+  --color-dark-blue: var(--color-primary);
+  --color-secondary: var(--color-primary-hover);
+  --color-header-bg: var(--color-primary);
+  --color-indigo-velvet: var(--color-primary);
+  --color-bondi-blue: var(--color-primary-hover);
+  --color-prussian-blue: var(--color-background);
+  --color-ink-black: var(--color-overlay-deep);
+  --color-yellow: var(--color-primary);
 }
 
 [data-theme="dark"] {
-  --color-background: #111a16;
-  --color-background-dark: #17231d;
-  --color-platinum: #e5f0ea;
-  --color-surface: #e5f0ea;
+  color-scheme: dark;
+  --color-background: #0c1018;
+  --color-background-dark: #121a26;
+  --color-surface: #1a2332;
+  --color-primary: #4a6fa5;
+  --color-primary-hover: #6b8bc2;
+  --color-accent: #ff4d4f;
+  --color-text-primary: #f5f7fa;
+  --color-text-secondary: #a0aec0;
+  --color-border: #2a3441;
+  --color-on-primary: #f5f7fa;
+
+  --color-platinum: var(--color-text-primary);
+  --color-cyan: var(--color-primary);
+  --color-dark-blue: var(--color-primary);
+  --color-secondary: var(--color-primary-hover);
+  --color-header-bg: var(--color-primary);
+  --color-indigo-velvet: var(--color-primary);
+  --color-bondi-blue: var(--color-primary-hover);
+  --color-prussian-blue: var(--color-background);
+  --color-ink-black: var(--color-overlay-deep);
+  --color-yellow: var(--color-primary);
+
+  --rgb-decor-deep: 74 111 165;
+  --rgb-decor-a: 74 111 165;
+  --rgb-decor-b: 107 139 194;
+  --rgb-decor-c: 160 174 192;
+  --rgb-decor-sage: 160 174 192;
+  --postit-bg-amber: 26 35 50;
+  --postit-bg-sage: 22 30 44;
+  --postit-bg-clay: 24 32 46;
 }
 
 html {
@@ -65,13 +117,12 @@ html {
 
 body {
   background-color: var(--color-background);
-  color: var(--color-surface);
+  color: var(--color-text-primary);
   margin: 0;
   padding: 0;
   transition: background-color 0.35s ease, color 0.35s ease;
 }
 
-/* Textura sutil — profundidade sem poluir */
 body::before {
   content: '';
   position: fixed;
@@ -102,11 +153,10 @@ body, p, span, a, button, input, textarea, select {
 }
 
 [data-theme="dark"] .partner-logo-wrap {
-  background: rgba(255, 255, 255, 0.95);
+  background: color-mix(in srgb, var(--color-on-primary) 95%, white);
   box-shadow: 0 4px 24px rgba(0, 0, 0, 0.35);
 }
 
-/* Hero título — entrada suave */
 @keyframes hero-title-in {
   from {
     opacity: 0;
@@ -127,7 +177,6 @@ body, p, span, a, button, input, textarea, select {
   animation: hero-title-in 0.85s cubic-bezier(0.22, 1, 0.36, 1) 0.12s forwards;
 }
 
-/* Faixa tipo fita — rolagem contínua */
 @keyframes marquee-tape {
   0% {
     transform: translateX(0);
@@ -147,7 +196,6 @@ body, p, span, a, button, input, textarea, select {
   animation-play-state: paused;
 }
 
-/* Textura leve de grade (seções claras) */
 .bg-cardboard {
   background-color: var(--color-background);
   background-image: linear-gradient(
@@ -159,7 +207,6 @@ body, p, span, a, button, input, textarea, select {
   background-size: 20px 20px;
 }
 
-/* Fundo diagonal da faixa de fita (cor segue a paleta) */
 .packaging-tape-diagonal {
   background: repeating-linear-gradient(
     -45deg,

@@ -20,34 +20,34 @@ const carouselImages = [...HERO_SLIDES];
     ))}
   </div>
   <div
-    class="absolute inset-0 bg-gradient-to-br from-[var(--color-header-bg)]/95 via-[var(--color-dark-blue)]/80 to-[var(--color-ink-black)]/55"
+    class="absolute inset-0 bg-gradient-to-br from-[var(--color-header-bg)]/95 via-[var(--color-primary)]/80 to-[var(--color-overlay-deep)]/55"
     aria-hidden="true"
   />
-  <div class="absolute inset-0 bg-gradient-to-t from-[var(--color-ink-black)]/55 to-transparent pointer-events-none" aria-hidden="true"></div>
+  <div class="absolute inset-0 bg-gradient-to-t from-[var(--color-overlay-deep)]/55 to-transparent pointer-events-none" aria-hidden="true"></div>
 
   <div class="container relative z-10 mx-auto px-6">
     <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 xl:gap-16 items-center">
       <div class="lg:col-span-7 max-w-2xl">
-        <p class="text-[var(--color-yellow)] text-sm font-semibold tracking-[0.2em] uppercase mb-4 hero-sub-anim font-sans">
+        <p class="text-[var(--color-on-primary)] text-sm font-semibold tracking-[0.2em] uppercase mb-4 hero-sub-anim font-sans">
           Transportes · Mudanças · Logística
         </p>
-        <h1 class="hero-title-anim text-4xl sm:text-5xl md:text-6xl font-bold mb-5 leading-tight tracking-tight text-white font-serif">
+        <h1 class="hero-title-anim text-4xl sm:text-5xl md:text-6xl font-bold mb-5 leading-tight tracking-tight text-[var(--color-on-primary)] font-serif">
           O caminho certo para sua mudança
         </h1>
-        <p class="text-lg md:text-xl text-white/95 mb-6 max-w-xl leading-relaxed font-sans hero-sub-anim" style="animation-delay: 0.08s;">
+        <p class="text-lg md:text-xl text-[var(--color-on-primary)]/95 mb-6 max-w-xl leading-relaxed font-sans hero-sub-anim" style="animation-delay: 0.08s;">
           Da embalagem ao último móvel no lugar: planejamento, equipe experiente e comunicação clara — para você respirar aliviado no novo endereço.
         </p>
-        <p class="text-base md:text-lg text-white/75 mb-8 max-w-lg font-sans hero-sub-anim" style="animation-delay: 0.14s;">
+        <p class="text-base md:text-lg text-[var(--color-on-primary)]/75 mb-8 max-w-lg font-sans hero-sub-anim" style="animation-delay: 0.14s;">
           Atendimento em todo o Brasil — origem, destino e prazo alinhados no orçamento.
         </p>
         <div class="flex flex-col sm:flex-row gap-3 hero-sub-anim" style="animation-delay: 0.2s;">
-          <Button href="#contact" variant="secondary" size="lg">Fale com a equipe</Button>
-          <Button href="/orcamento" variant="outline" size="lg" class="!text-white !border-white/90 hover:!bg-white/10">
+          <Button href="#contact" variant="primary" size="lg">Fale com a equipe</Button>
+          <Button href="/orcamento" variant="outline" size="lg" class="!text-[var(--color-on-primary)] !border-[var(--color-on-primary)]/90 hover:!bg-[var(--color-on-primary)]/10 !ring-[var(--color-on-primary)] !ring-offset-0">
             Solicitar orçamento
           </Button>
         </div>
         <p class="mt-6 hero-sub-anim" style="animation-delay: 0.26s;">
-          <a href="/#services" class="text-[var(--color-yellow)] hover:underline inline-flex items-center gap-2 font-medium font-sans">
+          <a href="/#services" class="text-[var(--color-on-primary)] hover:underline inline-flex items-center gap-2 font-medium font-sans">
             Ver serviços <i class="fas fa-arrow-down text-sm"></i>
           </a>
         </p>
@@ -55,15 +55,15 @@ const carouselImages = [...HERO_SLIDES];
 
       <div class="lg:col-span-5 w-full max-w-md mx-auto lg:max-w-none lg:mx-0" aria-label="Indicadores da empresa">
         <div
-          class="hero-stats-panel relative rounded-2xl border border-white/15 bg-white/[0.07] backdrop-blur-md shadow-[0_24px_48px_rgba(0,0,0,0.25)] overflow-hidden"
+          class="hero-stats-panel relative rounded-2xl border border-[var(--color-on-primary)]/15 bg-[var(--color-on-primary)]/[0.07] backdrop-blur-md shadow-[0_24px_48px_rgba(0,0,0,0.25)] overflow-hidden"
         >
           <div
-            class="absolute left-0 top-0 bottom-0 w-1 bg-gradient-to-b from-[var(--color-yellow)] via-[var(--color-cyan)]/80 to-[var(--color-yellow)]/60"
+            class="absolute left-0 top-0 bottom-0 w-1 bg-gradient-to-b from-[var(--color-on-primary)] via-[var(--color-primary-hover)]/80 to-[var(--color-on-primary)]/60"
             aria-hidden="true"
           ></div>
           <div class="pl-5 pr-4 py-5 sm:pl-6 sm:pr-5 sm:py-6">
-            <p class="font-mono text-[10px] tracking-[0.2em] text-white/50 uppercase mb-4 pl-1">Granbel em números</p>
-            <ul class="space-y-0 divide-y divide-white/10">
+            <p class="font-mono text-[10px] tracking-[0.2em] text-[var(--color-on-primary)]/50 uppercase mb-4 pl-1">Granbel em números</p>
+            <ul class="space-y-0 divide-y divide-[var(--color-on-primary)]/10">
               {HERO_STATS.map((stat, i) => (
                 <li
                   class={`hero-stat-row flex items-center gap-4 py-4 first:pt-0 last:pb-0 ${i % 2 === 1 ? 'sm:flex-row-reverse sm:text-right' : ''}`}
@@ -72,18 +72,18 @@ const carouselImages = [...HERO_SLIDES];
                   data-duration="1800"
                 >
                   <span
-                    class="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl bg-[var(--color-yellow)]/20 text-[var(--color-yellow)] border border-[var(--color-yellow)]/35"
+                    class="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl bg-[var(--color-on-primary)]/20 text-[var(--color-on-primary)] border border-[var(--color-on-primary)]/35"
                     aria-hidden="true"
                   >
                     <i class={`fas ${stat.icon} text-lg`}></i>
                   </span>
                   <div class="min-w-0 flex-1">
                     <p
-                      class="hero-stat-number font-sans text-2xl sm:text-3xl font-extrabold tabular-nums tracking-tight text-[var(--color-yellow)]"
+                      class="hero-stat-number font-sans text-2xl sm:text-3xl font-extrabold tabular-nums tracking-tight text-[var(--color-on-primary)]"
                     >
                       0{stat.suffix}
                     </p>
-                    <p class="font-sans text-xs sm:text-sm text-white/75 font-medium leading-snug mt-0.5">{stat.label}</p>
+                    <p class="font-sans text-xs sm:text-sm text-[var(--color-on-primary)]/75 font-medium leading-snug mt-0.5">{stat.label}</p>
                   </div>
                 </li>
               ))}
