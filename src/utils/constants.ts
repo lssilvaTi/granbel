@@ -15,12 +15,12 @@ export const LOGO_PATH = '/assets/logos/granbel-logo.svg' as const;
 
 export const DEFAULT_OG_IMAGE = '/og-default.svg' as const;
 
-/** Imagens Unsplash (uso conforme licença Unsplash) — hero carousel. */
+/** Imagens Unsplash — hero carousel (3ª/4ª: URLs antigas do projeto retornam 404 no CDN). */
 export const HERO_SLIDES = [
   'https://images.unsplash.com/photo-1601584115197-04ecc0da31d7?auto=format&fit=crop&w=1920&q=80',
   'https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?auto=format&fit=crop&w=1920&q=80',
-  'https://images.unsplash.com/photo-1566576721346-4da4c392e3c3?auto=format&fit=crop&w=1920&q=80',
-  'https://images.unsplash.com/photo-1616432043562-3691f2ea6a12?auto=format&fit=crop&w=1920&q=80',
+  'https://images.unsplash.com/photo-1494412574643-ff11b0a5c1c3?auto=format&fit=crop&w=1920&q=80',
+  'https://images.unsplash.com/photo-1600880292203-757bb62b4baf?auto=format&fit=crop&w=1920&q=80',
 ] as const;
 
 /** Números do banner (home) — animação de contagem no Hero. Ajuste valores com o cliente. */
@@ -61,8 +61,8 @@ export const SERVICES_PAGE_BLOCKS = [
     title: 'Transporte de cargas e fretes',
     text: 'Fretes urbanos e interestaduais com veículos adequados ao volume e à fragilidade da carga. Ideal para lojas online, indústria leve, distribuição e entregas programadas — com acompanhamento da carga e comunicação clara em cada etapa.',
     image:
-      'https://images.unsplash.com/photo-1519003722824-cd44fee281c0?auto=format&fit=crop&w=900&q=80',
-    imageAlt: 'Caminhão em estrada — transporte de cargas',
+      'https://images.unsplash.com/photo-1600880292203-757bb62b4baf?auto=format&fit=crop&w=900&q=80',
+    imageAlt: 'Veículo de entrega em rota — fretes e transporte de cargas',
   },
   {
     id: 'logistica-armazenagem',
