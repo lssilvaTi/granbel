@@ -9,7 +9,7 @@ const currentYear = new Date().getFullYear();
     <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 lg:gap-10">
       <div class="lg:col-span-2">
         <a href="/" class="inline-flex mb-4 hover:opacity-90 transition-opacity" aria-label={SITE_NAME}>
-          <BrandLogo theme="onDark" />
+          <BrandLogo theme="onDark" placement="footer" />
         </a>
         <p class="text-[var(--color-on-primary)]/75 max-w-md leading-relaxed font-sans">
           {SITE_TAGLINE}
@@ -56,11 +56,11 @@ const currentYear = new Date().getFullYear();
       <div>
         <h3 class="text-[var(--color-on-primary)] font-semibold mb-4 font-serif">Páginas</h3>
         <ul class="space-y-2 font-sans">
-          <li><a href="/" class="text-[var(--color-on-primary)]/75 hover:text-[var(--color-primary-hover)] transition-colors">Início</a></li>
-          <li><a href="/sobre-nos" class="text-[var(--color-on-primary)]/75 hover:text-[var(--color-primary-hover)] transition-colors">Sobre nós</a></li>
-          <li><a href="/servicos" class="text-[var(--color-on-primary)]/75 hover:text-[var(--color-primary-hover)] transition-colors">Serviços</a></li>
-          <li><a href="/contato" class="text-[var(--color-on-primary)]/75 hover:text-[var(--color-primary-hover)] transition-colors">Contato</a></li>
-          <li><a href="/orcamento" class="text-[var(--color-on-primary)]/75 hover:text-[var(--color-primary-hover)] transition-colors">Orçamento</a></li>
+          <li><a href="/" class="text-[var(--color-on-primary)]/75 hover:text-[var(--color-highlight-on-brand)] transition-colors">Início</a></li>
+          <li><a href="/sobre-nos" class="text-[var(--color-on-primary)]/75 hover:text-[var(--color-highlight-on-brand)] transition-colors">Sobre nós</a></li>
+          <li><a href="/servicos" class="text-[var(--color-on-primary)]/75 hover:text-[var(--color-highlight-on-brand)] transition-colors">Serviços</a></li>
+          <li><a href="/contato" class="text-[var(--color-on-primary)]/75 hover:text-[var(--color-highlight-on-brand)] transition-colors">Contato</a></li>
+          <li><a href="/orcamento" class="text-[var(--color-on-primary)]/75 hover:text-[var(--color-highlight-on-brand)] transition-colors">Orçamento</a></li>
         </ul>
       </div>
       <div>
@@ -70,10 +70,10 @@ const currentYear = new Date().getFullYear();
           <li>{CONTACT.addressLine2}</li>
           <li>CEP {CONTACT.postalCode}</li>
           <li>
-            <a href={`mailto:${CONTACT.email}`} class="hover:text-[var(--color-primary-hover)] transition-colors">{CONTACT.email}</a>
+            <a href={`mailto:${CONTACT.email}`} class="hover:text-[var(--color-highlight-on-brand)] transition-colors">{CONTACT.email}</a>
           </li>
           <li>
-            <a href={`tel:${CONTACT.phoneTel}`} class="hover:text-[var(--color-primary-hover)] transition-colors">{CONTACT.phoneDisplay}</a>
+            <a href={`tel:${CONTACT.phoneTel}`} class="hover:text-[var(--color-highlight-on-brand)] transition-colors">{CONTACT.phoneDisplay}</a>
           </li>
           <li>
             <a

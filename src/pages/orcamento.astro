@@ -29,16 +29,24 @@ const dadosParaPedido = [
   url={pageUrl}
   loadTurnstile={!!TURNSTILE_SITE_KEY}
 >
-  <div class="pt-24 md:pt-28 pb-16 md:pb-20 bg-cardboard min-h-[calc(100vh-6rem)]">
-    <div class="container mx-auto px-6 max-w-6xl">
-      <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-start">
-        <div class="lg:col-span-5 order-2 lg:order-1 lg:sticky lg:top-28">
-          <a href="/" class="inline-flex items-center gap-3 mb-8 group" aria-label={`${SITE_NAME} — voltar ao início`}>
-            <BrandLogo theme="onLight" />
-            <span class="text-xs font-sans text-[var(--color-platinum)]/50 group-hover:text-[var(--color-cyan)] transition-colors shrink-0">← Início</span>
+  <div class="bg-cardboard pt-24 md:pt-28 pb-12 md:pb-16 lg:pt-32 pb-8">
+    <div class="container mx-auto px-6 max-w-6xl w-full pt-8">
+      <div
+        class="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-12 xl:gap-14 items-start w-full max-w-5xl xl:max-w-6xl mx-auto"
+      >
+        <div class="lg:col-span-5 order-2 lg:order-1 lg:sticky lg:top-32 text-center lg:text-left">
+          <a
+            href="/"
+            class="inline-flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-2 sm:gap-3 mb-6 group mx-auto lg:mx-0"
+            aria-label={`${SITE_NAME} — voltar ao início`}
+          >
+            <BrandLogo theme="onLight" placement="quote" class="justify-center lg:justify-start" />
+            <span class="text-xs font-sans text-[var(--color-platinum)]/50 group-hover:text-[var(--color-cyan)] transition-colors shrink-0"
+              >← Início</span
+            >
           </a>
 
-          <div class="flex gap-2 mb-6" aria-hidden="true">
+          <div class="flex gap-2 mb-5 justify-center lg:justify-start" aria-hidden="true">
             {[1, 2, 3].map((n) => (
               <span class="flex items-center justify-center w-8 h-8 rounded-full border-2 border-[var(--color-yellow)] text-xs font-mono font-bold text-[var(--color-yellow)]">
                 {n}
@@ -47,14 +55,14 @@ const dadosParaPedido = [
             <span class="flex-1 border-t-2 border-dashed border-[var(--color-cyan)]/35 self-center ml-2 min-w-[3rem]"></span>
           </div>
 
-          <h1 class="font-serif text-3xl md:text-4xl font-bold text-[var(--color-platinum)] leading-tight mb-4">
+          <h1 class="font-serif text-3xl md:text-4xl font-bold text-[var(--color-platinum)] leading-tight mb-3 max-w-xl mx-auto lg:mx-0">
             Orçamento sem compromisso
           </h1>
-          <p class="font-sans text-[var(--color-platinum)]/75 mb-8 leading-relaxed">
+          <p class="font-sans text-[var(--color-platinum)]/75 mb-6 leading-relaxed max-w-xl mx-auto lg:mx-0">
             Quanto mais contexto você mandar, menos idas e vindas — e mais preciso fica o valor.
           </p>
 
-          <div class="rounded-xl border border-[var(--color-platinum)]/15 bg-[var(--color-background)]/70 p-6 mb-8">
+          <div class="rounded-xl border border-[var(--color-platinum)]/15 bg-[var(--color-background)]/70 p-6 mb-6 text-left max-w-xl mx-auto lg:mx-0 lg:max-w-none">
             <p class="font-sans text-xs font-bold uppercase tracking-widest text-[var(--color-cyan)] mb-4">Inclua no pedido</p>
             <ol class="space-y-3 font-sans text-sm text-[var(--color-platinum)]/85 list-decimal pl-4 marker:text-[var(--color-yellow)]">
               {dadosParaPedido.map((step) => (
@@ -63,7 +71,7 @@ const dadosParaPedido = [
             </ol>
           </div>
 
-          <p class="font-sans text-sm text-[var(--color-platinum)]/55">
+          <p class="font-sans text-sm text-[var(--color-platinum)]/55 max-w-xl mx-auto lg:mx-0">
             Dúvida na hora de preencher?{' '}
             <a href={`https://wa.me/${CONTACT.whatsapp}`} class="text-[var(--color-cyan)] font-medium hover:underline">
               Chame no WhatsApp
@@ -71,10 +79,10 @@ const dadosParaPedido = [
           </p>
         </div>
 
-        <div class="lg:col-span-7 order-1 lg:order-2">
-          <div class="rounded-2xl border-2 border-dashed border-[var(--color-cyan)]/35 bg-[var(--color-background-dark)]/95 p-6 md:p-8 lg:p-10 shadow-2xl shadow-black/20">
+        <div class="lg:col-span-7 order-1 lg:order-2 w-full max-w-xl mx-auto lg:max-w-none lg:mx-0">
+          <div class="rounded-2xl border-2 border-dashed border-[var(--color-cyan)]/35 bg-[var(--color-background-dark)]/95 p-6 md:p-7 lg:p-9 shadow-2xl shadow-black/20 relative">
             <p class="font-mono text-[10px] text-[var(--color-platinum)]/40 uppercase tracking-widest mb-2">Pedido de orçamento</p>
-            <form id="contact-form" class="space-y-5" novalidate>
+            <form id="contact-form" class="relative space-y-5" novalidate>
               <div class="absolute -left-[9999px] w-px h-px overflow-hidden opacity-0" aria-hidden="true">
                 <input type="text" name="company_website" autocomplete="off" tabindex="-1" />
               </div>

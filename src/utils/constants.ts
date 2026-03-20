@@ -11,7 +11,12 @@ export const SITE_NAME = 'Granbel Transportes e Mudanças' as const;
 export const SITE_TAGLINE =
   'Transporte seguro, mudanças planejadas e logística com a cara da sua empresa — do primeiro contato à entrega.' as const;
 
-export const LOGO_PATH = '/assets/logos/granbel-logo.svg' as const;
+/** Logo colorido — JSON-LD / referência principal. */
+export const LOGO_COLOR_PATH = '/assets/logos/LOGO_GRANBEL_PRINCIPAL.png' as const;
+/** Logo branco — header e rodapé (fundo azul). */
+export const LOGO_WHITE_PATH = '/assets/logos/LOGO_GRANBEL_BRANCO.png' as const;
+
+export const LOGO_PATH = LOGO_COLOR_PATH;
 
 export const DEFAULT_OG_IMAGE = '/og-default.svg' as const;
 
@@ -31,11 +36,11 @@ export const HERO_STATS = [
   { value: 95, suffix: '%', label: 'Clientes satisfeitos', icon: 'fa-star' },
 ] as const;
 
+/** Fotos de apoio (URLs remotas) — substitua por imagens da Granbel quando houver. */
 export const PLACEHOLDER_IMAGES = {
   heroSlide: HERO_SLIDES[0],
   portrait:
     'https://images.unsplash.com/photo-1560250097-0b93528c311a?auto=format&fit=crop&w=400&h=400&q=80',
-  partnerLogo: '/assets/placeholders/partner-logo.svg',
 } as const;
 
 /** Blocos detalhados da página Serviços (imagens próprias por serviço). */

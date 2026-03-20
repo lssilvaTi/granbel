@@ -1,51 +1,93 @@
 ---
-/**
- * Marca textual + ícone de caminhão (sem <img>) — contraste garantido no header/rodapé.
- */
+import { SITE_NAME, LOGO_COLOR_PATH, LOGO_WHITE_PATH } from '../../utils/constants';
+
 interface Props {
-  /** Fundo escuro (header/rodapé) ou claro (ex.: página orçamento). */
+  /** Fundo escuro (header/rodapé em azul) ou claro (ex.: página orçamento). */
   theme?: 'onDark' | 'onLight';
   class?: string;
+  /** Prioridade de carregamento (logo no topo). */
+  priority?: boolean;
+  /** Onde o logo aparece — controla só o tamanho da imagem (sem alterar padding do rodapé). */
+  placement?: 'header' | 'footer' | 'inline' | 'quote' | 'card';
 }
 
-const { theme = 'onDark', class: className = '' } = Astro.props;
+const { theme = 'onDark', class: className = '', priority = false, placement = 'inline' } = Astro.props;
 
-const iconWrap =
-  theme === 'onDark'
-    ? 'bg-[var(--color-on-primary)]/15 text-[var(--color-on-primary)] border-[var(--color-on-primary)]/35'
-    : 'bg-[var(--color-primary)]/12 text-[var(--color-primary)] border-[var(--color-primary)]/25';
+const base = 'brand-logo__img block w-auto object-contain';
+const objectAlign = placement === 'card' ? 'object-right' : 'object-left';
 
-const nameClass =
-  theme === 'onDark'
-    ? 'text-[var(--color-on-primary)]'
-    : 'text-[var(--color-text-primary)]';
+const sizeByPlacement: Record<NonNullable<Props['placement']>, string> = {
+  header:
+    'h-[4rem] max-w-[min(90vw,360px)] sm:h-[4.625rem] sm:max-w-[min(420px,72vw)] md:h-[5.5rem] md:max-w-[min(500px,44vw)] lg:h-[5.85rem] lg:max-w-[540px]',
+  footer:
+    'h-[3.625rem] max-w-[min(86vw,300px)] sm:h-[4.125rem] sm:max-w-[min(360px,68vw)] md:h-[4.875rem] md:max-w-[min(410px,36vw)] lg:h-[5.125rem] lg:max-w-[450px]',
+  /** Página de orçamento — destaque ao lado do link “Início”. */
+  quote:
+    'h-[3.75rem] max-w-[min(90vw,340px)] sm:h-[4.5rem] sm:max-w-[min(400px,74vw)] md:h-[5.125rem] md:max-w-[min(480px,46vw)] lg:h-[5.5rem] lg:max-w-[520px]',
+  /** Cabeçalho de cartão (ex.: formulário de contato), canto superior direito. */
+  card:
+    'h-9 max-w-[min(52vw,200px)] sm:h-10 sm:max-w-[min(220px,46vw)] md:h-11 md:max-w-[240px]',
+  inline:
+    'h-12 max-w-[min(78vw,260px)] sm:h-14 sm:max-w-[min(300px,55vw)] md:h-16 md:max-w-[min(340px,48vw)]',
+};
 
-const subClass =
-  theme === 'onDark'
-    ? 'text-[var(--color-on-primary)]/85'
-    : 'text-[var(--color-text-secondary)]';
+const imgClass = `${base} ${objectAlign} ${sizeByPlacement[placement]}`;
 ---
 
-<span class:list={['inline-flex items-center gap-3 min-w-0', className]}>
-  <span
-    class:list={[
-      'flex h-10 w-10 md:h-11 md:w-11 shrink-0 items-center justify-center rounded-xl border',
-      iconWrap,
-    ]}
-    aria-hidden="true"
-  >
-    <i class="fas fa-truck-fast text-lg md:text-xl"></i>
-  </span>
-  <span class="flex min-w-0 flex-col leading-tight text-left">
-    <span class:list={['font-serif text-lg md:text-xl font-bold tracking-tight', nameClass]}>Granbel</span>
-    <span
-      class:list={[
-        'font-sans text-[10px] sm:text-xs font-medium leading-snug',
-        subClass,
-        theme === 'onDark' && 'tracking-wide',
-      ]}
-    >
-      Transportes e Mudanças
-    </span>
-  </span>
+<span
+  class:list={[
+    'brand-logo inline-flex min-w-0 items-center',
+    placement === 'card' && 'justify-end',
+    className,
+    theme === 'onLight' && 'brand-logo--on-light',
+  ]}
+>
+  {
+    theme === 'onDark' ? (
+      <img
+        src={LOGO_WHITE_PATH}
+        alt={SITE_NAME}
+        width="400"
+        height="120"
+        class={imgClass}
+        decoding="async"
+        fetchpriority={priority ? 'high' : undefined}
+      />
+    ) : (
+      <>
+        <img
+          src={LOGO_COLOR_PATH}
+          alt={SITE_NAME}
+          width="400"
+          height="120"
+          class={`brand-logo__light-theme ${imgClass}`}
+          decoding="async"
+        />
+        <img
+          src={LOGO_WHITE_PATH}
+          alt=""
+          width="400"
+          height="120"
+          class={`brand-logo__dark-theme ${imgClass}`}
+          aria-hidden="true"
+          decoding="async"
+        />
+      </>
+    )
+  }
 </span>
+
+<style>
+  .brand-logo--on-light .brand-logo__dark-theme {
+    display: none;
+  }
+  .brand-logo--on-light .brand-logo__light-theme {
+    display: block;
+  }
+  :global(html[data-theme='dark']) .brand-logo--on-light .brand-logo__dark-theme {
+    display: block;
+  }
+  :global(html[data-theme='dark']) .brand-logo--on-light .brand-logo__light-theme {
+    display: none;
+  }
+</style>

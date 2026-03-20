@@ -1,6 +1,7 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
 import Button from '../components/ui/Button.astro';
+import BrandLogo from '../components/ui/BrandLogo.astro';
 import {
   CONTACT,
   SITE_URL,
@@ -121,7 +122,9 @@ const pageUrl = `${SITE_URL}/contato`;
     <div class="flex-1 bg-[var(--color-background-dark)] px-6 sm:px-8 lg:px-10 xl:px-12 py-10 md:py-12 lg:py-14 flex flex-col justify-start lg:justify-center min-h-0 min-w-0">
       <div class="w-full min-w-0">
         <div class="w-full rounded-2xl border border-[var(--color-platinum)]/12 bg-[var(--color-background)]/30 p-6 sm:p-8 lg:p-10 shadow-sm">
-          <p class="font-mono text-[10px] uppercase tracking-widest text-[var(--color-platinum)]/45 mb-5">Escreva para nós</p>
+          <p class="font-mono text-[10px] uppercase tracking-widest text-[var(--color-platinum)]/45 mb-5">
+            Escreva para nós
+          </p>
         <form
           id="contato-form"
           class="relative grid grid-cols-1 lg:grid-cols-2 gap-4 lg:gap-x-8 lg:gap-y-5"
@@ -206,10 +209,17 @@ const pageUrl = `${SITE_URL}/contato`;
           )}
 
           <div id="contato-form-message" class="hidden p-3 rounded-lg text-sm font-sans lg:col-span-2"></div>
-          <div class="lg:col-span-2">
-            <Button variant="primary" size="lg" class="w-full sm:w-auto min-w-[200px]" type="submit">
+          <div class="lg:col-span-2 flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between sm:gap-6">
+            <Button variant="primary" size="lg" class="w-full sm:w-auto min-w-[200px] shrink-0" type="submit">
               Enviar mensagem
             </Button>
+            <a
+              href="/"
+              class="shrink-0 self-end sm:self-auto opacity-90 hover:opacity-100 transition-opacity"
+              aria-label={`${SITE_NAME} — início`}
+            >
+              <BrandLogo theme="onLight" placement="quote" />
+            </a>
           </div>
         </form>
         </div>

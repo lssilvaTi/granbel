@@ -4,9 +4,9 @@ import { CONTACT, SITE_NAME } from '../../utils/constants';
 ---
 
 <header class="header-rn fixed top-0 left-0 right-0 z-50 bg-[var(--color-header-bg)]/95 backdrop-blur-md border-b border-[var(--color-on-primary)]/10 transition-shadow duration-300">
-  <nav class="container mx-auto px-6 py-4 flex items-center justify-between">
+  <nav class="container mx-auto px-6 py-2 md:py-2 flex items-center justify-between min-h-0">
     <a href="/" class="flex items-center gap-1 hover:opacity-90 transition-opacity" aria-label={SITE_NAME}>
-      <BrandLogo theme="onDark" />
+      <BrandLogo theme="onDark" priority placement="header" />
     </a>
     <div class="hidden md:flex items-center gap-5 lg:gap-6">
       <a href="/" class="nav-link-rn text-[var(--color-on-primary)]/90 hover:text-[var(--color-on-primary)] transition-colors">Início</a>
@@ -102,12 +102,14 @@ import { CONTACT, SITE_NAME } from '../../utils/constants';
     height: 36px;
     border-radius: 50%;
     color: var(--color-on-primary);
+    background: transparent;
     opacity: 0.9;
     transition: opacity 0.2s, color 0.2s, background 0.2s;
   }
   .header-social-link:hover {
     opacity: 1;
-    color: var(--color-primary-hover);
+    color: var(--color-highlight-on-brand);
+    background: color-mix(in srgb, var(--color-highlight-on-brand) 22%, transparent);
   }
   .header-social-link i {
     font-size: 1rem;
@@ -156,7 +158,7 @@ import { CONTACT, SITE_NAME } from '../../utils/constants';
     z-index: 1000;
     transition: left 0.3s ease;
     overflow-y: auto;
-    padding-top: 80px;
+    padding-top: 108px;
   }
   .mobile-menu-rn.active {
     left: 0;
@@ -196,7 +198,7 @@ import { CONTACT, SITE_NAME } from '../../utils/constants';
     animation-delay: 0.3s;
   }
   .mobile-nav-link-rn:hover {
-    color: var(--color-primary-hover);
+    color: var(--color-highlight-on-brand);
     padding-left: 1rem;
   }
   .mobile-menu-social {

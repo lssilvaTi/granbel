@@ -82,10 +82,9 @@ If forms are **not** configured, the UI shows a fallback message pointing users 
 
 ```text
 /
-├── public/                 # Static assets (favicon, placeholders, OG image)
+├── public/                 # Static assets (favicon, logos, OG image)
 │   ├── assets/
-│   │   ├── logos/          # e.g. logo-placeholder.svg — set `LOGO_PATH` in constants
-│   │   └── placeholders/   # Generic hero / image SVGs until you add real media
+│   │   └── logos/          # Logos da marca — ver `LOGO_*_PATH` em constants
 │   ├── favicon.svg
 │   ├── og-default.svg      # Default Open Graph image (replace with PNG if you prefer)
 │   └── robots.txt          # Update sitemap URL when domain is final
@@ -133,7 +132,7 @@ Single source of truth for **site identity** and **contact data** is `src/utils/
 | `SITE_TAGLINE` | Short line for footer + default meta description fallback |
 | `LOGO_PATH` | Path under `public/` for header/footer/form logo |
 | `DEFAULT_OG_IMAGE` | Default share image (e.g. `/og-default.svg`) |
-| `PLACEHOLDER_IMAGES` | `heroSlide`, `portrait`, `partnerLogo` for template imagery |
+| `PLACEHOLDER_IMAGES` | `heroSlide`, `portrait` (URLs remotas até haver fotos próprias) |
 | `CONTACT` | `phoneDisplay`, `phoneTel` (E.164 for `tel:` + schema), `whatsapp`, `email`, address fields, social URLs |
 | `SERVICES`, `DIFFERENTIALS`, `PROCESS_STEPS`, `ABOUT_HIGHLIGHTS` | Content arrays for sections / pages |
 
@@ -149,7 +148,7 @@ When cloning this repo for a **new client**, update at least:
 2. **`src/utils/constants.ts`** — `SITE_URL`, `SITE_NAME`, `SITE_TAGLINE`, `LOGO_PATH`, `CONTACT`, content arrays, `PLACEHOLDER_IMAGES` if you add real files
 3. **`src/pages/sitemap.xml.ts`** — the `pages` array (must match routes that exist under `src/pages/`)
 4. **Each page’s `BaseLayout` props** — `title`, `description`, `keywords`, `canonical`, `url`, `image` (often derived from `SITE_URL` + path)
-5. **`public/`** — replace `og-default.svg`, favicon, and files referenced by `LOGO_PATH` / `PLACEHOLDER_IMAGES`
+5. **`public/`** — replace `og-default.svg`, favicon, logos em `assets/logos/` e ajustar `LOGO_*_PATH` / `PLACEHOLDER_IMAGES` se necessário
 6. **`.env`** — EmailJS (+ optional Turnstile) if forms are used
 7. **`src/layouts/BaseLayout.astro`** — `lang` on `<html>` (default is `en`; change for other locales and translate UI copy)
 8. **`public/robots.txt`** and **`public/site.webmanifest`** — name, URL, icons
@@ -259,7 +258,6 @@ Any **new route** must be added here (and in **sitemap**) or users will get 404s
 
 - **Colors / themes:** `src/styles/global.css` — `@theme` variables (`--color-dark-blue`, `--color-cyan`, `--color-yellow`, etc.) and `[data-theme="light"]` / `[data-theme="dark"]` overrides (paleta verde).
 - **Reusable UI:** `src/components/ui/Button.astro` (`primary`, `secondary`, `outline`).  
-- **Partner / certification logo in dark mode:** `.partner-logo-wrap` in `global.css` (see Services page).  
 
 **Agent instruction example:** *“Rebrand to a green palette; update CSS variables and `LOGO_PATH` / files under `public/assets/logos/`.”*
 
