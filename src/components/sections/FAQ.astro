@@ -1,51 +1,23 @@
 ---
 import FAQSchema from '../seo/FAQSchema.astro';
-
-const faqItems = [
-  {
-    question: 'What areas do you serve?',
-    answer: 'Replace with your coverage model (local, national, remote). This template ships with placeholder contact details in `src/utils/constants.ts`.',
-  },
-  {
-    question: 'How do I request a quote?',
-    answer: 'Use the quote page (`/orcamento`), the contact form (`/contato`), WhatsApp, or phone — all wired from `CONTACT` in `constants.ts`.',
-  },
-  {
-    question: 'What services do you offer?',
-    answer: 'The homepage pulls service cards from the `SERVICES` array in `constants.ts`. Add or remove entries to match the client.',
-  },
-  {
-    question: 'Do you work with businesses or consumers?',
-    answer: 'State your ideal customer here (B2B, B2C, both). Adjust tone sitewide when localizing for another language.',
-  },
-  {
-    question: 'How soon can we start?',
-    answer: 'Describe typical lead times and what affects scheduling — replace this copy per project.',
-  },
-];
+import { FAQ_ITEMS } from '../../utils/constants';
 ---
 
-<FAQSchema questions={faqItems} />
+<FAQSchema questions={FAQ_ITEMS} />
 
 <section id="faq" class="relative py-20 md:py-24 bg-[var(--color-background-dark)]">
-  <div class="section-shapes absolute inset-0 pointer-events-none hidden md:block z-0" aria-hidden="true">
-    <div class="absolute left-[2%] top-[20%] w-6 h-7 bg-[var(--color-yellow)] opacity-55 rotate-8"></div>
-    <div class="absolute left-[1.5%] bottom-[22%] w-7 h-6 bg-[var(--color-cyan)] opacity-52 -rotate-6"></div>
-    <div class="absolute right-[2%] top-[30%] w-7 h-7 bg-[var(--color-cyan)] opacity-55 -rotate-8"></div>
-    <div class="absolute right-[1.5%] bottom-[18%] w-6 h-8 bg-[var(--color-yellow)] opacity-58 rotate-5"></div>
-  </div>
   <div class="container relative z-10 mx-auto px-6 max-w-3xl">
-    <h2 class="text-3xl md:text-4xl lg:text-5xl font-bold text-center mb-14 md:mb-16 text-[var(--color-platinum)]">
-      Frequently asked questions
+    <h2 class="text-3xl md:text-4xl lg:text-5xl font-bold text-center mb-14 md:mb-16 text-[var(--color-platinum)] font-serif">
+      Perguntas frequentes
     </h2>
     <div class="space-y-4">
-      {faqItems.map((item) => (
-        <details class="bg-[var(--color-background)] rounded-xl border border-[var(--color-platinum)]/10 group">
-          <summary class="p-5 md:p-6 cursor-pointer list-none flex items-center justify-between text-[var(--color-platinum)] font-semibold hover:text-[var(--color-bondi-blue)] transition-colors gap-4">
+      {FAQ_ITEMS.map((item) => (
+        <details class="faq-item bg-[var(--color-background)] rounded-xl border border-[var(--color-platinum)]/10 group open:shadow-lg open:shadow-black/10 transition-shadow duration-300">
+          <summary class="p-5 md:p-6 cursor-pointer list-none flex items-center justify-between text-[var(--color-platinum)] font-semibold hover:text-[var(--color-cyan)] transition-colors gap-4 font-sans">
             <span>{item.question}</span>
-            <i class="fas fa-chevron-down text-sm flex-shrink-0 transition-transform group-open:rotate-180"></i>
+            <i class="fas fa-chevron-down text-sm flex-shrink-0 transition-transform duration-300 group-open:rotate-180"></i>
           </summary>
-          <div class="px-5 md:px-6 pb-5 md:pb-6 text-[var(--color-platinum)]/75 leading-relaxed">
+          <div class="px-5 md:px-6 pb-5 md:pb-6 text-[var(--color-platinum)]/75 leading-relaxed font-sans">
             {item.answer}
           </div>
         </details>

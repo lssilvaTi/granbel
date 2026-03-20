@@ -1,45 +1,31 @@
 ---
-const testimonials = [
-  {
-    name: 'Alex Morgan',
-    text: 'Placeholder testimonial — swap for a real quote. The layout supports two columns on desktop and star ratings.',
-    rating: 5,
-  },
-  {
-    name: 'Jordan Lee',
-    text: 'Second sample card. Import testimonials from `constants.ts` if you want editors to update them in one place.',
-    rating: 5,
-  },
-];
+import { TESTIMONIALS } from '../../utils/constants';
 ---
 
 <section id="testimonials" class="relative py-20 md:py-24 bg-[var(--color-background)]">
-  <div class="section-shapes absolute inset-0 pointer-events-none hidden md:block z-0" aria-hidden="true">
-    <div class="absolute left-[2%] top-[25%] w-7 h-7 bg-[var(--color-yellow)] opacity-58 rotate-12"></div>
-    <div class="absolute left-[1.5%] bottom-[30%] w-6 h-8 bg-[var(--color-cyan)] opacity-55 -rotate-4"></div>
-    <div class="absolute right-[2%] top-[18%] w-6 h-9 bg-[var(--color-cyan)] opacity-58 rotate-(-10)"></div>
-    <div class="absolute right-[1.5%] bottom-[25%] w-7 h-6 bg-[var(--color-yellow)] opacity-60"></div>
-  </div>
   <div class="container relative z-10 mx-auto px-6">
-    <h2 class="text-3xl md:text-4xl lg:text-5xl font-bold text-center mb-14 md:mb-16 text-[var(--color-platinum)]">
-      Client feedback
+    <h2 class="text-3xl md:text-4xl lg:text-5xl font-bold text-center mb-4 text-[var(--color-platinum)] font-serif">
+      Quem confia na Granbel
     </h2>
+    <p class="text-center text-[var(--color-platinum)]/65 mb-14 md:mb-16 max-w-xl mx-auto font-sans">
+      Depoimentos reais de quem já viveu o processo conosco — nomes podem ser ajustados com autorização do cliente.
+    </p>
     <div class="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto">
-      {testimonials.map((t) => (
-        <div class="bg-[var(--color-background-dark)] rounded-xl p-6 md:p-8 border border-[var(--color-platinum)]/10">
+      {TESTIMONIALS.map((t) => (
+        <div class="testimonial bg-[var(--color-background-dark)] rounded-xl p-6 md:p-8 border border-[var(--color-platinum)]/10 hover:border-[var(--color-cyan)]/30 transition-colors duration-300">
           <div class="flex mb-4">
             {[...Array(t.rating)].map(() => (
               <i class="fas fa-star text-[var(--color-yellow)]"></i>
             ))}
           </div>
-          <p class="text-[var(--color-platinum)]/85 mb-6 italic leading-relaxed">
+          <p class="text-[var(--color-platinum)]/85 mb-6 italic leading-relaxed font-sans">
             &quot;{t.text}&quot;
           </p>
           <div class="flex items-center">
-            <div class="w-12 h-12 rounded-full bg-[var(--color-dark-blue)] flex items-center justify-center text-white font-semibold mr-4">
+            <div class="w-12 h-12 rounded-full bg-[var(--color-dark-blue)] flex items-center justify-center text-white font-semibold mr-4 font-sans">
               {t.name.charAt(0)}
             </div>
-            <span class="text-[var(--color-platinum)] font-medium">{t.name}</span>
+            <span class="text-[var(--color-platinum)] font-medium font-sans">{t.name}</span>
           </div>
         </div>
       ))}

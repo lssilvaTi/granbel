@@ -2,11 +2,10 @@
 import { defineConfig } from 'astro/config';
 import tailwindcss from '@tailwindcss/vite';
 
-// First change for each new site: set `site` to the production URL (must match `SITE_URL` in `src/utils/constants.ts`).
-// https://astro.build/config
+// Deve coincidir com `SITE_URL` em `src/utils/constants.ts`.
 export default defineConfig({
-  site: 'https://example.com',
+  site: 'https://www.granbeltransportes.com.br',
   vite: {
-    plugins: [tailwindcss()]
-  }
+    plugins: [tailwindcss()],
+  },
 });

@@ -3,6 +3,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 import Button from '../components/ui/Button.astro';
 import {
   ABOUT_HIGHLIGHTS,
+  ABOUT_PAGE_QUOTE,
   SITE_URL,
   SITE_NAME,
   DEFAULT_OG_IMAGE,
@@ -13,112 +14,131 @@ const pageUrl = `${SITE_URL}/sobre-nos`;
 ---
 
 <BaseLayout
-  title={`About | ${SITE_NAME}`}
-  description="Template about page — replace story, highlights, and imagery. Data for the grid lives in `ABOUT_HIGHLIGHTS` inside `src/utils/constants.ts`."
-  keywords="about, team, YOUR_SITE_NAME"
+  title={`Sobre nós | ${SITE_NAME}`}
+  description="Conheça a Granbel: equipe, valores e o cuidado que colocamos em cada mudança e transporte em todo o Brasil."
+  keywords="sobre Granbel, empresa de mudanças, transportes confiáveis, equipe de mudança"
   canonical={pageUrl}
   image={DEFAULT_OG_IMAGE}
   url={pageUrl}
 >
-  <section
-    class="relative pt-24 pb-16 md:pt-28 md:pb-20 min-h-[640px] md:min-h-[720px] flex items-center bg-cover bg-no-repeat bg-center"
-    style={`background-image: url('${PLACEHOLDER_IMAGES.heroSlide}');`}
-  >
-    <div class="absolute inset-0 bg-gradient-to-r from-[var(--color-dark-blue)]/96 via-[var(--color-dark-blue)]/85 to-[var(--color-dark-blue)]/50" aria-hidden="true"></div>
-    <div class="section-shapes absolute inset-0 pointer-events-none hidden md:block z-0" aria-hidden="true">
-      <div class="absolute left-[2%] top-[18%] w-7 h-7 bg-[var(--color-yellow)] opacity-50 rotate-12"></div>
-      <div class="absolute left-[1.5%] bottom-[22%] w-6 h-10 bg-[var(--color-cyan)] opacity-45 -rotate-6"></div>
-      <div class="absolute right-[2%] top-[28%] w-6 h-6 bg-[var(--color-cyan)] opacity-50 -rotate-12"></div>
-      <div class="absolute right-[1.5%] bottom-[18%] w-8 h-6 bg-[var(--color-yellow)] opacity-55 rotate-6"></div>
-    </div>
-    <div class="container relative z-10 mx-auto px-6">
-      <div class="max-w-2xl hero-text-contrast">
-        <h1 class="text-3xl md:text-4xl lg:text-5xl font-bold mb-6 text-white">
-          Every project is scoped individually.
-        </h1>
-        <p class="text-lg md:text-xl text-[var(--color-cyan)] font-medium mb-5 text-drop-shadow">
-          Lead with your mission or differentiator in one sentence.
-        </p>
-        <p class="text-white/95 text-base md:text-lg leading-relaxed mb-5 text-drop-shadow">
-          Use this section for company history, methodology, or leadership philosophy. Swap the background image in `PLACEHOLDER_IMAGES` or add files under `public/assets/`.
-        </p>
-        <p class="text-white/90 text-base md:text-lg text-drop-shadow">
-          Keep paragraphs short — detailed proof belongs in the highlight grid below.
-        </p>
-      </div>
-    </div>
-  </section>
-
-  <section class="relative py-20 md:py-24 bg-[var(--color-background)]">
-    <div class="section-shapes absolute inset-0 pointer-events-none hidden md:block z-0" aria-hidden="true">
-      <div class="absolute left-[2%] top-[22%] w-6 h-6 bg-[var(--color-yellow)] opacity-60 rotate-6"></div>
-      <div class="absolute left-[1.5%] bottom-[25%] w-7 h-9 bg-[var(--color-cyan)] opacity-55 -rotate-3"></div>
-      <div class="absolute right-[2%] top-[15%] w-8 h-8 bg-[var(--color-cyan)] opacity-58 -rotate-6"></div>
-      <div class="absolute right-[1.5%] bottom-[30%] w-6 h-8 bg-[var(--color-yellow)] opacity-62 rotate-12"></div>
-    </div>
-    <div class="container relative z-10 mx-auto px-6">
-      <h2 class="text-2xl md:text-3xl lg:text-4xl font-bold text-center mb-4 text-[var(--color-platinum)]">
-        Highlights
-      </h2>
-      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 max-w-5xl mx-auto mt-12">
-        {ABOUT_HIGHLIGHTS.map((d) => (
-          <div class="flex items-start gap-4 p-5 rounded-lg bg-[var(--color-background-dark)] border border-[var(--color-platinum)]/20 hover:border-[var(--color-cyan)]/40 transition-all">
-            <div class="flex-shrink-0 w-12 h-12 rounded-sm bg-[var(--color-yellow)] flex items-center justify-center">
-              <i class={`fas ${d.icon} text-lg text-[var(--color-dark-blue)]`}></i>
-            </div>
-            <p class="text-[var(--color-platinum)]/90 font-medium pt-1">
-              {d.title}
+  <div class="pt-24 md:pt-28 bg-cardboard border-b border-[var(--color-platinum)]/10">
+    <div class="container mx-auto px-6 py-14 md:py-20 max-w-6xl">
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center">
+        <div class="lg:col-span-7">
+          <p class="font-sans text-xs font-bold tracking-[0.28em] text-[var(--color-cyan)] uppercase mb-4">Granbel</p>
+          <h1 class="font-serif text-3xl sm:text-4xl md:text-5xl font-bold text-[var(--color-platinum)] leading-tight mb-8">
+            Quem move a Granbel entende o peso — físico e emocional — do que você carrega
+          </h1>
+          <div class="space-y-5 font-sans text-[var(--color-platinum)]/85 text-base md:text-lg leading-relaxed max-w-xl">
+            <p>
+              Seriedade sem frieza: método, respeito e conversa aberta do primeiro contato ao último móvel no lugar.
+            </p>
+            <p>
+              Nascemos da necessidade de oferecer mudanças e fretes com padrão previsível — equipe treinada, materiais
+              adequados e cronograma que você consegue contar para família, vizinhos ou colegas de trabalho.
+            </p>
+            <p class="text-[var(--color-platinum)]/70">
+              Crescemos com indicação porque cumprimos o combinado. Quando surge imprevisto, comunicamos antes de virar
+              problema.
             </p>
           </div>
-        ))}
+        </div>
+        <div class="lg:col-span-5 flex justify-center lg:justify-end">
+          <figure class="relative max-w-sm w-full">
+            <div
+              class="absolute -inset-2 border-2 border-dashed border-[var(--color-cyan)]/35 rounded-xl -rotate-2 pointer-events-none"
+              aria-hidden="true"
+            ></div>
+            <img
+              src={PLACEHOLDER_IMAGES.heroSlide}
+              alt="Operação de transporte e mudança"
+              class="relative rounded-lg shadow-xl w-full aspect-[4/5] object-cover rotate-1 ring-1 ring-black/10"
+              width="400"
+              height="500"
+              loading="eager"
+            />
+            <figcaption class="mt-4 font-mono text-[10px] text-[var(--color-platinum)]/45 text-right uppercase tracking-widest">
+              Operação em campo — {SITE_NAME}
+            </figcaption>
+          </figure>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <section class="py-16 md:py-24 bg-[var(--color-background)]">
+    <div class="container mx-auto px-6 max-w-6xl">
+      <div class="flex flex-col md:flex-row md:items-end md:justify-between gap-6 mb-12 md:mb-16 border-b border-dashed border-[var(--color-cyan)]/25 pb-8">
+        <h2 class="font-serif text-2xl md:text-4xl font-bold text-[var(--color-platinum)] max-w-lg">
+          O que você pode esperar em cada etapa
+        </h2>
+        <p class="font-sans text-sm text-[var(--color-platinum)]/60 max-w-sm md:text-right">
+          Lista viva — ajuste os textos em <span class="text-[var(--color-cyan)]">constants.ts</span> com o cliente.
+        </p>
+      </div>
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-x-12 gap-y-0 md:divide-x md:divide-[var(--color-platinum)]/10">
+        <ul class="md:pr-10 space-y-0">
+          {ABOUT_HIGHLIGHTS.slice(0, 4).map((d, i) => (
+            <li class="group flex gap-4 py-5 border-b border-[var(--color-platinum)]/10 first:pt-0">
+              <span class="font-mono text-2xl font-bold text-[var(--color-yellow)]/35 tabular-nums w-10 shrink-0 pt-0.5">
+                {String(i + 1).padStart(2, '0')}
+              </span>
+              <div class="flex gap-3 min-w-0">
+                <i class={`fas ${d.icon} text-[var(--color-cyan)] mt-1 shrink-0`} aria-hidden="true"></i>
+                <span class="font-sans text-[var(--color-platinum)]/90 leading-snug">{d.title}</span>
+              </div>
+            </li>
+          ))}
+        </ul>
+        <ul class="md:pl-10 space-y-0">
+          {ABOUT_HIGHLIGHTS.slice(4).map((d, i) => (
+            <li class="flex gap-4 py-5 border-b border-[var(--color-platinum)]/10 first:pt-0 md:first:pt-0">
+              <span class="font-mono text-2xl font-bold text-[var(--color-yellow)]/35 tabular-nums w-10 shrink-0 pt-0.5">
+                {String(i + 5).padStart(2, '0')}
+              </span>
+              <div class="flex gap-3 min-w-0">
+                <i class={`fas ${d.icon} text-[var(--color-cyan)] mt-1 shrink-0`} aria-hidden="true"></i>
+                <span class="font-sans text-[var(--color-platinum)]/90 leading-snug">{d.title}</span>
+              </div>
+            </li>
+          ))}
+        </ul>
       </div>
     </div>
   </section>
 
-  <section class="relative py-20 md:py-24 bg-gradient-to-br from-[var(--color-dark-blue)]/20 via-[var(--color-background)] to-[var(--color-cyan)]/15">
-    <div class="section-shapes absolute inset-0 pointer-events-none hidden md:block z-0" aria-hidden="true">
-      <div class="absolute left-[2%] top-[22%] w-6 h-6 bg-[var(--color-yellow)] opacity-60 rotate-6"></div>
-      <div class="absolute left-[1.5%] bottom-[25%] w-7 h-9 bg-[var(--color-cyan)] opacity-55 -rotate-3"></div>
-      <div class="absolute right-[2%] top-[18%] w-8 h-6 bg-[var(--color-cyan)] opacity-58 -rotate-6"></div>
-      <div class="absolute right-[1.5%] bottom-[28%] w-6 h-7 bg-[var(--color-yellow)] opacity-62 rotate-10"></div>
-    </div>
-    <div class="container relative z-10 mx-auto px-6">
-      <div class="max-w-3xl mx-auto text-center">
-        <blockquote class="text-2xl md:text-3xl lg:text-4xl font-semibold text-[var(--color-platinum)] mb-8 leading-snug">
-          &ldquo;One memorable quote from leadership or a client — replace in `sobre-nos.astro`.&rdquo;
+  <section class="py-16 md:py-20 bg-[var(--color-header-bg)] text-white overflow-hidden">
+    <div class="container mx-auto px-6 max-w-6xl">
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-14 items-center">
+        <blockquote class="lg:col-span-8 font-serif text-2xl md:text-3xl lg:text-4xl font-medium leading-snug text-white/95">
+          &ldquo;{ABOUT_PAGE_QUOTE.text}&rdquo;
         </blockquote>
-        <div class="flex flex-col items-center gap-4">
+        <div class="lg:col-span-4 flex flex-row lg:flex-col items-center lg:items-end gap-5 lg:text-right">
           <img
             src={PLACEHOLDER_IMAGES.portrait}
-            alt="Team member placeholder"
-            class="w-24 h-24 md:w-28 md:h-28 rounded-full object-cover border-4 border-[var(--color-cyan)] shadow-lg"
-            width="112"
-            height="112"
+            alt={ABOUT_PAGE_QUOTE.author}
+            class="w-20 h-20 md:w-24 md:h-24 rounded-full object-cover border-4 border-[var(--color-yellow)]/80 shadow-lg shrink-0"
+            width="96"
+            height="96"
+            loading="lazy"
           />
-          <cite class="text-[var(--color-cyan)] font-medium text-lg not-italic">
-            Name, Role
-          </cite>
+          <div class="font-sans">
+            <cite class="not-italic font-semibold text-[var(--color-yellow)]">{ABOUT_PAGE_QUOTE.author}</cite>
+            <p class="text-sm text-white/65 mt-1">{ABOUT_PAGE_QUOTE.role}</p>
+          </div>
         </div>
       </div>
     </div>
   </section>
 
-  <section class="relative py-20 md:py-24 bg-gradient-to-br from-[var(--color-dark-blue)]/15 via-[var(--color-background)] to-[var(--color-cyan)]/15">
-    <div class="section-shapes absolute inset-0 pointer-events-none hidden md:block z-0" aria-hidden="true">
-      <div class="absolute left-[2%] top-[22%] w-6 h-6 bg-[var(--color-yellow)] opacity-60 rotate-6"></div>
-      <div class="absolute left-[1.5%] bottom-[25%] w-7 h-9 bg-[var(--color-cyan)] opacity-55 -rotate-3"></div>
-      <div class="absolute right-[2%] top-[18%] w-8 h-6 bg-[var(--color-cyan)] opacity-58 -rotate-6"></div>
-      <div class="absolute right-[1.5%] bottom-[28%] w-6 h-7 bg-[var(--color-yellow)] opacity-62 rotate-10"></div>
-    </div>
-    <div class="container relative z-10 mx-auto px-6 text-center">
-      <h2 class="text-3xl md:text-4xl lg:text-5xl font-bold mb-6 text-[var(--color-platinum)]">
-        Request a quote
-      </h2>
-      <p class="text-lg md:text-xl text-[var(--color-platinum)]/85 mb-10 max-w-2xl mx-auto">
-        Close with a simple next step — same CTA pattern as other inner pages.
+  <section class="py-10 md:py-12 bg-[var(--color-yellow)]/12 border-y-2 border-dashed border-[var(--color-cyan)]/30">
+    <div class="container mx-auto px-6 max-w-6xl flex flex-col md:flex-row md:items-center md:justify-between gap-6">
+      <p class="font-sans text-[var(--color-platinum)] max-w-xl">
+        <span class="font-semibold font-serif text-lg text-[var(--color-dark-blue)]">Próximo passo:</span>{' '}
+        orçamento detalhado ou uma conversa rápida para alinhar expectativas.
       </p>
-      <Button href="/orcamento" variant="primary" size="lg">
-        Get started
+      <Button href="/orcamento" variant="primary" size="lg" class="shrink-0">
+        Solicitar orçamento
       </Button>
     </div>
   </section>

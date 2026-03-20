@@ -1,0 +1,44 @@
+---
+import { PROCESS_STEPS, CONTACT } from '../../utils/constants';
+---
+
+<section id="jornada" class="relative py-16 md:py-24 bg-[var(--color-background)]">
+  <div class="container mx-auto px-6 max-w-2xl">
+    <div class="text-center mb-14 md:mb-16">
+      <p class="font-sans text-sm font-semibold tracking-widest text-[var(--color-cyan)] uppercase mb-3">Da origem ao destino</p>
+      <h2 class="font-serif text-3xl md:text-5xl font-bold text-[var(--color-platinum)] mb-4">
+        Sua mudança em uma linha no mapa
+      </h2>
+      <p class="font-sans text-[var(--color-platinum)]/70 max-w-lg mx-auto">
+        Quatro paradas. Uma equipe. Transparência em cada trecho.
+      </p>
+    </div>
+
+    <ol class="relative pl-2">
+      <div
+        class="absolute left-[1.125rem] top-3 bottom-3 w-px border-l-2 border-dashed border-[var(--color-cyan)]/50"
+        aria-hidden="true"
+      ></div>
+      {PROCESS_STEPS.map((step) => (
+        <li class="journey-step relative pl-12 pb-12 last:pb-0">
+          <span
+            class="absolute left-0 top-0 flex h-9 w-9 items-center justify-center rounded-full border-2 border-[var(--color-yellow)] bg-[var(--color-background)] font-mono text-sm font-bold text-[var(--color-yellow)] shadow-md"
+            aria-hidden="true"
+          >
+            {step.number}
+          </span>
+          <h3 class="font-serif text-xl md:text-2xl font-bold text-[var(--color-platinum)] mb-2 pt-0.5">{step.title}</h3>
+          <p class="font-sans text-[var(--color-platinum)]/75 leading-relaxed">{step.description}</p>
+        </li>
+      ))}
+    </ol>
+
+    <p class="mt-12 text-center font-sans text-[var(--color-platinum)]/65 text-sm">
+      Rota com imprevisto? Falamos no{' '}
+      <a href={`https://wa.me/${CONTACT.whatsapp}`} class="text-[var(--color-cyan)] font-medium hover:underline">
+        WhatsApp
+      </a>{' '}
+      antes de qualquer decisão em campo.
+    </p>
+  </div>
+</section>

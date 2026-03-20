@@ -1,20 +1,22 @@
 @import "tailwindcss";
 
+/*
+ * Paleta verde — cuidado, confiança (mudanças / logística).
+ * Tokens: @theme; texturas: --rgb-decor-* e .bg-cardboard / .packaging-tape-diagonal.
+ */
+
 @theme {
-  /* Default marketing palette — change hex values per client (see README: Branding defaults). */
-  --color-dark-blue: #1f3e8f;
-  --color-cyan: #00a7e0;
-  --color-yellow: #ffee00;
+  --color-dark-blue: #2f6f52;
+  --color-cyan: #4a9b7c;
+  --color-yellow: #b8e070;
 
-  /* Header / footer bar (often kept on-brand in both themes) */
-  --color-header-bg: #1f3e8f;
+  --color-header-bg: #1a3d32;
 
-  /* Aliases used by section components */
-  --color-indigo-velvet: #1f3e8f;
-  --color-bondi-blue: #00a7e0;
-  --color-prussian-blue: #0d1b36;
-  --color-ink-black: #0a1428;
-  --color-platinum: #e5e7eb;
+  --color-indigo-velvet: #2f6f52;
+  --color-bondi-blue: #4a9b7c;
+  --color-prussian-blue: #152822;
+  --color-ink-black: #0c1612;
+  --color-platinum: #e8f2ea;
 
   --color-primary: var(--color-dark-blue);
   --color-secondary: var(--color-cyan);
@@ -23,36 +25,42 @@
   --color-background-dark: var(--color-ink-black);
   --color-surface: var(--color-platinum);
 
-  /* Typography */
-  --font-serif: 'Source Serif 4', serif;
-  --font-sans: 'Inter', sans-serif;
-  --font-family-serif: 'Source Serif 4', serif;
-  --font-family-sans: 'Inter', sans-serif;
+  --font-serif: 'Fraunces', Georgia, serif;
+  --font-sans: 'DM Sans', system-ui, sans-serif;
+  --font-family-serif: var(--font-serif);
+  --font-family-sans: var(--font-sans);
 }
 
-/* Light theme */
-[data-theme="light"] {
-  --color-background: #ffffff;
-  --color-background-dark: #f5f5f5;
-  --color-platinum: #1f2937;
-  --color-surface: #1f2937;
-}
-
-/* Dark theme */
-[data-theme="dark"] {
-  --color-background: #0d1b36;
-  --color-background-dark: #0a1428;
-  --color-platinum: #e5e7eb;
-  --color-surface: #e5e7eb;
-}
-
+/* RGB para texturas / sombras (grade, fita, stats, FAQ, post-its) */
 :root {
   font-family: var(--font-sans);
+  --rgb-decor-deep: 26 61 50;
+  --rgb-decor-a: 47 111 82;
+  --rgb-decor-b: 74 155 124;
+  --rgb-decor-c: 184 224 112;
+  --rgb-decor-sage: 92 143 114;
+  --postit-bg-amber: 242 248 240;
+  --postit-bg-sage: 236 244 239;
+  --postit-bg-clay: 238 245 241;
+}
+
+[data-theme="light"] {
+  --color-background: #f0f9f4;
+  --color-background-dark: #e2f0e8;
+  --color-platinum: #1a3026;
+  --color-surface: #1a3026;
+}
+
+[data-theme="dark"] {
+  --color-background: #111a16;
+  --color-background-dark: #17231d;
+  --color-platinum: #e5f0ea;
+  --color-surface: #e5f0ea;
 }
 
 html {
   scroll-padding-top: 100px;
-  transition: background-color 0.3s ease, color 0.3s ease;
+  transition: background-color 0.35s ease, color 0.35s ease;
 }
 
 body {
@@ -60,13 +68,24 @@ body {
   color: var(--color-surface);
   margin: 0;
   padding: 0;
-  transition: background-color 0.3s ease, color 0.3s ease;
+  transition: background-color 0.35s ease, color 0.35s ease;
 }
 
-/* Headings */
+/* Textura sutil — profundidade sem poluir */
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 9999;
+  opacity: 0.035;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+
 h1, h2, h3, h4, h5, h6 {
-  font-family: var(--font-sans);
-  font-weight: 700;
+  font-family: var(--font-serif);
+  font-weight: 600;
+  letter-spacing: -0.02em;
 }
 
 h4, h5, h6 {
@@ -78,13 +97,75 @@ body, p, span, a, button, input, textarea, select {
   font-weight: 400;
 }
 
-/* Hero / image overlays: improve text contrast */
 .text-drop-shadow {
-  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.5), 0 2px 6px rgba(0, 0, 0, 0.4);
+  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.45), 0 2px 10px rgba(0, 0, 0, 0.35);
 }
 
-/* Partner / certification logo: light backdrop in dark mode for contrast */
 [data-theme="dark"] .partner-logo-wrap {
   background: rgba(255, 255, 255, 0.95);
   box-shadow: 0 4px 24px rgba(0, 0, 0, 0.35);
+}
+
+/* Hero título — entrada suave */
+@keyframes hero-title-in {
+  from {
+    opacity: 0;
+    transform: translateY(28px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.hero-title-anim {
+  animation: hero-title-in 0.85s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+}
+
+.hero-sub-anim {
+  opacity: 0;
+  animation: hero-title-in 0.85s cubic-bezier(0.22, 1, 0.36, 1) 0.12s forwards;
+}
+
+/* Faixa tipo fita — rolagem contínua */
+@keyframes marquee-tape {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+.marquee-tape-track {
+  display: flex;
+  width: max-content;
+  animation: marquee-tape 55s linear infinite;
+}
+
+.marquee-tape-track:hover {
+  animation-play-state: paused;
+}
+
+/* Textura leve de grade (seções claras) */
+.bg-cardboard {
+  background-color: var(--color-background);
+  background-image: linear-gradient(
+      90deg,
+      rgb(var(--rgb-decor-a) / 0.06) 1px,
+      transparent 1px
+    ),
+    linear-gradient(rgb(var(--rgb-decor-a) / 0.06) 1px, transparent 1px);
+  background-size: 20px 20px;
+}
+
+/* Fundo diagonal da faixa de fita (cor segue a paleta) */
+.packaging-tape-diagonal {
+  background: repeating-linear-gradient(
+    -45deg,
+    transparent,
+    transparent 8px,
+    rgb(var(--rgb-decor-a) / 0.45) 8px,
+    rgb(var(--rgb-decor-a) / 0.45) 9px
+  );
 }

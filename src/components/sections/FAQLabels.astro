@@ -1,0 +1,44 @@
+---
+import FAQSchema from '../seo/FAQSchema.astro';
+import { FAQ_ITEMS } from '../../utils/constants';
+---
+
+<FAQSchema questions={[...FAQ_ITEMS]} />
+
+<section id="faq" class="relative py-16 md:py-24 bg-cardboard">
+  <div class="container mx-auto px-6 max-w-6xl">
+    <div class="text-center mb-12 md:mb-16">
+      <p class="font-sans text-sm font-semibold tracking-widest text-[var(--color-cyan)] uppercase mb-3">Perguntas frequentes</p>
+      <h2 class="font-serif text-3xl md:text-5xl font-bold text-[var(--color-platinum)]">
+        Respostas diretas, sem enrolação
+      </h2>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8">
+      {FAQ_ITEMS.map((item, i) => (
+        <article
+          class="faq-board-item relative rounded-lg border-2 border-[var(--color-platinum)]/15 bg-[var(--color-background-dark)]/90 p-6 md:p-7 shadow-[6px_6px_0_0_rgb(var(--rgb-decor-b)_/_0.14)] hover:shadow-[8px_8px_0_0_rgb(var(--rgb-decor-b)_/_0.22)] transition-shadow duration-300"
+        >
+          <div class="flex gap-1 h-8 mb-5 opacity-25" aria-hidden="true">
+            {Array.from({ length: 32 }).map((_, barI) => (
+              <span class="w-1 bg-[var(--color-platinum)] rounded-full" style={`height:${6 + (barI % 5) * 2}px`}></span>
+            ))}
+          </div>
+          <div class="flex items-start justify-between gap-4 mb-3">
+            <h3 class="font-serif text-lg md:text-xl font-bold text-[var(--color-platinum)] leading-snug pr-2">
+              {item.question}
+            </h3>
+            <span class="shrink-0 font-mono text-[10px] leading-tight text-right text-[var(--color-cyan)]/70 uppercase tracking-wider">
+              nº
+              <br />
+              {String(i + 1).padStart(2, '0')}
+            </span>
+          </div>
+          <p class="font-sans text-sm md:text-base text-[var(--color-platinum)]/75 leading-relaxed border-t border-dashed border-[var(--color-platinum)]/10 pt-4">
+            {item.answer}
+          </p>
+        </article>
+      ))}
+    </div>
+  </div>
+</section>

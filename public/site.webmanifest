@@ -1,7 +1,7 @@
 {
-  "name": "YOUR_SITE_NAME",
-  "short_name": "YOUR_SITE_NAME",
-  "description": "Replace with your site description (see README — Branding defaults).",
+  "name": "Granbel Transportes e Mudanças",
+  "short_name": "Granbel",
+  "description": "Transporte, mudanças residenciais e corporativas com planejamento e segurança.",
   "icons": [
     {
       "src": "/favicon.svg",
@@ -10,8 +10,8 @@
       "purpose": "any"
     }
   ],
-  "theme_color": "#1f3e8f",
-  "background_color": "#0d1b36",
+  "theme_color": "#1a3d32",
+  "background_color": "#111a16",
   "display": "standalone",
   "start_url": "/",
   "scope": "/"

@@ -1,20 +1,14 @@
 ---
-import { LOGO_PATH, SITE_NAME } from '../../utils/constants';
+import BrandLogo from './BrandLogo.astro';
 
 interface Props {
   variant?: 'full' | 'full-dark' | 'full-light' | 'wordmark-dark' | 'wordmark-light' | 'mono-dark' | 'mono-light';
   class?: string;
 }
 
-/**
- * All variants map to the same placeholder asset in the template.
- * Split into multiple files per client if you need theme-specific marks.
- */
-const { variant: _variant = 'full', class: className = '' } = Astro.props;
+const { variant = 'full', class: className = '' } = Astro.props;
+const theme =
+  variant.endsWith('-light') || variant === 'full-light' ? 'onLight' : 'onDark';
 ---
 
-<img 
-  src={LOGO_PATH} 
-  alt={SITE_NAME} 
-  class={`h-8 ${className}`}
-/>
+<BrandLogo theme={theme} class={className} />

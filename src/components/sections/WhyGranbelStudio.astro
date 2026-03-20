@@ -1,0 +1,88 @@
+---
+import { DIFFERENTIALS, PLACEHOLDER_IMAGES, SITE_NAME, VALUE_PROPOSITION_COPY } from '../../utils/constants';
+import Button from '../ui/Button.astro';
+---
+
+<section id="por-que" class="relative py-16 md:py-24 overflow-hidden bg-[var(--color-background-dark)]">
+  <div
+    class="pointer-events-none absolute top-0 right-0 w-[min(100%,520px)] h-full opacity-[0.06]"
+    aria-hidden="true"
+  >
+    <svg class="w-full h-full text-[var(--color-yellow)]" viewBox="0 0 200 400" fill="none" preserveAspectRatio="xMaxYMid slice">
+      <path
+        d="M180 20 C 40 80, 160 160, 60 220 S 140 340, 20 400"
+        stroke="currentColor"
+        stroke-width="3"
+        stroke-dasharray="10 14"
+        fill="none"
+      />
+      <g transform="translate(150, 40)">
+        <rect x="0" y="0" width="36" height="28" rx="2" stroke="currentColor" stroke-width="2" fill="none" opacity="0.5"></rect>
+        <path d="M8 28 L8 36 M28 28 L28 36" stroke="currentColor" stroke-width="2" opacity="0.5"></path>
+      </g>
+    </svg>
+  </div>
+
+  <div class="container relative z-10 mx-auto px-6">
+    <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-start max-w-6xl mx-auto">
+      <div class="lg:col-span-5 studio-block">
+        <div class="relative rounded-2xl overflow-hidden shadow-2xl shadow-black/25 ring-1 ring-white/10 rotate-[-1.5deg] hover:rotate-0 transition-transform duration-500">
+          <img
+            src={PLACEHOLDER_IMAGES.portrait}
+            alt={`Equipe ${SITE_NAME}`}
+            class="w-full aspect-[4/5] object-cover"
+            width="480"
+            height="600"
+            loading="lazy"
+          />
+          <div class="absolute bottom-0 inset-x-0 bg-gradient-to-t from-black/85 to-transparent p-6">
+            <p class="font-serif text-white text-lg leading-snug">
+              &ldquo;{VALUE_PROPOSITION_COPY.kicker}&rdquo;
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <div class="lg:col-span-7">
+        <h2 class="font-serif text-3xl md:text-4xl lg:text-5xl font-bold text-[var(--color-platinum)] mb-6 leading-tight">
+          O segredo de uma mudança tranquila chama-se <span class="text-[var(--color-cyan)]">organização</span>
+        </h2>
+        <p class="font-sans text-lg text-[var(--color-platinum)]/85 mb-5 leading-relaxed">
+          {VALUE_PROPOSITION_COPY.lead}
+        </p>
+        <p class="font-sans text-[var(--color-platinum)]/70 mb-10 leading-relaxed">
+          {VALUE_PROPOSITION_COPY.p1}
+        </p>
+
+        <div
+          id="diferenciais"
+          class="rounded-2xl border border-[var(--color-platinum)]/12 bg-[var(--color-background)]/60 p-6 md:p-8 backdrop-blur-sm"
+        >
+          <div class="flex items-center gap-2 mb-6 border-b border-dashed border-[var(--color-cyan)]/30 pb-4">
+            <i class="fas fa-clipboard-list text-[var(--color-yellow)]"></i>
+            <span class="font-sans text-sm font-bold tracking-widest uppercase text-[var(--color-platinum)]/80">
+              Lista de conferência — Granbel
+            </span>
+          </div>
+          <ul class="space-y-4">
+            {DIFFERENTIALS.map((d, i) => (
+              <li class="flex gap-4 items-start font-sans text-[var(--color-platinum)]/90">
+                <span class="font-mono text-xs text-[var(--color-cyan)]/80 w-6 shrink-0 pt-0.5">{String(i + 1).padStart(2, '0')}</span>
+                <span class="flex gap-3">
+                  <i class={`fas ${d.icon} text-[var(--color-yellow)] mt-0.5 shrink-0 w-5 text-center`} aria-hidden="true"></i>
+                  <span>{d.title}</span>
+                </span>
+              </li>
+            ))}
+          </ul>
+        </div>
+
+        <div class="mt-8">
+          <Button href="#jornada" variant="outline" size="lg">
+            Como funciona na prática
+          </Button>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

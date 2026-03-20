@@ -1,0 +1,80 @@
+---
+import { SERVICES } from '../../utils/constants';
+---
+
+<section id="services" class="relative py-16 md:py-24 lg:py-28 bg-cardboard">
+  <div class="container relative z-10 mx-auto px-6">
+    <div class="max-w-3xl mb-12 md:mb-16">
+      <p class="font-sans text-sm font-semibold tracking-widest text-[var(--color-cyan)] uppercase mb-3">Catálogo</p>
+      <h2 class="font-serif text-3xl md:text-5xl font-bold text-[var(--color-platinum)] leading-tight mb-4">
+        Serviços que se encaixam no seu tamanho de mudança
+      </h2>
+      <p class="font-sans text-lg text-[var(--color-platinum)]/75 max-w-xl">
+        Cada serviço é um pilar da operação — combine como quiser no orçamento.
+      </p>
+    </div>
+
+    <div class="grid grid-cols-1 lg:grid-cols-12 gap-4 md:gap-5 max-w-6xl mx-auto">
+      <article
+        class="bento-cell lg:col-span-5 lg:row-span-2 group relative rounded-2xl overflow-hidden border border-[var(--color-platinum)]/15 bg-[var(--color-background-dark)] p-8 md:p-10 min-h-[280px] flex flex-col justify-end"
+      >
+        <div
+          class="absolute inset-0 opacity-[0.12] group-hover:opacity-[0.18] transition-opacity duration-500 bg-[url('https://images.unsplash.com/photo-1558618666-fcd25c85cd64?auto=format&fit=crop&w=800&q=60')] bg-cover bg-center"
+          aria-hidden="true"
+        ></div>
+        <div class="absolute inset-0 bg-gradient-to-t from-[var(--color-ink-black)] via-[var(--color-ink-black)]/70 to-transparent" aria-hidden="true"></div>
+        <div class="relative">
+          <span class="inline-block px-2 py-0.5 rounded text-[10px] font-bold tracking-wider uppercase bg-[var(--color-yellow)]/90 text-[var(--color-ink-black)] font-sans mb-3">
+            Principal
+          </span>
+          <h3 class="font-serif text-2xl md:text-3xl font-bold text-white mb-3">{SERVICES[0].title}</h3>
+          <p class="font-sans text-white/85 leading-relaxed">{SERVICES[0].description}</p>
+        </div>
+      </article>
+
+      <article
+        class="bento-cell lg:col-span-7 rounded-2xl border border-[var(--color-platinum)]/15 bg-[var(--color-background-dark)] p-6 md:p-8 flex flex-col md:flex-row md:items-center gap-6 hover:border-[var(--color-cyan)]/35 transition-colors duration-300"
+      >
+        <div class="w-14 h-14 rounded-xl bg-[var(--color-yellow)]/25 flex items-center justify-center shrink-0">
+          <i class={`fas ${SERVICES[1].icon} text-2xl text-[var(--color-yellow)]`}></i>
+        </div>
+        <div>
+          <h3 class="font-serif text-xl md:text-2xl font-bold text-[var(--color-cyan)] mb-2">{SERVICES[1].title}</h3>
+          <p class="font-sans text-[var(--color-platinum)]/80 leading-relaxed">{SERVICES[1].description}</p>
+        </div>
+      </article>
+
+      <article
+        class="bento-cell lg:col-span-7 rounded-2xl border border-[var(--color-platinum)]/15 bg-[var(--color-background-dark)] p-6 md:p-8 flex flex-col md:flex-row md:items-center gap-6 hover:border-[var(--color-cyan)]/35 transition-colors duration-300"
+      >
+        <div class="w-14 h-14 rounded-xl bg-[var(--color-cyan)]/20 flex items-center justify-center shrink-0">
+          <i class={`fas ${SERVICES[2].icon} text-2xl text-[var(--color-cyan)]`}></i>
+        </div>
+        <div>
+          <h3 class="font-serif text-xl md:text-2xl font-bold text-[var(--color-cyan)] mb-2">{SERVICES[2].title}</h3>
+          <p class="font-sans text-[var(--color-platinum)]/80 leading-relaxed">{SERVICES[2].description}</p>
+        </div>
+      </article>
+
+      <article
+        class="bento-cell lg:col-span-12 rounded-2xl border-2 border-dashed border-[var(--color-cyan)]/30 bg-[var(--color-background)]/80 backdrop-blur-sm px-6 py-8 md:px-10 md:py-9 flex flex-col md:flex-row md:items-center md:justify-between gap-6"
+      >
+        <div class="flex items-start gap-5">
+          <div class="w-14 h-14 rounded-full border-2 border-[var(--color-yellow)] flex items-center justify-center shrink-0">
+            <i class={`fas ${SERVICES[3].icon} text-xl text-[var(--color-yellow)]`}></i>
+          </div>
+          <div>
+            <h3 class="font-serif text-xl md:text-2xl font-bold text-[var(--color-platinum)] mb-2">{SERVICES[3].title}</h3>
+            <p class="font-sans text-[var(--color-platinum)]/75 max-w-2xl leading-relaxed">{SERVICES[3].description}</p>
+          </div>
+        </div>
+        <a
+          href="/servicos"
+          class="shrink-0 inline-flex items-center gap-2 font-sans text-sm font-semibold text-[var(--color-cyan)] hover:text-[var(--color-yellow)] transition-colors"
+        >
+          Ver página completa de serviços <i class="fas fa-arrow-right text-xs"></i>
+        </a>
+      </article>
+    </div>
+  </div>
+</section>

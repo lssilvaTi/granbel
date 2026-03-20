@@ -1,0 +1,20 @@
+---
+import { PACKING_TAPE_LABELS } from '../../utils/constants';
+
+const labels = [...PACKING_TAPE_LABELS, ...PACKING_TAPE_LABELS];
+---
+
+<section class="relative z-20 border-y-2 border-dashed border-[var(--color-cyan)]/35 bg-[var(--color-yellow)]/15 overflow-hidden" aria-hidden="true">
+  <div class="packaging-tape-diagonal absolute inset-0 opacity-[0.08] pointer-events-none"></div>
+  <div class="py-3 md:py-3.5 relative">
+    <div class="marquee-tape-track gap-10 md:gap-16 items-center">
+      {labels.map((label) => (
+        <span class="inline-flex items-center gap-3 shrink-0 font-sans text-xs md:text-sm font-bold tracking-[0.18em] text-[var(--color-dark-blue)] uppercase whitespace-nowrap">
+          <i class="fas fa-tape text-[var(--color-cyan)] text-sm opacity-80" aria-hidden="true"></i>
+          {label}
+          <span class="text-[var(--color-cyan)]/50 font-light">✶</span>
+        </span>
+      ))}
+    </div>
+  </div>
+</section>

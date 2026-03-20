@@ -1,18 +1,13 @@
 ---
 import Button from '../ui/Button.astro';
-import { PLACEHOLDER_IMAGES } from '../../utils/constants';
+import { HERO_SLIDES, HERO_STATS } from '../../utils/constants';
 
-const carouselImages = [
-  PLACEHOLDER_IMAGES.heroSlide,
-  PLACEHOLDER_IMAGES.heroSlide,
-  PLACEHOLDER_IMAGES.heroSlide,
-  PLACEHOLDER_IMAGES.heroSlide,
-];
+const carouselImages = [...HERO_SLIDES];
 ---
 
 <section
-  class="hero-transport relative pt-24 pb-16 md:pt-28 md:pb-20 min-h-[78vh] flex items-center bg-cover bg-no-repeat bg-center overflow-hidden"
-  aria-label="Hero"
+  class="hero-transport relative pt-24 pb-16 md:pt-28 md:pb-24 min-h-[82vh] flex items-center bg-cover bg-no-repeat bg-center overflow-hidden"
+  aria-label="Destaque"
 >
   <div class="hero-bg-carousel absolute inset-0">
     {carouselImages.map((src, i) => (
@@ -24,61 +19,171 @@ const carouselImages = [
       />
     ))}
   </div>
-  <div class="absolute inset-0 bg-gradient-to-r from-[var(--color-dark-blue)]/92 via-[var(--color-dark-blue)]/70 to-[var(--color-dark-blue)]/40" aria-hidden="true"></div>
-  <div class="section-shapes absolute inset-0 pointer-events-none hidden md:block z-0" aria-hidden="true">
-    <div class="absolute left-[2%] top-[18%] w-7 h-7 bg-[var(--color-yellow)] opacity-50 rotate-12"></div>
-    <div class="absolute left-[1.5%] bottom-[22%] w-6 h-10 bg-[var(--color-cyan)] opacity-45 -rotate-6"></div>
-    <div class="absolute right-[2%] top-[28%] w-6 h-6 bg-[var(--color-cyan)] opacity-50 -rotate-12"></div>
-    <div class="absolute right-[1.5%] bottom-[18%] w-8 h-6 bg-[var(--color-yellow)] opacity-55 rotate-6"></div>
-  </div>
+  <div
+    class="absolute inset-0 bg-gradient-to-br from-[var(--color-header-bg)]/95 via-[var(--color-dark-blue)]/80 to-[var(--color-ink-black)]/55"
+    aria-hidden="true"
+  />
+  <div class="absolute inset-0 bg-gradient-to-t from-[var(--color-ink-black)]/55 to-transparent pointer-events-none" aria-hidden="true"></div>
+
   <div class="container relative z-10 mx-auto px-6">
-    <div class="max-w-xl">
-      <h1 class="hero-title text-4xl sm:text-5xl md:text-6xl font-extrabold mb-5 leading-snug tracking-wide text-white">
-        Clear headline for your offer
-      </h1>
-      <p class="text-lg md:text-xl text-white/95 mb-5 max-w-lg leading-relaxed">
-        Supporting line that explains who you help and the outcome you deliver — edit in `Hero.astro` or move copy to `constants.ts`.
-      </p>
-      <p class="text-base md:text-lg text-white/80 mb-8 max-w-md">
-        Replace carousel images under `public/` (see `PLACEHOLDER_IMAGES` in `constants.ts`).
-      </p>
-      <div class="flex flex-col sm:flex-row gap-3">
-        <Button href="#contact" variant="secondary" size="lg">Get in touch</Button>
-        <Button href="/orcamento" variant="outline" size="lg" class="!text-white !border-white/90 hover:!bg-white/15">Request a quote</Button>
+    <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 xl:gap-16 items-center">
+      <div class="lg:col-span-7 max-w-2xl">
+        <p class="text-[var(--color-yellow)] text-sm font-semibold tracking-[0.2em] uppercase mb-4 hero-sub-anim font-sans">
+          Transportes · Mudanças · Logística
+        </p>
+        <h1 class="hero-title-anim text-4xl sm:text-5xl md:text-6xl font-bold mb-5 leading-tight tracking-tight text-white font-serif">
+          O caminho certo para sua mudança
+        </h1>
+        <p class="text-lg md:text-xl text-white/95 mb-6 max-w-xl leading-relaxed font-sans hero-sub-anim" style="animation-delay: 0.08s;">
+          Da embalagem ao último móvel no lugar: planejamento, equipe experiente e comunicação clara — para você respirar aliviado no novo endereço.
+        </p>
+        <p class="text-base md:text-lg text-white/75 mb-8 max-w-lg font-sans hero-sub-anim" style="animation-delay: 0.14s;">
+          Atendimento em todo o Brasil — origem, destino e prazo alinhados no orçamento.
+        </p>
+        <div class="flex flex-col sm:flex-row gap-3 hero-sub-anim" style="animation-delay: 0.2s;">
+          <Button href="#contact" variant="secondary" size="lg">Fale com a equipe</Button>
+          <Button href="/orcamento" variant="outline" size="lg" class="!text-white !border-white/90 hover:!bg-white/10">
+            Solicitar orçamento
+          </Button>
+        </div>
+        <p class="mt-6 hero-sub-anim" style="animation-delay: 0.26s;">
+          <a href="/#services" class="text-[var(--color-yellow)] hover:underline inline-flex items-center gap-2 font-medium font-sans">
+            Ver serviços <i class="fas fa-arrow-down text-sm"></i>
+          </a>
+        </p>
       </div>
-      <p class="mt-5">
-        <a href="/#services" class="text-[var(--color-yellow)] hover:underline inline-flex items-center gap-2 font-medium">
-          Our services <i class="fas fa-arrow-down text-sm"></i>
-        </a>
-      </p>
+
+      <div class="lg:col-span-5 w-full max-w-md mx-auto lg:max-w-none lg:mx-0" aria-label="Indicadores da empresa">
+        <div
+          class="hero-stats-panel relative rounded-2xl border border-white/15 bg-white/[0.07] backdrop-blur-md shadow-[0_24px_48px_rgba(0,0,0,0.25)] overflow-hidden"
+        >
+          <div
+            class="absolute left-0 top-0 bottom-0 w-1 bg-gradient-to-b from-[var(--color-yellow)] via-[var(--color-cyan)]/80 to-[var(--color-yellow)]/60"
+            aria-hidden="true"
+          ></div>
+          <div class="pl-5 pr-4 py-5 sm:pl-6 sm:pr-5 sm:py-6">
+            <p class="font-mono text-[10px] tracking-[0.2em] text-white/50 uppercase mb-4 pl-1">Granbel em números</p>
+            <ul class="space-y-0 divide-y divide-white/10">
+              {HERO_STATS.map((stat, i) => (
+                <li
+                  class={`hero-stat-row flex items-center gap-4 py-4 first:pt-0 last:pb-0 ${i % 2 === 1 ? 'sm:flex-row-reverse sm:text-right' : ''}`}
+                  data-value={stat.value}
+                  data-suffix={stat.suffix}
+                  data-duration="1800"
+                >
+                  <span
+                    class="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl bg-[var(--color-yellow)]/20 text-[var(--color-yellow)] border border-[var(--color-yellow)]/35"
+                    aria-hidden="true"
+                  >
+                    <i class={`fas ${stat.icon} text-lg`}></i>
+                  </span>
+                  <div class="min-w-0 flex-1">
+                    <p
+                      class="hero-stat-number font-sans text-2xl sm:text-3xl font-extrabold tabular-nums tracking-tight text-[var(--color-yellow)]"
+                    >
+                      0{stat.suffix}
+                    </p>
+                    <p class="font-sans text-xs sm:text-sm text-white/75 font-medium leading-snug mt-0.5">{stat.label}</p>
+                  </div>
+                </li>
+              ))}
+            </ul>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
 </section>
 
 <style>
-  .hero-bg-carousel { z-index: 0; }
+  .hero-bg-carousel {
+    z-index: 0;
+  }
   .hero-bg-slide {
     position: absolute;
     inset: 0;
     background-size: cover;
     background-position: center;
     opacity: 0;
-    transition: opacity 1.2s ease-in-out;
+    transform: scale(1.04);
+    transition:
+      opacity 1.4s ease-in-out,
+      transform 8s ease-out;
   }
   .hero-bg-slide.active {
     opacity: 1;
+    transform: scale(1);
+  }
+
+  @media (min-width: 640px) {
+    .hero-stat-row.sm\:flex-row-reverse .hero-stat-number {
+      text-align: right;
+      width: 100%;
+    }
+    .hero-stat-row.sm\:flex-row-reverse p:last-child {
+      text-align: right;
+    }
   }
 </style>
 
 <script>
   document.addEventListener('DOMContentLoaded', () => {
     const slides = document.querySelectorAll('.hero-bg-slide');
-    if (slides.length < 2) return;
-    let current = 0;
-    setInterval(() => {
-      slides[current].classList.remove('active');
-      current = (current + 1) % slides.length;
-      slides[current].classList.add('active');
-    }, 6000);
+    if (slides.length >= 2) {
+      let current = 0;
+      setInterval(() => {
+        slides[current].classList.remove('active');
+        current = (current + 1) % slides.length;
+        slides[current].classList.add('active');
+      }, 6500);
+    }
+
+    const panel = document.querySelector('.hero-stats-panel');
+    const rows = document.querySelectorAll('.hero-stat-row');
+    if (!panel || !rows.length) return;
+
+    const formatNumber = (n: number, suffix: string): string => {
+      if (suffix === '%') return Math.round(n).toLocaleString('pt-BR') + '%';
+      if (n >= 1000) return Math.round(n).toLocaleString('pt-BR') + suffix;
+      return Math.round(n).toLocaleString('pt-BR') + suffix;
+    };
+
+    const easeOutQuart = (t: number): number => 1 - Math.pow(1 - t, 4);
+
+    const animateRow = (row: Element, delay: number) => {
+      const target = Number((row as HTMLElement).dataset.value);
+      const suffix = (row as HTMLElement).dataset.suffix || '';
+      const duration = Number((row as HTMLElement).dataset.duration) || 1800;
+      const numEl = row.querySelector('.hero-stat-number');
+      if (!numEl) return;
+
+      window.setTimeout(() => {
+        const start = performance.now();
+        const step = (now: number) => {
+          const elapsed = now - start;
+          const progress = Math.min(elapsed / duration, 1);
+          const eased = easeOutQuart(progress);
+          const current = target * eased;
+          numEl.textContent = formatNumber(current, suffix);
+          if (progress < 1) requestAnimationFrame(step);
+        };
+        requestAnimationFrame(step);
+      }, delay);
+    };
+
+    let triggered = false;
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (!entry.isIntersecting || triggered) return;
+          triggered = true;
+          rows.forEach((row, i) => animateRow(row, i * 140));
+          observer.disconnect();
+        });
+      },
+      { threshold: 0.15, rootMargin: '0px 0px -10% 0px' }
+    );
+
+    observer.observe(panel);
   });
 </script>

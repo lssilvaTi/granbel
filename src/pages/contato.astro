@@ -6,7 +6,6 @@ import {
   SITE_URL,
   SITE_NAME,
   DEFAULT_OG_IMAGE,
-  PLACEHOLDER_IMAGES,
 } from '../utils/constants';
 
 const mapsEmbedUrl =
@@ -16,217 +15,233 @@ const pageUrl = `${SITE_URL}/contato`;
 ---
 
 <BaseLayout
-  title={`Contact | ${SITE_NAME}`}
-  description="Reach us via the form, phone, email, or WhatsApp. Update all contact fields in `src/utils/constants.ts`."
-  keywords="contact, YOUR_SITE_NAME, email, phone"
+  title={`Contato | ${SITE_NAME}`}
+  description="Fale com a Granbel: formulário, telefone, e-mail, WhatsApp e mapa. Atendimento para mudanças e transportes."
+  keywords="contato Granbel, orçamento mudança, WhatsApp mudanças São Paulo"
   canonical={pageUrl}
   image={DEFAULT_OG_IMAGE}
   url={pageUrl}
   loadTurnstile={!!TURNSTILE_SITE_KEY}
 >
-  <section
-    class="relative pt-24 pb-16 md:pt-28 md:pb-20 min-h-[640px] md:min-h-[720px] flex items-center bg-cover bg-no-repeat bg-right"
-    style={`background-image: url('${PLACEHOLDER_IMAGES.heroSlide}');`}
-  >
-    <div class="absolute inset-0 bg-gradient-to-r from-[var(--color-dark-blue)]/92 via-[var(--color-dark-blue)]/70 to-[var(--color-dark-blue)]/35" aria-hidden="true"></div>
-    <div class="section-shapes absolute inset-0 pointer-events-none hidden md:block z-0" aria-hidden="true">
-      <div class="absolute left-[2%] top-[18%] w-7 h-7 bg-[var(--color-yellow)] opacity-50 rotate-12"></div>
-      <div class="absolute left-[1.5%] bottom-[22%] w-6 h-10 bg-[var(--color-cyan)] opacity-45 -rotate-6"></div>
-      <div class="absolute right-[2%] top-[28%] w-6 h-6 bg-[var(--color-cyan)] opacity-50 -rotate-12"></div>
-      <div class="absolute right-[1.5%] bottom-[18%] w-8 h-6 bg-[var(--color-yellow)] opacity-55 rotate-6"></div>
-    </div>
-    <div class="container relative z-10 mx-auto px-6">
-      <div class="max-w-xl">
-        <div class="bg-[var(--color-background-dark)]/95 backdrop-blur-sm rounded-xl p-6 md:p-8 border border-[var(--color-platinum)]/25 shadow-2xl">
-          <h1 class="text-3xl md:text-4xl font-bold mb-2 text-[var(--color-platinum)]">
-            Contact us
-          </h1>
-          <p class="text-[var(--color-platinum)]/85 mb-6 leading-relaxed">
-            Fill out the form and we will get back to you shortly.
-          </p>
-          <form id="contato-form" class="space-y-4" novalidate>
-            <div class="absolute -left-[9999px] w-px h-px overflow-hidden opacity-0" aria-hidden="true">
-              <input type="text" name="company_website" autocomplete="off" tabindex="-1" />
-            </div>
+  <div class="pt-24 md:pt-28 flex flex-col lg:flex-row lg:items-stretch">
+    <aside class="w-full lg:w-[42%] xl:w-[40%] bg-cardboard border-b lg:border-b-0 lg:border-r border-[var(--color-platinum)]/15 px-6 py-10 md:py-12 lg:py-14 flex flex-col justify-between gap-10">
+      <div>
+        <p class="font-sans text-xs font-bold tracking-[0.28em] text-[var(--color-cyan)] uppercase mb-3">Fale conosco</p>
+        <h1 class="font-serif text-3xl md:text-4xl font-bold text-[var(--color-platinum)] leading-tight mb-4">
+          Mensagem, ligação ou WhatsApp
+        </h1>
+        <p class="font-sans text-[var(--color-platinum)]/75 leading-relaxed max-w-sm">
+          Resposta em horário comercial. Para urgências no dia da mudança, o WhatsApp costuma ser o canal mais rápido.
+        </p>
+      </div>
 
-            <div>
-              <label for="contato-name" class="block text-[var(--color-platinum)] mb-1.5 text-sm font-medium">
-                Full name <span class="text-red-400">*</span>
-              </label>
-              <input
-                type="text"
-                id="contato-name"
-                name="name"
-                required
-                class="w-full px-4 py-2.5 bg-[var(--color-background)] border border-[var(--color-platinum)]/25 rounded-lg text-[var(--color-platinum)] focus:outline-none focus:ring-2 focus:ring-[var(--color-cyan)] focus:border-transparent text-sm"
-                placeholder="Your name"
-              />
-            </div>
-            <div>
-              <label for="contato-address" class="block text-[var(--color-platinum)] mb-1.5 text-sm font-medium">
-                Address (optional)
-              </label>
-              <input
-                type="text"
-                id="contato-address"
-                name="address"
-                class="w-full px-4 py-2.5 bg-[var(--color-background)] border border-[var(--color-platinum)]/25 rounded-lg text-[var(--color-platinum)] focus:outline-none focus:ring-2 focus:ring-[var(--color-cyan)] focus:border-transparent text-sm"
-                placeholder="Street, city"
-              />
-            </div>
-            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
-              <div>
-                <label for="contato-phone" class="block text-[var(--color-platinum)] mb-1.5 text-sm font-medium">
-                  Phone <span class="text-red-400">*</span>
-                </label>
-                <input
-                  type="tel"
-                  id="contato-phone"
-                  name="phone"
-                  required
-                  class="w-full px-4 py-2.5 bg-[var(--color-background)] border border-[var(--color-platinum)]/25 rounded-lg text-[var(--color-platinum)] focus:outline-none focus:ring-2 focus:ring-[var(--color-cyan)] focus:border-transparent text-sm"
-                  placeholder="(555) 000-0000"
-                />
-              </div>
-              <div>
-                <label for="contato-email" class="block text-[var(--color-platinum)] mb-1.5 text-sm font-medium">
-                  Email <span class="text-red-400">*</span>
-                </label>
-                <input
-                  type="email"
-                  id="contato-email"
-                  name="email"
-                  required
-                  class="w-full px-4 py-2.5 bg-[var(--color-background)] border border-[var(--color-platinum)]/25 rounded-lg text-[var(--color-platinum)] focus:outline-none focus:ring-2 focus:ring-[var(--color-cyan)] focus:border-transparent text-sm"
-                  placeholder="you@example.com"
-                />
-              </div>
-            </div>
-            <div>
-              <label for="contato-message" class="block text-[var(--color-platinum)] mb-1.5 text-sm font-medium">
-                Message <span class="text-red-400">*</span>
-              </label>
-              <textarea
-                id="contato-message"
-                name="message"
-                required
-                rows="3"
-                class="w-full px-4 py-2.5 bg-[var(--color-background)] border border-[var(--color-platinum)]/25 rounded-lg text-[var(--color-platinum)] focus:outline-none focus:ring-2 focus:ring-[var(--color-cyan)] focus:border-transparent resize-none text-sm"
-                placeholder="How can we help?"
-              ></textarea>
-            </div>
+      <div class="space-y-4 font-sans">
+        <a
+          href={`tel:${CONTACT.phoneTel}`}
+          class="flex items-center gap-4 p-4 rounded-xl bg-[var(--color-background)]/80 border border-[var(--color-platinum)]/15 hover:border-[var(--color-cyan)]/40 transition-colors group"
+        >
+          <span class="w-11 h-11 rounded-full bg-[var(--color-yellow)]/20 flex items-center justify-center text-[var(--color-dark-blue)] group-hover:bg-[var(--color-yellow)]/35 transition-colors">
+            <i class="fas fa-phone"></i>
+          </span>
+          <div>
+            <p class="text-xs uppercase tracking-wider text-[var(--color-platinum)]/50">Telefone</p>
+            <p class="font-semibold text-[var(--color-platinum)]">{CONTACT.phoneDisplay}</p>
+          </div>
+        </a>
+        <a
+          href={`mailto:${CONTACT.email}`}
+          class="flex items-center gap-4 p-4 rounded-xl bg-[var(--color-background)]/80 border border-[var(--color-platinum)]/15 hover:border-[var(--color-cyan)]/40 transition-colors group"
+        >
+          <span class="w-11 h-11 rounded-full bg-[var(--color-cyan)]/15 flex items-center justify-center text-[var(--color-cyan)]">
+            <i class="fas fa-envelope"></i>
+          </span>
+          <div class="min-w-0">
+            <p class="text-xs uppercase tracking-wider text-[var(--color-platinum)]/50">E-mail</p>
+            <p class="font-semibold text-[var(--color-platinum)] truncate">{CONTACT.email}</p>
+          </div>
+        </a>
+        <a
+          href={`https://wa.me/${CONTACT.whatsapp}`}
+          target="_blank"
+          rel="noopener noreferrer"
+          class="flex items-center gap-4 p-4 rounded-xl bg-[#25D366]/10 border border-[#25D366]/30 hover:bg-[#25D366]/18 transition-colors"
+        >
+          <span class="w-11 h-11 rounded-full bg-[#25D366] flex items-center justify-center text-white">
+            <i class="fab fa-whatsapp text-xl"></i>
+          </span>
+          <div>
+            <p class="text-xs uppercase tracking-wider text-[var(--color-platinum)]/50">WhatsApp</p>
+            <p class="font-semibold text-[var(--color-platinum)]">Conversar agora</p>
+          </div>
+        </a>
+      </div>
 
-            {TURNSTILE_SITE_KEY && (
-              <div class="cf-turnstile" data-sitekey={TURNSTILE_SITE_KEY} id="turnstile-contato"></div>
-            )}
+      <div>
+        <p class="text-xs font-bold uppercase tracking-widest text-[var(--color-platinum)]/45 mb-3">Redes</p>
+        <div class="flex flex-wrap gap-3">
+          <a
+            href={CONTACT.facebook}
+            target="_blank"
+            rel="noopener noreferrer"
+            class="w-10 h-10 rounded-lg border border-[var(--color-platinum)]/20 flex items-center justify-center text-[var(--color-platinum)] hover:bg-[var(--color-yellow)]/15 hover:border-[var(--color-yellow)]/40 transition-colors"
+            aria-label="Facebook"
+          >
+            <i class="fab fa-facebook-f"></i>
+          </a>
+          <a
+            href={CONTACT.instagram}
+            target="_blank"
+            rel="noopener noreferrer"
+            class="w-10 h-10 rounded-lg border border-[var(--color-platinum)]/20 flex items-center justify-center text-[var(--color-platinum)] hover:bg-[var(--color-yellow)]/15 hover:border-[var(--color-yellow)]/40 transition-colors"
+            aria-label="Instagram"
+          >
+            <i class="fab fa-instagram"></i>
+          </a>
+          <a
+            href={CONTACT.linkedin}
+            target="_blank"
+            rel="noopener noreferrer"
+            class="w-10 h-10 rounded-lg border border-[var(--color-platinum)]/20 flex items-center justify-center text-[var(--color-platinum)] hover:bg-[var(--color-yellow)]/15 hover:border-[var(--color-yellow)]/40 transition-colors"
+            aria-label="LinkedIn"
+          >
+            <i class="fab fa-linkedin-in"></i>
+          </a>
+        </div>
+        <p class="mt-8 text-sm text-[var(--color-platinum)]/55 max-w-xs">
+          Endereço: {CONTACT.address}, {CONTACT.addressLine2}. CEP {CONTACT.postalCode}
+        </p>
+        <p class="mt-4">
+          <a href="/orcamento" class="text-sm font-semibold text-[var(--color-cyan)] hover:underline">
+            Prefere pedir orçamento direto? →
+          </a>
+        </p>
+      </div>
+    </aside>
 
-            <div id="contato-form-message" class="hidden p-3 rounded-lg text-sm"></div>
-            <Button variant="primary" size="lg" class="w-full" type="submit">
-              Send
+    <div class="flex-1 bg-[var(--color-background-dark)] px-6 sm:px-8 lg:px-10 xl:px-12 py-10 md:py-12 lg:py-14 flex flex-col justify-start lg:justify-center min-h-0 min-w-0">
+      <div class="w-full min-w-0">
+        <div class="w-full rounded-2xl border border-[var(--color-platinum)]/12 bg-[var(--color-background)]/30 p-6 sm:p-8 lg:p-10 shadow-sm">
+          <p class="font-mono text-[10px] uppercase tracking-widest text-[var(--color-platinum)]/45 mb-5">Escreva para nós</p>
+        <form
+          id="contato-form"
+          class="relative grid grid-cols-1 lg:grid-cols-2 gap-4 lg:gap-x-8 lg:gap-y-5"
+          novalidate
+        >
+          <input
+            type="text"
+            name="company_website"
+            autocomplete="off"
+            tabindex="-1"
+            aria-hidden="true"
+            class="pointer-events-none fixed w-px h-px p-0 opacity-0 overflow-hidden"
+          />
+
+          <div class="lg:col-span-2">
+            <label for="contato-name" class="block text-[var(--color-platinum)] mb-1.5 text-sm font-medium font-sans">
+              Nome completo <span class="text-red-400">*</span>
+            </label>
+            <input
+              type="text"
+              id="contato-name"
+              name="name"
+              required
+              class="w-full px-4 py-3 bg-[var(--color-background)] border border-[var(--color-platinum)]/25 rounded-lg text-[var(--color-platinum)] focus:outline-none focus:ring-2 focus:ring-[var(--color-cyan)] focus:border-transparent text-sm font-sans"
+              placeholder="Seu nome"
+            />
+          </div>
+          <div class="lg:col-span-2">
+            <label for="contato-address" class="block text-[var(--color-platinum)] mb-1.5 text-sm font-medium font-sans">
+              Endereço (opcional)
+            </label>
+            <input
+              type="text"
+              id="contato-address"
+              name="address"
+              class="w-full px-4 py-3 bg-[var(--color-background)] border border-[var(--color-platinum)]/25 rounded-lg text-[var(--color-platinum)] focus:outline-none focus:ring-2 focus:ring-[var(--color-cyan)] focus:border-transparent text-sm font-sans"
+              placeholder="Rua, bairro, cidade"
+            />
+          </div>
+          <div class="min-w-0">
+            <label for="contato-phone" class="block text-[var(--color-platinum)] mb-1.5 text-sm font-medium font-sans">
+              Telefone / WhatsApp <span class="text-red-400">*</span>
+            </label>
+            <input
+              type="tel"
+              id="contato-phone"
+              name="phone"
+              required
+              class="w-full px-4 py-3 bg-[var(--color-background)] border border-[var(--color-platinum)]/25 rounded-lg text-[var(--color-platinum)] focus:outline-none focus:ring-2 focus:ring-[var(--color-cyan)] focus:border-transparent text-sm font-sans"
+              placeholder="(11) 99999-9999"
+            />
+          </div>
+          <div class="min-w-0">
+            <label for="contato-email" class="block text-[var(--color-platinum)] mb-1.5 text-sm font-medium font-sans">
+              E-mail <span class="text-red-400">*</span>
+            </label>
+            <input
+              type="email"
+              id="contato-email"
+              name="email"
+              required
+              class="w-full px-4 py-3 bg-[var(--color-background)] border border-[var(--color-platinum)]/25 rounded-lg text-[var(--color-platinum)] focus:outline-none focus:ring-2 focus:ring-[var(--color-cyan)] focus:border-transparent text-sm font-sans"
+              placeholder="voce@email.com"
+            />
+          </div>
+          <div class="lg:col-span-2">
+            <label for="contato-message" class="block text-[var(--color-platinum)] mb-1.5 text-sm font-medium font-sans">
+              Mensagem <span class="text-red-400">*</span>
+            </label>
+            <textarea
+              id="contato-message"
+              name="message"
+              required
+              rows="6"
+              class="w-full px-4 py-3 bg-[var(--color-background)] border border-[var(--color-platinum)]/25 rounded-lg text-[var(--color-platinum)] focus:outline-none focus:ring-2 focus:ring-[var(--color-cyan)] focus:border-transparent resize-y min-h-[140px] text-sm font-sans"
+              placeholder="Como podemos ajudar?"
+            ></textarea>
+          </div>
+
+          {TURNSTILE_SITE_KEY && (
+            <div class="cf-turnstile lg:col-span-2" data-sitekey={TURNSTILE_SITE_KEY} id="turnstile-contato"></div>
+          )}
+
+          <div id="contato-form-message" class="hidden p-3 rounded-lg text-sm font-sans lg:col-span-2"></div>
+          <div class="lg:col-span-2">
+            <Button variant="primary" size="lg" class="w-full sm:w-auto min-w-[200px]" type="submit">
+              Enviar mensagem
             </Button>
-          </form>
+          </div>
+        </form>
         </div>
       </div>
     </div>
-  </section>
+  </div>
 
-  <section class="relative py-12 md:py-16 bg-[var(--color-background)]">
-    <div class="section-shapes absolute inset-0 pointer-events-none hidden md:block z-0" aria-hidden="true">
-      <div class="absolute left-[2%] top-[22%] w-6 h-6 bg-[var(--color-yellow)] opacity-60 rotate-6"></div>
-      <div class="absolute right-[2%] bottom-[25%] w-8 h-8 bg-[var(--color-cyan)] opacity-55 -rotate-6"></div>
-    </div>
-    <div class="container relative z-10 mx-auto px-6">
-      <div class="grid grid-cols-1 md:grid-cols-2 gap-6 lg:gap-8 max-w-4xl mx-auto">
-        <div class="p-6 md:p-8 bg-[var(--color-background-dark)] rounded-lg border border-[var(--color-platinum)]/20 hover:border-[var(--color-cyan)]/40 transition-all duration-300">
-          <h2 class="text-xl md:text-2xl font-bold mb-4 text-[var(--color-cyan)]">
-            Address
-          </h2>
-          <p class="text-[var(--color-platinum)]/90 leading-relaxed">
-            {CONTACT.address}<br />
-            {CONTACT.addressLine2}<br />
-            ZIP: {CONTACT.postalCode}
-          </p>
-        </div>
-        <div class="p-6 md:p-8 bg-[var(--color-background-dark)] rounded-lg border border-[var(--color-platinum)]/20 hover:border-[var(--color-cyan)]/40 transition-all duration-300">
-          <h2 class="text-xl md:text-2xl font-bold mb-4 text-[var(--color-cyan)]">
-            Contact
-          </h2>
-          <ul class="space-y-3 text-[var(--color-platinum)]/90">
-            <li>
-              <a href={`tel:${CONTACT.phoneTel}`} class="hover:text-[var(--color-cyan)] transition-colors inline-flex items-center gap-3">
-                <i class="fas fa-phone text-[var(--color-cyan)] w-5"></i>
-                {CONTACT.phoneDisplay}
-              </a>
-            </li>
-            <li>
-              <a href={`mailto:${CONTACT.email}`} class="hover:text-[var(--color-cyan)] transition-colors inline-flex items-center gap-3">
-                <i class="fas fa-envelope text-[var(--color-cyan)] w-5"></i>
-                {CONTACT.email}
-              </a>
-            </li>
-            <li>
-              <a href={`https://wa.me/${CONTACT.whatsapp}`} target="_blank" rel="noopener noreferrer" class="hover:text-[var(--color-cyan)] transition-colors inline-flex items-center gap-3">
-                <i class="fab fa-whatsapp text-[var(--color-cyan)] w-5"></i>
-                WhatsApp
-              </a>
-            </li>
-          </ul>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <section class="relative py-12 md:py-16 bg-[var(--color-background)]">
-    <div class="section-shapes absolute inset-0 pointer-events-none hidden md:block z-0" aria-hidden="true">
-      <div class="absolute left-[2%] top-[30%] w-7 h-9 bg-[var(--color-cyan)] opacity-55 -rotate-3"></div>
-      <div class="absolute right-[2%] bottom-[20%] w-6 h-8 bg-[var(--color-yellow)] opacity-62 rotate-12"></div>
-    </div>
-    <div class="container relative z-10 mx-auto px-6">
-      <h2 class="text-2xl md:text-3xl font-bold mb-6 text-[var(--color-platinum)] text-center">
-        Find us
-      </h2>
-      <div class="w-full rounded-xl overflow-hidden border border-[var(--color-platinum)]/20 shadow-lg">
-        <iframe
-          src={mapsEmbedUrl}
-          width="100%"
-          height="340"
-          style="border:0;"
-          allowfullscreen=""
-          loading="lazy"
-          referrerpolicy="no-referrer-when-downgrade"
-          title={`Map — ${SITE_NAME}`}
-        ></iframe>
-      </div>
-      <p class="mt-3 text-sm text-[var(--color-platinum)]/60">
+  <section class="py-14 md:py-16 bg-[var(--color-background)] border-t border-[var(--color-platinum)]/10">
+    <div class="container mx-auto px-6 max-w-5xl">
+      <div class="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-4 mb-6">
+        <h2 class="font-serif text-2xl font-bold text-[var(--color-platinum)]">Mapa</h2>
         <a
           href={`https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(`${CONTACT.address}, ${CONTACT.addressLine2}`)}`}
           target="_blank"
           rel="noopener noreferrer"
-          class="text-[var(--color-cyan)] hover:underline"
+          class="text-sm font-semibold text-[var(--color-cyan)] hover:underline font-sans"
         >
-          Open in Google Maps →
+          Abrir no Google Maps →
         </a>
-      </p>
-    </div>
-  </section>
-
-  <section class="relative py-20 md:py-24 bg-gradient-to-br from-[var(--color-dark-blue)]/15 via-[var(--color-background)] to-[var(--color-cyan)]/15">
-    <div class="section-shapes absolute inset-0 pointer-events-none hidden md:block z-0" aria-hidden="true">
-      <div class="absolute left-[2%] top-[22%] w-6 h-6 bg-[var(--color-yellow)] opacity-60 rotate-6"></div>
-      <div class="absolute left-[1.5%] bottom-[25%] w-7 h-9 bg-[var(--color-cyan)] opacity-55 -rotate-3"></div>
-      <div class="absolute right-[2%] top-[18%] w-8 h-6 bg-[var(--color-cyan)] opacity-58 -rotate-6"></div>
-      <div class="absolute right-[1.5%] bottom-[28%] w-6 h-7 bg-[var(--color-yellow)] opacity-62 rotate-10"></div>
-    </div>
-    <div class="container relative z-10 mx-auto px-6 text-center">
-      <h2 class="text-3xl md:text-4xl lg:text-5xl font-bold mb-6 text-[var(--color-platinum)]">
-        Prefer a structured brief?
-      </h2>
-      <p class="text-lg md:text-xl text-[var(--color-platinum)]/85 mb-10 max-w-2xl mx-auto">
-        Use the quote form for project details — same EmailJS wiring as this page.
-      </p>
-      <Button href="/orcamento" variant="primary" size="lg">
-        Request a quote
-      </Button>
+      </div>
+      <div class="rounded-2xl overflow-hidden border-2 border-dashed border-[var(--color-cyan)]/25 shadow-lg">
+        <iframe
+          src={mapsEmbedUrl}
+          width="100%"
+          height="360"
+          style="border:0;"
+          allowfullscreen=""
+          loading="lazy"
+          referrerpolicy="no-referrer-when-downgrade"
+          title={`Mapa — ${SITE_NAME}`}
+        ></iframe>
+      </div>
     </div>
   </section>
 </BaseLayout>
@@ -244,6 +259,16 @@ const pageUrl = `${SITE_URL}/contato`;
     emailjs.init(EMAILJS_PUBLIC_KEY);
   }
 
+  /** Máscara Brasil: (DD) NNNNN-NNNN ou (DD) NNNN-NNNN */
+  const formatPhoneBR = (value: string): string => {
+    const digits = value.replace(/\D/g, '').slice(0, 11);
+    if (digits.length === 0) return '';
+    if (digits.length <= 2) return `(${digits}`;
+    if (digits.length <= 6) return `(${digits.slice(0, 2)}) ${digits.slice(2)}`;
+    if (digits.length <= 10) return `(${digits.slice(0, 2)}) ${digits.slice(2, 6)}-${digits.slice(6)}`;
+    return `(${digits.slice(0, 2)}) ${digits.slice(2, 7)}-${digits.slice(7)}`;
+  };
+
   document.addEventListener('DOMContentLoaded', () => {
     const form = document.getElementById('contato-form');
     if (!form) return;
@@ -251,18 +276,10 @@ const pageUrl = `${SITE_URL}/contato`;
     const phoneInput = form.querySelector('#contato-phone') as HTMLInputElement | null;
     const emailInput = form.querySelector('#contato-email') as HTMLInputElement | null;
 
-    /** US-style mask (10 digits) — replace with your locale if needed. */
-    const formatPhoneUS = (value: string): string => {
-      const digits = value.replace(/\D/g, '').slice(0, 10);
-      if (digits.length <= 3) return digits;
-      if (digits.length <= 6) return `(${digits.slice(0, 3)}) ${digits.slice(3)}`;
-      return `(${digits.slice(0, 3)}) ${digits.slice(3, 6)}-${digits.slice(6)}`;
-    };
-
     if (phoneInput) {
       phoneInput.addEventListener('input', (event) => {
         const target = event.target as HTMLInputElement;
-        target.value = formatPhoneUS(target.value);
+        target.value = formatPhoneBR(target.value);
       });
     }
 
@@ -271,7 +288,7 @@ const pageUrl = `${SITE_URL}/contato`;
       const messageDiv = document.getElementById('contato-form-message');
       const submitButton = form.querySelector('button[type="submit"]') as HTMLButtonElement;
 
-      const formData = new FormData(form);
+      const formData = new FormData(form as HTMLFormElement);
 
       if (formData.get('company_website')) return;
 
@@ -281,7 +298,7 @@ const pageUrl = `${SITE_URL}/contato`;
         if (messageDiv) {
           messageDiv.className =
             'p-4 rounded-lg bg-red-100 border-2 border-red-700 text-red-900 text-sm font-medium';
-          messageDiv.textContent = 'Please enter a valid email address.';
+          messageDiv.textContent = 'Informe um e-mail válido.';
           messageDiv.classList.remove('hidden');
         }
         if (emailInput) emailInput.focus();
@@ -301,7 +318,7 @@ const pageUrl = `${SITE_URL}/contato`;
         if (messageDiv) {
           messageDiv.className =
             'p-4 rounded-lg bg-amber-100 border-2 border-amber-600 text-amber-900 text-sm font-medium';
-          messageDiv.innerHTML = `Form not configured. Message us on <a href="https://wa.me/${CONTACT.whatsapp}" target="_blank" rel="noopener" class="underline font-medium">WhatsApp</a>.`;
+          messageDiv.innerHTML = `Formulário ainda não configurado. Fale no <a href="https://wa.me/${CONTACT.whatsapp}" target="_blank" rel="noopener" class="underline font-medium">WhatsApp</a>.`;
           messageDiv.classList.remove('hidden');
         }
         return;
@@ -313,7 +330,7 @@ const pageUrl = `${SITE_URL}/contato`;
           if (messageDiv) {
             messageDiv.className =
               'p-4 rounded-lg bg-amber-100 border-2 border-amber-600 text-amber-900 text-sm font-medium';
-            messageDiv.textContent = 'Please complete the verification before submitting.';
+            messageDiv.textContent = 'Complete a verificação antes de enviar.';
             messageDiv.classList.remove('hidden');
           }
           return;
@@ -322,7 +339,7 @@ const pageUrl = `${SITE_URL}/contato`;
 
       if (submitButton) {
         submitButton.disabled = true;
-        submitButton.innerHTML = '<i class="fas fa-spinner fa-spin mr-2"></i>Sending...';
+        submitButton.innerHTML = '<i class="fas fa-spinner fa-spin mr-2"></i>Enviando...';
       }
       if (messageDiv) messageDiv.classList.add('hidden');
 
@@ -332,26 +349,28 @@ const pageUrl = `${SITE_URL}/contato`;
         if (messageDiv) {
           messageDiv.className =
             'p-4 rounded-lg bg-green-100 border-2 border-green-700 text-green-900 text-sm font-medium';
-          messageDiv.innerHTML = '<i class="fas fa-check-circle mr-2"></i>Message sent. We will be in touch shortly.';
+          messageDiv.innerHTML = '<i class="fas fa-check-circle mr-2"></i>Mensagem enviada. Em breve entraremos em contato.';
           messageDiv.classList.remove('hidden');
         }
-        form.reset();
+        (form as HTMLFormElement).reset();
 
         if (TURNSTILE_SITE_KEY && typeof window !== 'undefined' && (window as any).turnstile) {
-          try { (window as any).turnstile.reset(); } catch (_) {}
+          try {
+            (window as any).turnstile.reset();
+          } catch (_) {}
         }
       } catch (err) {
         console.error('EmailJS error:', err);
         if (messageDiv) {
           messageDiv.className =
             'p-4 rounded-lg bg-red-100 border-2 border-red-700 text-red-900 text-sm font-medium';
-          messageDiv.innerHTML = `<i class="fas fa-exclamation-circle mr-2"></i>Something went wrong. Try <a href="https://wa.me/${CONTACT.whatsapp}" target="_blank" rel="noopener" class="underline">WhatsApp</a>.`;
+          messageDiv.innerHTML = `<i class="fas fa-exclamation-circle mr-2"></i>Algo deu errado. Tente o <a href="https://wa.me/${CONTACT.whatsapp}" target="_blank" rel="noopener" class="underline">WhatsApp</a>.`;
           messageDiv.classList.remove('hidden');
         }
       } finally {
         if (submitButton) {
           submitButton.disabled = false;
-          submitButton.innerHTML = 'Send';
+          submitButton.innerHTML = 'Enviar mensagem';
         }
       }
     });

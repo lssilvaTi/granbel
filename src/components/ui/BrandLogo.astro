@@ -1,0 +1,51 @@
+---
+/**
+ * Marca textual + ícone de caminhão (sem <img>) — contraste garantido no header/rodapé.
+ */
+interface Props {
+  /** Fundo escuro (header/rodapé) ou claro (ex.: página orçamento). */
+  theme?: 'onDark' | 'onLight';
+  class?: string;
+}
+
+const { theme = 'onDark', class: className = '' } = Astro.props;
+
+const iconWrap =
+  theme === 'onDark'
+    ? 'bg-[var(--color-yellow)]/20 text-[var(--color-yellow)] border-[var(--color-yellow)]/45'
+    : 'bg-[var(--color-yellow)]/30 text-[var(--color-ink-black)] border-[var(--color-yellow)]/50';
+
+const nameClass =
+  theme === 'onDark'
+    ? 'text-white'
+    : 'text-[var(--color-ink-black)]';
+
+const subClass =
+  theme === 'onDark'
+    ? 'text-white/85'
+    : 'text-[var(--color-platinum)]';
+---
+
+<span class:list={['inline-flex items-center gap-3 min-w-0', className]}>
+  <span
+    class:list={[
+      'flex h-10 w-10 md:h-11 md:w-11 shrink-0 items-center justify-center rounded-xl border',
+      iconWrap,
+    ]}
+    aria-hidden="true"
+  >
+    <i class="fas fa-truck-fast text-lg md:text-xl"></i>
+  </span>
+  <span class="flex min-w-0 flex-col leading-tight text-left">
+    <span class:list={['font-serif text-lg md:text-xl font-bold tracking-tight', nameClass]}>Granbel</span>
+    <span
+      class:list={[
+        'font-sans text-[10px] sm:text-xs font-medium leading-snug',
+        subClass,
+        theme === 'onDark' && 'tracking-wide',
+      ]}
+    >
+      Transportes e Mudanças
+    </span>
+  </span>
+</span>

@@ -3,38 +3,40 @@ import { PROCESS_STEPS, CONTACT } from '../../utils/constants';
 ---
 
 <section id="process" class="relative py-20 md:py-24 bg-[var(--color-background-dark)]">
-  <div class="section-shapes absolute inset-0 pointer-events-none hidden md:block z-0" aria-hidden="true">
-    <div class="absolute left-[2%] top-[20%] w-6 h-8 bg-[var(--color-cyan)] opacity-55 -rotate-6"></div>
-    <div class="absolute left-[1.5%] bottom-[28%] w-7 h-7 bg-[var(--color-yellow)] opacity-60 rotate-8"></div>
-    <div class="absolute right-[2%] top-[35%] w-8 h-6 bg-[var(--color-yellow)] opacity-58 rotate-(-8)"></div>
-    <div class="absolute right-[1.5%] bottom-[20%] w-6 h-9 bg-[var(--color-cyan)] opacity-55 rotate-3"></div>
-  </div>
   <div class="container relative z-10 mx-auto px-6">
-    <h2 class="text-3xl md:text-4xl lg:text-5xl font-bold text-center mb-4 text-[var(--color-platinum)]">
-      How it works
+    <h2 class="text-3xl md:text-4xl lg:text-5xl font-bold text-center mb-4 text-[var(--color-platinum)] font-serif">
+      Como funciona
     </h2>
-    <p class="text-center text-[var(--color-platinum)]/70 mb-14 md:mb-16 text-lg max-w-2xl mx-auto">
-      From first contact to delivery
+    <p class="text-center text-[var(--color-platinum)]/70 mb-14 md:mb-16 text-lg max-w-2xl mx-auto font-sans">
+      Transparência do primeiro contato à entrega — sem surpresas.
     </p>
     <div class="max-w-4xl mx-auto">
       <div class="grid grid-cols-1 md:grid-cols-2 gap-6 lg:gap-8">
         {PROCESS_STEPS.map((step) => (
-            <div class="relative bg-[var(--color-background)] rounded-lg p-6 md:p-8 border border-[var(--color-platinum)]/20 hover:border-[var(--color-cyan)]/40 transition-all">
-            <div class="absolute -top-3 -left-3 w-12 h-12 rounded-sm bg-[var(--color-yellow)] flex items-center justify-center text-[var(--color-dark-blue)] font-bold text-lg shadow-lg">
+          <div class="process-step relative bg-[var(--color-background)] rounded-xl p-6 md:p-8 border border-[var(--color-platinum)]/20 hover:border-[var(--color-cyan)]/45 transition-all duration-300">
+            <div class="absolute -top-3 -left-3 w-12 h-12 rounded-lg bg-[var(--color-yellow)] flex items-center justify-center text-[var(--color-dark-blue)] font-bold text-lg shadow-lg font-sans">
               {step.number}
             </div>
-            <h3 class="text-xl font-semibold mb-3 mt-2 text-[var(--color-platinum)]">
+            <h3 class="text-xl font-semibold mb-3 mt-2 text-[var(--color-platinum)] font-serif">
               {step.title}
             </h3>
-            <p class="text-[var(--color-platinum)]/70 leading-relaxed">
+            <p class="text-[var(--color-platinum)]/70 leading-relaxed font-sans">
               {step.description}
             </p>
           </div>
         ))}
       </div>
     </div>
-    <p class="mt-12 text-center text-[var(--color-platinum)]/80">
-      Questions? Message us on <a href={`https://wa.me/${CONTACT.whatsapp}`} target="_blank" rel="noopener noreferrer" class="text-[var(--color-cyan)] hover:underline font-medium">WhatsApp</a> or <a href="/orcamento" class="text-[var(--color-cyan)] hover:underline font-medium">request a quote</a>.
+    <p class="mt-12 text-center text-[var(--color-platinum)]/80 font-sans">
+      Dúvidas? Chame no{' '}
+      <a href={`https://wa.me/${CONTACT.whatsapp}`} target="_blank" rel="noopener noreferrer" class="text-[var(--color-cyan)] hover:underline font-medium">
+        WhatsApp
+      </a>{' '}
+      ou{' '}
+      <a href="/orcamento" class="text-[var(--color-cyan)] hover:underline font-medium">
+        peça um orçamento
+      </a>
+      .
     </p>
   </div>
 </section>

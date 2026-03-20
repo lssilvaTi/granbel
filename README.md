@@ -105,7 +105,7 @@ If forms are **not** configured, the UI shows a fallback message pointing users 
 │   │   ├── orcamento.astro
 │   │   └── sitemap.xml.ts
 │   ├── styles/
-│   │   └── global.css      # Tailwind + CSS variables (palette, themes)
+│   │   └── global.css      # Tailwind + CSS variables (themes)
 │   └── utils/
 │       └── constants.ts    # SITE_URL, SITE_NAME, CONTACT, SERVICES, PLACEHOLDER_IMAGES, etc.
 ├── astro.config.mjs        # `site` — must match SITE_URL in constants (see below)
@@ -257,7 +257,7 @@ Any **new route** must be added here (and in **sitemap**) or users will get 404s
 
 ## Branding and design tokens
 
-- **Colors / themes:** `src/styles/global.css` — `@theme` variables (`--color-dark-blue`, `--color-cyan`, `--color-yellow`, etc.) and `[data-theme="light"]` / `[data-theme="dark"]` overrides.  
+- **Colors / themes:** `src/styles/global.css` — `@theme` variables (`--color-dark-blue`, `--color-cyan`, `--color-yellow`, etc.) and `[data-theme="light"]` / `[data-theme="dark"]` overrides (paleta verde).
 - **Reusable UI:** `src/components/ui/Button.astro` (`primary`, `secondary`, `outline`).  
 - **Partner / certification logo in dark mode:** `.partner-logo-wrap` in `global.css` (see Services page).  
 

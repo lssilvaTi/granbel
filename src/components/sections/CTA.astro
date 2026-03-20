@@ -3,30 +3,66 @@ import Button from '../ui/Button.astro';
 import { CONTACT } from '../../utils/constants';
 ---
 
-<section id="contact" class="relative py-20 md:py-24 bg-gradient-to-br from-[var(--color-dark-blue)]/15 via-[var(--color-background)] to-[var(--color-cyan)]/15">
-  <div class="section-shapes absolute inset-0 pointer-events-none hidden md:block z-0" aria-hidden="true">
-    <div class="absolute left-[2%] top-[22%] w-6 h-6 bg-[var(--color-yellow)] opacity-60 rotate-6"></div>
-    <div class="absolute left-[1.5%] bottom-[25%] w-7 h-9 bg-[var(--color-cyan)] opacity-55 -rotate-3"></div>
-    <div class="absolute right-[2%] top-[18%] w-8 h-6 bg-[var(--color-cyan)] opacity-58 -rotate-6"></div>
-    <div class="absolute right-[1.5%] bottom-[28%] w-6 h-7 bg-[var(--color-yellow)] opacity-62 rotate-10"></div>
+<section id="contact" class="relative py-20 md:py-28 overflow-hidden bg-[var(--color-header-bg)]">
+  <div class="absolute inset-0 opacity-[0.07] pointer-events-none" aria-hidden="true">
+    <svg class="w-full h-full text-white" preserveAspectRatio="none" viewBox="0 0 400 200">
+      <path
+        d="M0 120 Q 100 40 200 100 T 400 90 L 400 200 L 0 200 Z"
+        fill="currentColor"
+        opacity="0.5"
+      />
+    </svg>
   </div>
-  <div class="container relative z-10 mx-auto px-6 text-center">
-    <h2 class="text-3xl md:text-4xl lg:text-5xl font-bold mb-6 text-[var(--color-platinum)]">
-      Ready to get started?
-    </h2>
-    <p class="text-lg md:text-xl text-[var(--color-platinum)]/85 mb-10 max-w-2xl mx-auto">
-      Send the quote form or message us on WhatsApp — both use contact values from `constants.ts`.
-    </p>
-    <div class="flex flex-col sm:flex-row gap-4 justify-center">
-      <Button href="/orcamento" variant="primary" size="lg">
-        Request a quote
-      </Button>
-      <Button href={`https://wa.me/${CONTACT.whatsapp}`} variant="outline" size="lg" target="_blank" rel="noopener noreferrer">
-        WhatsApp
-      </Button>
+  <div
+    class="absolute right-[-5%] top-1/2 -translate-y-1/2 w-[min(55vw,420px)] opacity-[0.08] pointer-events-none text-white"
+    aria-hidden="true"
+  >
+    <svg viewBox="0 0 200 120" class="w-full h-auto" fill="none" stroke="currentColor" stroke-width="2">
+      <rect x="20" y="50" width="100" height="50" rx="4"></rect>
+      <circle cx="45" cy="105" r="10" fill="currentColor" opacity="0.3"></circle>
+      <circle cx="95" cy="105" r="10" fill="currentColor" opacity="0.3"></circle>
+      <path d="M120 50 L165 35 L175 70 L130 75 Z" fill="currentColor" opacity="0.2"></path>
+      <rect x="35" y="60" width="35" height="25" rx="1" opacity="0.25"></rect>
+      <rect x="78" y="58" width="28" height="20" rx="1" opacity="0.2"></rect>
+    </svg>
+  </div>
+
+  <div class="container relative z-10 mx-auto px-6">
+    <div class="max-w-3xl">
+      <p class="font-sans text-sm font-semibold tracking-[0.2em] text-[var(--color-yellow)] uppercase mb-4">Próxima parada: seu novo endereço</p>
+      <h2 class="font-serif text-3xl md:text-5xl font-bold text-white mb-6 leading-tight">
+        Vamos fechar os detalhes da sua mudança?
+      </h2>
+      <p class="font-sans text-lg text-white/85 mb-10 max-w-xl leading-relaxed">
+        Orçamento sem compromisso, resposta em horário comercial e acompanhamento no WhatsApp no dia da operação.
+      </p>
+      <div class="flex flex-col sm:flex-row flex-wrap gap-4">
+        <Button href="/orcamento" variant="secondary" size="lg" class="!bg-[var(--color-yellow)] !text-[var(--color-ink-black)] hover:!opacity-95">
+          Solicitar orçamento
+        </Button>
+        <Button href={`https://wa.me/${CONTACT.whatsapp}`} variant="outline" size="lg" target="_blank" rel="noopener noreferrer" class="!text-white !border-white/80 hover:!bg-white/10">
+          WhatsApp
+        </Button>
+        <Button href="/contato" variant="outline" size="lg" class="!text-white !border-white/50 hover:!bg-white/10">
+          Formulário
+        </Button>
+      </div>
+      <div
+        class="mt-10 inline-flex max-w-full flex-wrap items-center gap-x-3 gap-y-1 rounded-xl bg-[var(--color-ink-black)]/85 px-4 py-3 text-sm sm:text-base shadow-[0_10px_30px_rgba(0,0,0,0.35)] ring-1 ring-white/15 backdrop-blur-sm"
+        role="group"
+        aria-label="Telefone para contato"
+      >
+        <span class="font-sans font-medium text-white/95">
+          <i class="fas fa-phone me-2 text-[var(--color-yellow)]" aria-hidden="true"></i>
+          Telefone
+        </span>
+        <a
+          href={`tel:${CONTACT.phoneTel}`}
+          class="font-sans font-semibold tabular-nums tracking-wide text-white hover:text-[var(--color-yellow)] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--color-yellow)] transition-colors"
+        >
+          {CONTACT.phoneDisplay}
+        </a>
+      </div>
     </div>
-    <p class="mt-8 text-[var(--color-platinum)]/60 text-sm">
-      Or call: <a href={`tel:${CONTACT.phoneTel}`} class="text-[var(--color-cyan)] hover:underline">{CONTACT.phoneDisplay}</a>
-    </p>
   </div>
 </section>

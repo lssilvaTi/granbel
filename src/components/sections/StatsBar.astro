@@ -1,41 +1,33 @@
 ---
-// Highlight metrics — edit values/labels per client (animated on scroll).
 const stats = [
-  { value: 10, suffix: '+', label: 'Years in business', icon: 'fa-calendar' },
-  { value: 500, suffix: '+', label: 'Projects delivered', icon: 'fa-boxes-stacked' },
-  { value: 48, suffix: '', label: 'Regions served', icon: 'fa-route' },
-  { value: 98, suffix: '%', label: 'Client satisfaction', icon: 'fa-star' },
+  { value: 15, suffix: '+', label: 'Anos em operações', icon: 'fa-calendar' },
+  { value: 3200, suffix: '+', label: 'Mudanças e fretes', icon: 'fa-boxes-stacked' },
+  { value: 120, suffix: '+', label: 'Cidades atendidas', icon: 'fa-route' },
+  { value: 99, suffix: '%', label: 'Clientes satisfeitos', icon: 'fa-star' },
 ];
 ---
 
-<section class="stats-bar relative py-10 md:py-14 overflow-hidden bg-[var(--color-background)]" aria-label="Key statistics">
-  <div class="section-shapes absolute inset-0 pointer-events-none hidden md:block z-0" aria-hidden="true">
-    <div class="absolute left-[2%] top-[20%] w-6 h-6 bg-[var(--color-yellow)] opacity-50 rotate-12"></div>
-    <div class="absolute left-[4%] bottom-[25%] w-6 h-10 bg-[var(--color-cyan)] opacity-40 -rotate-6"></div>
-    <div class="absolute right-[2%] top-[30%] w-8 h-8 bg-[var(--color-cyan)] opacity-45 -rotate-12"></div>
-    <div class="absolute right-[3%] bottom-[20%] w-7 h-7 bg-[var(--color-yellow)] opacity-50 rotate-6"></div>
-  </div>
-
+<section class="stats-bar relative py-10 md:py-14 overflow-hidden bg-[var(--color-background)]" aria-label="Números">
   <div class="container relative z-10 mx-auto px-6">
     <div class="grid grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-5 max-w-4xl mx-auto">
       {stats.map((stat) => (
         <div
-          class="stats-item group rounded-lg bg-[var(--color-background-dark)] border border-[var(--color-platinum)]/15 hover:border-[var(--color-cyan)]/35 p-4 md:p-5 text-center transition-all duration-300"
+          class="stats-item group rounded-xl bg-[var(--color-background-dark)] border border-[var(--color-platinum)]/15 hover:border-[var(--color-cyan)]/40 p-4 md:p-5 text-center transition-all duration-300 hover:shadow-lg hover:shadow-black/10"
           data-value={stat.value}
           data-suffix={stat.suffix}
-          data-duration="1500"
+          data-duration="1600"
         >
-          <div class="inline-flex w-9 h-9 rounded-md bg-[var(--color-cyan)]/15 text-[var(--color-cyan)] items-center justify-center mb-2.5 group-hover:bg-[var(--color-cyan)]/25 transition-colors">
+          <div class="inline-flex w-9 h-9 rounded-lg bg-[var(--color-cyan)]/15 text-[var(--color-cyan)] items-center justify-center mb-2.5 group-hover:bg-[var(--color-cyan)]/25 transition-colors">
             <i class={`fas ${stat.icon} text-sm`} aria-hidden="true"></i>
           </div>
           <div
-            class="stats-number text-2xl sm:text-3xl md:text-4xl font-extrabold text-[var(--color-cyan)] tabular-nums tracking-tight"
+            class="stats-number text-2xl sm:text-3xl md:text-4xl font-extrabold text-[var(--color-cyan)] tabular-nums tracking-tight font-sans"
             data-target={stat.value}
             data-suffix={stat.suffix}
           >
             0{stat.suffix}
           </div>
-          <div class="stats-label mt-1.5 text-[var(--color-platinum)]/85 text-xs sm:text-sm font-medium">
+          <div class="stats-label mt-1.5 text-[var(--color-platinum)]/85 text-xs sm:text-sm font-medium font-sans">
             {stat.label}
           </div>
         </div>
@@ -50,19 +42,17 @@ const stats = [
     background-color: var(--color-background);
   }
 
-  /* Subtle gradient tying the bar to the hero palette */
   .stats-bar::before {
     content: '';
     position: absolute;
     inset: 0;
-    background:
-      linear-gradient(
-        135deg,
-        rgba(31, 62, 143, 0.45) 0%,
-        rgba(0, 167, 224, 0.20) 40%,
-        rgba(0, 167, 224, 0.04) 75%,
-        transparent 100%
-      );
+    background: linear-gradient(
+      125deg,
+      rgb(var(--rgb-decor-deep) / 0.32) 0%,
+      rgb(var(--rgb-decor-b) / 0.2) 42%,
+      rgb(var(--rgb-decor-c) / 0.08) 78%,
+      transparent 100%
+    );
     pointer-events: none;
     z-index: 0;
   }
@@ -74,9 +64,9 @@ const stats = [
     if (!items.length) return;
 
     const formatNumber = (n: number, suffix: string): string => {
-      if (suffix === '%') return Math.round(n) + '%';
-      if (n >= 1000) return Math.round(n).toLocaleString('en-US') + suffix;
-      return Math.round(n) + suffix;
+      if (suffix === '%') return Math.round(n).toLocaleString('pt-BR') + '%';
+      if (n >= 1000) return Math.round(n).toLocaleString('pt-BR') + suffix;
+      return Math.round(n).toLocaleString('pt-BR') + suffix;
     };
 
     const easeOutQuart = (t: number): number => 1 - Math.pow(1 - t, 4);

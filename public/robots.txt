@@ -1,5 +1,4 @@
-# Template — update sitemap URL when `SITE_URL` / production domain is set
 User-agent: *
 Allow: /
 
-Sitemap: https://example.com/sitemap.xml
+Sitemap: https://www.granbeltransportes.com.br/sitemap.xml

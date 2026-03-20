@@ -1,0 +1,56 @@
+---
+import { MOVING_DAY_TIPS } from '../../utils/constants';
+
+const accentClass: Record<string, string> = {
+  amber:
+    'border-l-[var(--color-yellow)] bg-[rgb(var(--postit-bg-amber)_/_0.95)] shadow-[4px_4px_0_rgb(var(--rgb-decor-b)_/_0.32)]',
+  sage:
+    'border-l-[rgb(var(--rgb-decor-sage))] bg-[rgb(var(--postit-bg-sage)_/_0.95)] shadow-[4px_4px_0_rgb(var(--rgb-decor-sage)_/_0.35)]',
+  clay:
+    'border-l-[var(--color-cyan)] bg-[rgb(var(--postit-bg-clay)_/_0.95)] shadow-[4px_4px_0_rgb(var(--rgb-decor-b)_/_0.28)]',
+};
+const rotate = ['-rotate-1', 'rotate-2', '-rotate-1'] as const;
+---
+
+<section id="dia-d" class="relative py-16 md:py-24 bg-[var(--color-background-dark)] overflow-hidden">
+  <div
+    class="pointer-events-none absolute -left-20 top-1/2 -translate-y-1/2 w-64 h-64 rounded-full border border-dashed border-[var(--color-cyan)]/20"
+    aria-hidden="true"
+  ></div>
+  <div
+    class="pointer-events-none absolute -right-16 bottom-10 w-48 h-48 text-[var(--color-yellow)]/10"
+    aria-hidden="true"
+  >
+    <svg viewBox="0 0 100 100" class="w-full h-full" fill="currentColor">
+      <rect x="10" y="35" width="55" height="40" rx="3" opacity="0.6"></rect>
+      <rect x="62" y="45" width="28" height="22" rx="2" opacity="0.4"></rect>
+    </svg>
+  </div>
+
+  <div class="container relative z-10 mx-auto px-6">
+    <div class="max-w-2xl mx-auto text-center mb-12 md:mb-16">
+      <p class="font-sans text-sm font-semibold tracking-widest text-[var(--color-yellow)] uppercase mb-3">Antes do caminhão chegar</p>
+      <h2 class="font-serif text-3xl md:text-4xl font-bold text-[var(--color-platinum)]">
+        Lembretes que poupam dor de cabeça
+      </h2>
+      <p class="mt-4 font-sans text-[var(--color-platinum)]/70">
+        Três dicas práticas — as mesmas que combinamos com você antes do caminhão chegar.
+      </p>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-8 md:gap-10 max-w-5xl mx-auto items-start">
+      {MOVING_DAY_TIPS.map((tip, i) => (
+        <article
+          class={`postit-card relative rounded-sm border-l-4 p-6 md:p-7 font-sans ${accentClass[tip.accent] || accentClass.amber} ${rotate[i % 3]} hover:rotate-0 transition-transform duration-300`}
+        >
+          <div class="absolute -top-2 left-1/2 -translate-x-1/2 w-12 h-3 bg-black/10 rounded-sm opacity-40" aria-hidden="true"></div>
+          <h3 class="font-bold text-[var(--color-platinum)] text-lg mb-3 flex items-center gap-2">
+            <i class="fas fa-note-sticky text-[var(--color-cyan)] text-base" aria-hidden="true"></i>
+            {tip.title}
+          </h3>
+          <p class="text-[var(--color-platinum)]/80 text-sm leading-relaxed">{tip.body}</p>
+        </article>
+      ))}
+    </div>
+  </div>
+</section>

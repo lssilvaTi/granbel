@@ -5,157 +5,177 @@ import {
   SITE_URL,
   SITE_NAME,
   DEFAULT_OG_IMAGE,
-  PLACEHOLDER_IMAGES,
+  SERVICES_PAGE_BLOCKS,
 } from '../utils/constants';
-
-const servicos = [
-  {
-    id: 'primary',
-    title: 'Primary offering',
-    text: 'Long-form description for your main service. Move this array to `constants.ts` if you want a single source of truth with the homepage cards.',
-    image: PLACEHOLDER_IMAGES.portrait,
-    imageAlt: 'Service illustration placeholder',
-  },
-  {
-    id: 'secondary',
-    title: 'Bundled or follow-on service',
-    text: 'Explain deliverables, timeline, and what the client can expect. Replace images under `public/assets/` or point `image` to your CDN.',
-    image: PLACEHOLDER_IMAGES.portrait,
-    imageAlt: 'Service illustration placeholder',
-  },
-  {
-    id: 'specialty',
-    title: 'Specialty or niche',
-    text: 'Use this block for a vertical-specific page. Delete rows from `servicos` if the client needs fewer sections.',
-    image: PLACEHOLDER_IMAGES.portrait,
-    imageAlt: 'Service illustration placeholder',
-  },
-  {
-    id: 'coverage',
-    title: 'Coverage and scale',
-    text: 'Describe geographic reach, remote vs on-site, SLAs, or compliance — whatever differentiates you at the proposal stage.',
-    image: PLACEHOLDER_IMAGES.portrait,
-    imageAlt: 'Service illustration placeholder',
-  },
-];
 
 const pageUrl = `${SITE_URL}/servicos`;
 ---
 
 <BaseLayout
-  title={`Services | ${SITE_NAME}`}
-  description="Template services page — replace meta and body copy per client. Images use shared placeholders until you add real assets."
-  keywords="services, YOUR_SITE_NAME, template"
+  title={`Serviços | ${SITE_NAME}`}
+  description="Mudanças residenciais e corporativas, fretes, embalagem especializada e logística — Granbel Transportes e Mudanças."
+  keywords="mudança residencial, mudança corporativa, frete, transporte de carga, embalagem para mudança, armazenagem"
   canonical={pageUrl}
   image={DEFAULT_OG_IMAGE}
   url={pageUrl}
 >
-  <section
-    class="relative pt-24 pb-16 md:pt-28 md:pb-20 min-h-[640px] md:min-h-[720px] flex items-center bg-cover bg-no-repeat bg-center"
-    style={`background-image: url('${PLACEHOLDER_IMAGES.heroSlide}');`}
-  >
-    <div class="absolute inset-0 bg-gradient-to-r from-[var(--color-dark-blue)]/96 via-[var(--color-dark-blue)]/85 to-[var(--color-dark-blue)]/50" aria-hidden="true"></div>
-    <div class="section-shapes absolute inset-0 pointer-events-none hidden md:block z-0" aria-hidden="true">
-      <div class="absolute left-[2%] top-[18%] w-7 h-7 bg-[var(--color-yellow)] opacity-50 rotate-12"></div>
-      <div class="absolute left-[1.5%] bottom-[22%] w-6 h-10 bg-[var(--color-cyan)] opacity-45 -rotate-6"></div>
-      <div class="absolute right-[2%] top-[28%] w-6 h-6 bg-[var(--color-cyan)] opacity-50 -rotate-12"></div>
-      <div class="absolute right-[1.5%] bottom-[18%] w-8 h-6 bg-[var(--color-yellow)] opacity-55 rotate-6"></div>
-    </div>
-    <div class="container relative z-10 mx-auto px-6">
-      <div class="max-w-2xl hero-text-contrast">
-        <h1 class="text-3xl md:text-4xl lg:text-5xl font-bold mb-6 text-white text-drop-shadow">
-          Our services
+  <header class="pt-28 md:pt-32 pb-12 md:pb-16 bg-[var(--color-background)]">
+    <div class="container mx-auto px-6 max-w-4xl">
+      <div class="border-l-4 border-[var(--color-yellow)] pl-6 md:pl-8">
+        <p class="font-sans text-xs font-bold tracking-[0.25em] text-[var(--color-cyan)] uppercase mb-3">Linhas de serviço</p>
+        <h1 class="font-serif text-3xl md:text-5xl font-bold text-[var(--color-platinum)] leading-tight mb-6">
+          Da mudança da família à logística da empresa
         </h1>
-        <p class="text-white/95 text-base md:text-lg leading-relaxed mb-8 text-drop-shadow">
-          Summarize the catalog in one paragraph, then scroll for detail blocks — or trim this page for a lighter site.
+        <p class="font-sans text-lg text-[var(--color-platinum)]/75 max-w-2xl leading-relaxed">
+          Cada bloco abaixo mostra o serviço de um jeito diferente — texto só, foto com texto ou texto com foto — para
+          ficar fácil de ler e entender.
         </p>
-        <Button href="/orcamento" variant="secondary" size="lg">
-          Request a quote
-        </Button>
       </div>
     </div>
-  </section>
+  </header>
 
-  {servicos.map((s, i) => {
-    const imageLeft = i % 2 === 0;
-    return (
-      <section class="relative py-12 md:py-20 lg:py-24 bg-[var(--color-background)]">
-        <div class="section-shapes absolute inset-0 pointer-events-none hidden md:block z-0" aria-hidden="true">
-          <div class="absolute left-[2%] top-[22%] w-6 h-6 bg-[var(--color-yellow)] opacity-60 rotate-6"></div>
-          <div class="absolute left-[1.5%] bottom-[25%] w-7 h-9 bg-[var(--color-cyan)] opacity-55 -rotate-3"></div>
-          <div class="absolute right-[2%] top-[15%] w-8 h-8 bg-[var(--color-cyan)] opacity-58 -rotate-6"></div>
-          <div class="absolute right-[1.5%] bottom-[30%] w-6 h-8 bg-[var(--color-yellow)] opacity-62 rotate-12"></div>
-        </div>
-        <div class="container relative z-10 mx-auto px-6">
-          <div class="grid grid-cols-1 lg:grid-cols-2 gap-5 md:gap-10 lg:gap-14 items-center max-w-6xl mx-auto">
-            <div class={`order-2 ${!imageLeft ? 'lg:order-2' : 'lg:order-none'}`}>
-              <h2 class="text-2xl md:text-3xl font-bold mb-4 md:mb-6 text-[var(--color-cyan)]">
-                {s.title}
-              </h2>
-              <p class="text-[var(--color-platinum)]/80 text-base md:text-lg leading-relaxed">
-                {s.text}
-              </p>
+  {
+    SERVICES_PAGE_BLOCKS.map((s, i) => {
+      if (i === 0) {
+        return (
+          <section class="relative min-h-[380px] md:min-h-[480px] flex items-end bg-[var(--color-ink-black)]">
+            <img
+              src={s.image}
+              alt={s.imageAlt}
+              class="absolute inset-0 w-full h-full object-cover opacity-60"
+              width="1200"
+              height="800"
+              loading="lazy"
+            />
+            <div class="absolute inset-0 bg-gradient-to-t from-black via-black/50 to-transparent" aria-hidden="true"></div>
+            <div class="relative z-10 container mx-auto px-6 py-12 md:py-16 max-w-6xl">
+              <span class="inline-block px-2 py-0.5 text-[10px] font-bold uppercase tracking-widest bg-[var(--color-yellow)] text-[var(--color-ink-black)] font-sans mb-4">
+                01 — Em destaque
+              </span>
+              <h2 class="font-serif text-3xl md:text-5xl font-bold text-white max-w-3xl mb-4">{s.title}</h2>
+              <p class="font-sans text-white/85 text-base md:text-lg max-w-2xl leading-relaxed">{s.text}</p>
             </div>
-            <div class={`relative flex justify-center order-first lg:order-none ${imageLeft ? 'lg:justify-end' : 'lg:justify-start lg:order-1'}`}>
-              <img
-                src={s.image}
-                alt={s.imageAlt}
-                class="rounded-lg shadow-xl w-full max-w-md object-cover aspect-[4/3]"
-                width="500"
-                height="375"
-              />
+          </section>
+        );
+      }
+      if (i === 1) {
+        return (
+          <section class="py-16 md:py-24 bg-[var(--color-background-dark)]">
+            <div class="container mx-auto px-6 max-w-3xl">
+              <div class="flex flex-wrap gap-3 mb-8 text-[var(--color-cyan)]">
+                <i class="fas fa-building text-xl" aria-hidden="true"></i>
+                <i class="fas fa-users text-xl" aria-hidden="true"></i>
+                <i class="fas fa-network-wired text-xl" aria-hidden="true"></i>
+              </div>
+              <p class="font-mono text-xs text-[var(--color-yellow)] uppercase tracking-widest mb-2">02 — Texto completo</p>
+              <h2 class="font-serif text-2xl md:text-4xl font-bold text-[var(--color-platinum)] mb-6">{s.title}</h2>
+              <p class="font-sans text-[var(--color-platinum)]/80 text-lg leading-relaxed">{s.text}</p>
+            </div>
+          </section>
+        );
+      }
+      if (i === 2) {
+        return (
+          <section class="py-16 md:py-24 bg-cardboard border-y border-[var(--color-platinum)]/10">
+            <div class="container mx-auto px-6 max-w-6xl">
+              <div class="grid grid-cols-1 md:grid-cols-12 gap-10 md:gap-12 items-center">
+                <div class="md:col-span-5 order-2 md:order-1">
+                  <img
+                    src={s.image}
+                    alt={s.imageAlt}
+                    class="rounded-xl shadow-lg w-full object-cover aspect-[4/3] ring-1 ring-[var(--color-platinum)]/15"
+                    width="600"
+                    height="450"
+                    loading="lazy"
+                  />
+                </div>
+                <div class="md:col-span-7 order-1 md:order-2">
+                  <p class="font-mono text-xs text-[var(--color-cyan)] uppercase tracking-widest mb-2">03 — Foto e texto</p>
+                  <h2 class="font-serif text-2xl md:text-4xl font-bold text-[var(--color-platinum)] mb-5">{s.title}</h2>
+                  <p class="font-sans text-[var(--color-platinum)]/80 text-base md:text-lg leading-relaxed">{s.text}</p>
+                </div>
+              </div>
+            </div>
+          </section>
+        );
+      }
+      return (
+        <section class="py-16 md:py-24 bg-[var(--color-background)]">
+          <div class="container mx-auto px-6 max-w-6xl">
+            <div class="grid grid-cols-1 md:grid-cols-12 gap-10 md:gap-12 items-center">
+              <div class="md:col-span-7">
+                <p class="font-mono text-xs text-[var(--color-cyan)] uppercase tracking-widest mb-2">04 — Texto e foto</p>
+                <h2 class="font-serif text-2xl md:text-4xl font-bold text-[var(--color-platinum)] mb-5">{s.title}</h2>
+                <p class="font-sans text-[var(--color-platinum)]/80 text-base md:text-lg leading-relaxed">{s.text}</p>
+              </div>
+              <div class="md:col-span-5">
+                <div class="relative">
+                  <div
+                    class="absolute inset-0 bg-[var(--color-yellow)]/20 rounded-xl translate-x-2 translate-y-2 -z-10"
+                    aria-hidden="true"
+                  ></div>
+                  <img
+                    src={s.image}
+                    alt={s.imageAlt}
+                    class="relative rounded-xl shadow-xl w-full object-cover aspect-square md:aspect-[5/4]"
+                    width="500"
+                    height="500"
+                    loading="lazy"
+                  />
+                </div>
+              </div>
             </div>
           </div>
-        </div>
-      </section>
-    );
-  })}
+        </section>
+      );
+    })
+  }
 
-  <section class="relative py-20 md:py-24 bg-gradient-to-br from-[var(--color-dark-blue)]/20 via-[var(--color-background)] to-[var(--color-cyan)]/15">
-    <div class="section-shapes absolute inset-0 pointer-events-none hidden md:block z-0" aria-hidden="true">
-      <div class="absolute left-[2%] top-[22%] w-6 h-6 bg-[var(--color-yellow)] opacity-60 rotate-6"></div>
-      <div class="absolute left-[1.5%] bottom-[25%] w-7 h-9 bg-[var(--color-cyan)] opacity-55 -rotate-3"></div>
-      <div class="absolute right-[2%] top-[18%] w-8 h-6 bg-[var(--color-cyan)] opacity-58 -rotate-6"></div>
-      <div class="absolute right-[1.5%] bottom-[28%] w-6 h-7 bg-[var(--color-yellow)] opacity-62 rotate-10"></div>
-    </div>
-    <div class="container relative z-10 mx-auto px-6">
-      <div class="max-w-3xl mx-auto text-center">
-        <h2 class="text-2xl md:text-3xl font-bold mb-6 text-[var(--color-platinum)]">
-          Trust and coverage
-        </h2>
-        <p class="text-xl md:text-2xl text-[var(--color-platinum)]/90 font-medium mb-10">
-          Optional block for insurance, certifications, or partner logos — replace copy and image for each client.
-        </p>
-        <div class="partner-logo-wrap inline-block p-2 md:p-3 rounded-xl">
-          <img
-            src={PLACEHOLDER_IMAGES.partnerLogo}
-            alt="Partner or certification placeholder"
-            class="inline-block w-32 h-32 md:w-40 md:h-40 object-contain opacity-90"
-            width="160"
-            height="160"
-          />
+  <section class="py-14 md:py-16 bg-[var(--color-background-dark)] border-t border-[var(--color-platinum)]/10">
+    <div class="container mx-auto px-6 max-w-5xl">
+      <h2 class="font-serif text-xl md:text-2xl font-bold text-center text-[var(--color-platinum)] mb-10">
+        Seguro, parceiros e papelada
+      </h2>
+      <div class="grid grid-cols-1 sm:grid-cols-3 gap-8 text-center font-sans text-sm text-[var(--color-platinum)]/75">
+        <div class="flex flex-col items-center gap-3">
+          <span class="w-12 h-12 rounded-full border-2 border-[var(--color-yellow)]/50 flex items-center justify-center text-[var(--color-yellow)]">
+            <i class="fas fa-shield-halved"></i>
+          </span>
+          <p>Coberturas e procedimentos alinhados ao porte da operação.</p>
+        </div>
+        <div class="flex flex-col items-center gap-3">
+          <span class="w-12 h-12 rounded-full border-2 border-[var(--color-cyan)]/50 flex items-center justify-center text-[var(--color-cyan)]">
+            <i class="fas fa-handshake"></i>
+          </span>
+          <p>Parceiros em rotas longas quando a Granbel coordena o projeto.</p>
+        </div>
+        <div class="flex flex-col items-center gap-3">
+          <span class="w-12 h-12 rounded-full border-2 border-[var(--color-yellow)]/50 flex items-center justify-center text-[var(--color-yellow)]">
+            <i class="fas fa-file-signature"></i>
+          </span>
+          <p>Contratos e NF-e conforme perfil residencial ou corporativo.</p>
         </div>
       </div>
+      <p class="text-center text-xs text-[var(--color-platinum)]/45 mt-10 font-sans">
+        Substitua este bloco por logos oficiais quando o cliente tiver certificações.
+      </p>
     </div>
   </section>
 
-  <section class="relative py-20 md:py-24 bg-gradient-to-br from-[var(--color-dark-blue)]/15 via-[var(--color-background)] to-[var(--color-cyan)]/15">
-    <div class="section-shapes absolute inset-0 pointer-events-none hidden md:block z-0" aria-hidden="true">
-      <div class="absolute left-[2%] top-[22%] w-6 h-6 bg-[var(--color-yellow)] opacity-60 rotate-6"></div>
-      <div class="absolute left-[1.5%] bottom-[25%] w-7 h-9 bg-[var(--color-cyan)] opacity-55 -rotate-3"></div>
-      <div class="absolute right-[2%] top-[18%] w-8 h-6 bg-[var(--color-cyan)] opacity-58 -rotate-6"></div>
-      <div class="absolute right-[1.5%] bottom-[28%] w-6 h-7 bg-[var(--color-yellow)] opacity-62 rotate-10"></div>
-    </div>
-    <div class="container relative z-10 mx-auto px-6 text-center">
-      <h2 class="text-3xl md:text-4xl lg:text-5xl font-bold mb-6 text-[var(--color-platinum)]">
-        Request a quote
-      </h2>
-      <p class="text-lg md:text-xl text-[var(--color-platinum)]/85 mb-10 max-w-2xl mx-auto">
-        Short CTA — drives to the quote form route (`/orcamento` in this template).
+  <section class="py-16 md:py-20 bg-[var(--color-header-bg)]">
+    <div class="container mx-auto px-6 max-w-3xl text-center">
+      <h2 class="font-serif text-2xl md:text-4xl font-bold text-white mb-4">Vamos montar seu orçamento?</h2>
+      <p class="font-sans text-white/75 mb-8">
+        Origem, destino, volume e data — com isso já montamos uma proposta objetiva.
       </p>
-      <Button href="/orcamento" variant="primary" size="lg">
-        Get started
-      </Button>
+      <div class="flex flex-col sm:flex-row gap-4 justify-center">
+        <Button href="/orcamento" variant="secondary" size="lg" class="!bg-[var(--color-yellow)] !text-[var(--color-ink-black)]">
+          Solicitar orçamento
+        </Button>
+        <Button href="/contato" variant="outline" size="lg" class="!text-white !border-white/70 hover:!bg-white/10">
+          Falar com a equipe
+        </Button>
+      </div>
     </div>
   </section>
 </BaseLayout>

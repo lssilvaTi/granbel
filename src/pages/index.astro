@@ -1,30 +1,32 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
 import Hero from '../components/sections/Hero.astro';
-import StatsBar from '../components/sections/StatsBar.astro';
-import ValueProposition from '../components/sections/ValueProposition.astro';
-import Services from '../components/sections/Services.astro';
-import Process from '../components/sections/Process.astro';
-import Testimonials from '../components/sections/Testimonials.astro';
-import FAQ from '../components/sections/FAQ.astro';
+import PackagingTapeMarquee from '../components/sections/PackagingTapeMarquee.astro';
+import ServicesBento from '../components/sections/ServicesBento.astro';
+import WhyGranbelStudio from '../components/sections/WhyGranbelStudio.astro';
+import JourneyRoute from '../components/sections/JourneyRoute.astro';
+import MovingDayPostits from '../components/sections/MovingDayPostits.astro';
+import CoverageThread from '../components/sections/CoverageThread.astro';
+import FAQLabels from '../components/sections/FAQLabels.astro';
 import CTA from '../components/sections/CTA.astro';
 import { SITE_URL, SITE_NAME, DEFAULT_OG_IMAGE, SITE_TAGLINE } from '../utils/constants';
 ---
 
-<BaseLayout 
-  title={`${SITE_NAME} | Marketing site template`}
+<BaseLayout
+  title={`${SITE_NAME} | Mudanças e transportes com segurança`}
   description={SITE_TAGLINE}
-  keywords="YOUR_SITE_NAME, services, contact, template"
+  keywords="mudanças São Paulo, transporte de mudança, mudança residencial, mudança corporativa, fretes, Granbel, transportadora"
   canonical={SITE_URL}
   image={DEFAULT_OG_IMAGE}
   url={SITE_URL}
 >
   <Hero />
-  <StatsBar />
-  <Services />
-  <ValueProposition />
-  <Process />
-  <Testimonials />
-  <FAQ />
+  <PackagingTapeMarquee />
+  <ServicesBento />
+  <WhyGranbelStudio />
+  <JourneyRoute />
+  <MovingDayPostits />
+  <CoverageThread />
+  <FAQLabels />
   <CTA />
 </BaseLayout>

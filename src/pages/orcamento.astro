@@ -1,150 +1,175 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
 import Button from '../components/ui/Button.astro';
+import BrandLogo from '../components/ui/BrandLogo.astro';
 import {
   CONTACT,
   SITE_URL,
   SITE_NAME,
-  LOGO_PATH,
-  PLACEHOLDER_IMAGES,
   DEFAULT_OG_IMAGE,
 } from '../utils/constants';
 
 const TURNSTILE_SITE_KEY = import.meta.env.PUBLIC_TURNSTILE_SITE_KEY || '';
 const pageUrl = `${SITE_URL}/orcamento`;
+
+const dadosParaPedido = [
+  'Tipo de serviço (residencial, corporativo ou frete)',
+  'Origem e destino (bairro e cidade já ajudam)',
+  'Data ou janela desejada',
+  'Itens grandes ou especiais (geladeira, piano, servidor…)',
+];
 ---
 
-<BaseLayout 
-  title={`Request a quote | ${SITE_NAME}`}
-  description="Template quote form — wire EmailJS in `.env` and align template variables with your EmailJS dashboard."
-  keywords="quote, contact, YOUR_SITE_NAME"
+<BaseLayout
+  title={`Solicitar orçamento | ${SITE_NAME}`}
+  description="Peça orçamento gratuito para mudança, frete ou logística. A Granbel responde com proposta clara e prazo estimado."
+  keywords="orçamento mudança, orçamento frete, pedido de orçamento transporte"
   canonical={pageUrl}
   image={DEFAULT_OG_IMAGE}
   url={pageUrl}
   loadTurnstile={!!TURNSTILE_SITE_KEY}
 >
-  <section
-    class="relative pt-24 pb-16 md:pt-28 md:pb-20 min-h-[640px] md:min-h-[720px] flex items-center bg-cover bg-no-repeat bg-center"
-    style={`background-image: url('${PLACEHOLDER_IMAGES.heroSlide}');`}
-  >
-    <div class="absolute inset-0 bg-gradient-to-r from-[var(--color-dark-blue)]/92 via-[var(--color-dark-blue)]/70 to-[var(--color-dark-blue)]/35" aria-hidden="true"></div>
-    <div class="section-shapes absolute inset-0 pointer-events-none hidden md:block z-0" aria-hidden="true">
-      <div class="absolute left-[2%] top-[18%] w-7 h-7 bg-[var(--color-yellow)] opacity-50 rotate-12"></div>
-      <div class="absolute left-[1.5%] bottom-[22%] w-6 h-10 bg-[var(--color-cyan)] opacity-45 -rotate-6"></div>
-      <div class="absolute right-[2%] top-[28%] w-6 h-6 bg-[var(--color-cyan)] opacity-50 -rotate-12"></div>
-      <div class="absolute right-[1.5%] bottom-[18%] w-8 h-6 bg-[var(--color-yellow)] opacity-55 rotate-6"></div>
-    </div>
-    <div class="container relative z-10 mx-auto px-6 w-full max-w-xl">
-      <div class="text-center mb-8">
-        <a href="/" class="inline-block mb-6 hover:opacity-90 transition-opacity">
-          <img src={LOGO_PATH} alt={SITE_NAME} class="h-10 md:h-12 w-auto mx-auto" width="180" height="48" />
-        </a>
-        <h1 class="text-3xl md:text-4xl font-bold mb-4 text-white">
-          Free quote request
-        </h1>
-        <p class="text-white/95 text-lg">
-          Submit the form and we will respond as soon as possible.
-        </p>
-      </div>
+  <div class="pt-24 md:pt-28 pb-16 md:pb-20 bg-cardboard min-h-[calc(100vh-6rem)]">
+    <div class="container mx-auto px-6 max-w-6xl">
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-start">
+        <div class="lg:col-span-5 order-2 lg:order-1 lg:sticky lg:top-28">
+          <a href="/" class="inline-flex items-center gap-3 mb-8 group" aria-label={`${SITE_NAME} — voltar ao início`}>
+            <BrandLogo theme="onLight" />
+            <span class="text-xs font-sans text-[var(--color-platinum)]/50 group-hover:text-[var(--color-cyan)] transition-colors shrink-0">← Início</span>
+          </a>
 
-      <div class="form-card-orcamento bg-white rounded-xl p-6 md:p-8 border border-gray-200 shadow-2xl">
-        <form id="contact-form" class="space-y-5" novalidate>
-          <div class="absolute -left-[9999px] w-px h-px overflow-hidden opacity-0" aria-hidden="true">
-            <input type="text" name="company_website" autocomplete="off" tabindex="-1" />
+          <div class="flex gap-2 mb-6" aria-hidden="true">
+            {[1, 2, 3].map((n) => (
+              <span class="flex items-center justify-center w-8 h-8 rounded-full border-2 border-[var(--color-yellow)] text-xs font-mono font-bold text-[var(--color-yellow)]">
+                {n}
+              </span>
+            ))}
+            <span class="flex-1 border-t-2 border-dashed border-[var(--color-cyan)]/35 self-center ml-2 min-w-[3rem]"></span>
           </div>
 
-          <div>
-            <label for="name" class="block text-gray-800 mb-2 font-medium">
-              Full name <span class="text-red-600">*</span>
-            </label>
-            <input
-              type="text"
-              id="name"
-              name="name"
-              required
-              class="w-full px-4 py-3 bg-gray-50 border border-gray-300 rounded-lg text-gray-900 placeholder:text-gray-500 focus:outline-none focus:ring-2 focus:ring-[var(--color-bondi-blue)] focus:border-transparent"
-              placeholder="Your name"
-            />
-          </div>
-
-          <div>
-            <label for="phone" class="block text-gray-800 mb-2 font-medium">
-              Phone <span class="text-red-600">*</span>
-            </label>
-            <input
-              type="tel"
-              id="phone"
-              name="phone"
-              required
-              class="w-full px-4 py-3 bg-gray-50 border border-gray-300 rounded-lg text-gray-900 placeholder:text-gray-500 focus:outline-none focus:ring-2 focus:ring-[var(--color-bondi-blue)] focus:border-transparent"
-              placeholder="(555) 000-0000"
-            />
-          </div>
-
-          <div>
-            <label for="email" class="block text-gray-800 mb-2 font-medium">
-              Email <span class="text-red-600">*</span>
-            </label>
-            <input
-              type="email"
-              id="email"
-              name="email"
-              required
-              class="w-full px-4 py-3 bg-gray-50 border border-gray-300 rounded-lg text-gray-900 placeholder:text-gray-500 focus:outline-none focus:ring-2 focus:ring-[var(--color-bondi-blue)] focus:border-transparent"
-              placeholder="you@example.com"
-            />
-          </div>
-
-          <div>
-            <label for="address" class="block text-gray-800 mb-2 font-medium">
-              Address (optional)
-            </label>
-            <input
-              type="text"
-              id="address"
-              name="address"
-              class="w-full px-4 py-3 bg-gray-50 border border-gray-300 rounded-lg text-gray-900 placeholder:text-gray-500 focus:outline-none focus:ring-2 focus:ring-[var(--color-bondi-blue)] focus:border-transparent"
-              placeholder="Street, city, ZIP"
-            />
-          </div>
-
-          <div>
-            <label for="message" class="block text-gray-800 mb-2 font-medium">
-              Project details <span class="text-red-600">*</span>
-            </label>
-            <textarea
-              id="message"
-              name="message"
-              required
-              rows="5"
-              class="w-full px-4 py-3 bg-gray-50 border border-gray-300 rounded-lg text-gray-900 placeholder:text-gray-500 focus:outline-none focus:ring-2 focus:ring-[var(--color-bondi-blue)] focus:border-transparent resize-none"
-              placeholder="Scope, timeline, budget range, links — whatever helps you quote faster."
-            ></textarea>
-          </div>
-
-          {TURNSTILE_SITE_KEY && (
-            <div class="cf-turnstile" data-sitekey={TURNSTILE_SITE_KEY} id="turnstile-orcamento"></div>
-          )}
-
-          <div id="form-message" class="hidden p-4 rounded-lg text-base font-medium"></div>
-
-          <Button variant="primary" size="lg" class="w-full" type="submit">
-            Submit request
-          </Button>
-
-          <p class="text-center text-sm text-gray-600">
-            Or reach us on <a href={`https://wa.me/${CONTACT.whatsapp}`} target="_blank" rel="noopener noreferrer" class="text-[var(--color-bondi-blue)] hover:underline font-medium">WhatsApp</a>
+          <h1 class="font-serif text-3xl md:text-4xl font-bold text-[var(--color-platinum)] leading-tight mb-4">
+            Orçamento sem compromisso
+          </h1>
+          <p class="font-sans text-[var(--color-platinum)]/75 mb-8 leading-relaxed">
+            Quanto mais contexto você mandar, menos idas e vindas — e mais preciso fica o valor.
           </p>
-        </form>
-      </div>
 
-      <div class="mt-8 text-center">
-        <a href="/" class="inline-flex items-center justify-center px-6 py-3 rounded-lg font-medium bg-white text-gray-900 border-2 border-white shadow-lg hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-[var(--color-dark-blue)] transition-colors">
-          ← Back home
-        </a>
+          <div class="rounded-xl border border-[var(--color-platinum)]/15 bg-[var(--color-background)]/70 p-6 mb-8">
+            <p class="font-sans text-xs font-bold uppercase tracking-widest text-[var(--color-cyan)] mb-4">Inclua no pedido</p>
+            <ol class="space-y-3 font-sans text-sm text-[var(--color-platinum)]/85 list-decimal pl-4 marker:text-[var(--color-yellow)]">
+              {dadosParaPedido.map((step) => (
+                <li>{step}</li>
+              ))}
+            </ol>
+          </div>
+
+          <p class="font-sans text-sm text-[var(--color-platinum)]/55">
+            Dúvida na hora de preencher?{' '}
+            <a href={`https://wa.me/${CONTACT.whatsapp}`} class="text-[var(--color-cyan)] font-medium hover:underline">
+              Chame no WhatsApp
+            </a>
+          </p>
+        </div>
+
+        <div class="lg:col-span-7 order-1 lg:order-2">
+          <div class="rounded-2xl border-2 border-dashed border-[var(--color-cyan)]/35 bg-[var(--color-background-dark)]/95 p-6 md:p-8 lg:p-10 shadow-2xl shadow-black/20">
+            <p class="font-mono text-[10px] text-[var(--color-platinum)]/40 uppercase tracking-widest mb-2">Pedido de orçamento</p>
+            <form id="contact-form" class="space-y-5" novalidate>
+              <div class="absolute -left-[9999px] w-px h-px overflow-hidden opacity-0" aria-hidden="true">
+                <input type="text" name="company_website" autocomplete="off" tabindex="-1" />
+              </div>
+
+              <div>
+                <label for="name" class="block text-[var(--color-platinum)] mb-2 font-medium font-sans">
+                  Nome completo <span class="text-red-400">*</span>
+                </label>
+                <input
+                  type="text"
+                  id="name"
+                  name="name"
+                  required
+                  class="w-full px-4 py-3 bg-[var(--color-background)] border border-[var(--color-platinum)]/25 rounded-lg text-[var(--color-platinum)] placeholder:text-[var(--color-platinum)]/45 focus:outline-none focus:ring-2 focus:ring-[var(--color-cyan)] focus:border-transparent font-sans"
+                  placeholder="Seu nome"
+                />
+              </div>
+
+              <div>
+                <label for="phone" class="block text-[var(--color-platinum)] mb-2 font-medium font-sans">
+                  Telefone / WhatsApp <span class="text-red-400">*</span>
+                </label>
+                <input
+                  type="tel"
+                  id="phone"
+                  name="phone"
+                  required
+                  class="w-full px-4 py-3 bg-[var(--color-background)] border border-[var(--color-platinum)]/25 rounded-lg text-[var(--color-platinum)] placeholder:text-[var(--color-platinum)]/45 focus:outline-none focus:ring-2 focus:ring-[var(--color-cyan)] focus:border-transparent font-sans"
+                  placeholder="(11) 99999-9999"
+                />
+              </div>
+
+              <div>
+                <label for="email" class="block text-[var(--color-platinum)] mb-2 font-medium font-sans">
+                  E-mail <span class="text-red-400">*</span>
+                </label>
+                <input
+                  type="email"
+                  id="email"
+                  name="email"
+                  required
+                  class="w-full px-4 py-3 bg-[var(--color-background)] border border-[var(--color-platinum)]/25 rounded-lg text-[var(--color-platinum)] placeholder:text-[var(--color-platinum)]/45 focus:outline-none focus:ring-2 focus:ring-[var(--color-cyan)] focus:border-transparent font-sans"
+                  placeholder="voce@email.com"
+                />
+              </div>
+
+              <div>
+                <label for="address" class="block text-[var(--color-platinum)] mb-2 font-medium font-sans">
+                  Endereço (opcional)
+                </label>
+                <input
+                  type="text"
+                  id="address"
+                  name="address"
+                  class="w-full px-4 py-3 bg-[var(--color-background)] border border-[var(--color-platinum)]/25 rounded-lg text-[var(--color-platinum)] placeholder:text-[var(--color-platinum)]/45 focus:outline-none focus:ring-2 focus:ring-[var(--color-cyan)] focus:border-transparent font-sans"
+                  placeholder="Rua, cidade, CEP"
+                />
+              </div>
+
+              <div>
+                <label for="message" class="block text-[var(--color-platinum)] mb-2 font-medium font-sans">
+                  Detalhes do serviço <span class="text-red-400">*</span>
+                </label>
+                <textarea
+                  id="message"
+                  name="message"
+                  required
+                  rows="5"
+                  class="w-full px-4 py-3 bg-[var(--color-background)] border border-[var(--color-platinum)]/25 rounded-lg text-[var(--color-platinum)] placeholder:text-[var(--color-platinum)]/45 focus:outline-none focus:ring-2 focus:ring-[var(--color-cyan)] focus:border-transparent resize-none font-sans"
+                  placeholder="Tipo de mudança ou frete, tamanho do imóvel, andar, necessidade de embalagem, data preferida…"
+                ></textarea>
+              </div>
+
+              {TURNSTILE_SITE_KEY && (
+                <div class="cf-turnstile" data-sitekey={TURNSTILE_SITE_KEY} id="turnstile-orcamento"></div>
+              )}
+
+              <div id="form-message" class="hidden p-4 rounded-lg text-base font-medium font-sans"></div>
+
+              <Button variant="primary" size="lg" class="w-full" type="submit">
+                Enviar solicitação
+              </Button>
+
+              <p class="text-center text-sm text-[var(--color-platinum)]/65 font-sans">
+                Resposta em horário comercial ·{' '}
+                <a href="/contato" class="text-[var(--color-cyan)] hover:underline font-medium">
+                  Formulário de contato
+                </a>
+              </p>
+            </form>
+          </div>
+        </div>
       </div>
     </div>
-  </section>
+  </div>
 </BaseLayout>
 
 <script>
@@ -160,6 +185,15 @@ const pageUrl = `${SITE_URL}/orcamento`;
     emailjs.init(EMAILJS_PUBLIC_KEY);
   }
 
+  const formatPhoneBR = (value: string): string => {
+    const digits = value.replace(/\D/g, '').slice(0, 11);
+    if (digits.length === 0) return '';
+    if (digits.length <= 2) return `(${digits}`;
+    if (digits.length <= 6) return `(${digits.slice(0, 2)}) ${digits.slice(2)}`;
+    if (digits.length <= 10) return `(${digits.slice(0, 2)}) ${digits.slice(2, 6)}-${digits.slice(6)}`;
+    return `(${digits.slice(0, 2)}) ${digits.slice(2, 7)}-${digits.slice(7)}`;
+  };
+
   document.addEventListener('DOMContentLoaded', () => {
     const form = document.getElementById('contact-form');
     if (!form) return;
@@ -167,17 +201,10 @@ const pageUrl = `${SITE_URL}/orcamento`;
     const phoneInput = form.querySelector('#phone') as HTMLInputElement | null;
     const emailInput = form.querySelector('#email') as HTMLInputElement | null;
 
-    const formatPhoneUS = (value: string): string => {
-      const digits = value.replace(/\D/g, '').slice(0, 10);
-      if (digits.length <= 3) return digits;
-      if (digits.length <= 6) return `(${digits.slice(0, 3)}) ${digits.slice(3)}`;
-      return `(${digits.slice(0, 3)}) ${digits.slice(3, 6)}-${digits.slice(6)}`;
-    };
-
     if (phoneInput) {
       phoneInput.addEventListener('input', (event) => {
         const target = event.target as HTMLInputElement;
-        target.value = formatPhoneUS(target.value);
+        target.value = formatPhoneBR(target.value);
       });
     }
 
@@ -186,7 +213,7 @@ const pageUrl = `${SITE_URL}/orcamento`;
       const messageDiv = document.getElementById('form-message');
       const submitButton = form.querySelector('button[type="submit"]') as HTMLButtonElement;
 
-      const formData = new FormData(form);
+      const formData = new FormData(form as HTMLFormElement);
 
       const templateParams = {
         from_name: formData.get('name'),
@@ -205,7 +232,7 @@ const pageUrl = `${SITE_URL}/orcamento`;
         if (messageDiv) {
           messageDiv.className =
             'p-4 rounded-lg bg-red-100 border-2 border-red-700 text-red-900 text-base font-medium';
-          messageDiv.textContent = 'Please enter a valid email address.';
+          messageDiv.textContent = 'Informe um e-mail válido.';
           messageDiv.classList.remove('hidden');
         }
         if (emailInput) emailInput.focus();
@@ -215,7 +242,7 @@ const pageUrl = `${SITE_URL}/orcamento`;
       if (!EMAILJS_SERVICE_ID || !EMAILJS_TEMPLATE_ID || !EMAILJS_PUBLIC_KEY) {
         if (messageDiv) {
           messageDiv.className = 'p-4 rounded-lg bg-amber-100 border-2 border-amber-600 text-amber-900 text-base font-medium';
-          messageDiv.innerHTML = `Form not configured. Use <a href="https://wa.me/${CONTACT.whatsapp}" target="_blank" rel="noopener" class="underline font-medium">WhatsApp</a> or email <a href="mailto:${CONTACT.email}" class="underline">${CONTACT.email}</a>`;
+          messageDiv.innerHTML = `Formulário ainda não configurado. Use o <a href="https://wa.me/${CONTACT.whatsapp}" target="_blank" rel="noopener" class="underline font-medium">WhatsApp</a> ou <a href="mailto:${CONTACT.email}" class="underline">${CONTACT.email}</a>`;
           messageDiv.classList.remove('hidden');
         }
         return;
@@ -226,7 +253,7 @@ const pageUrl = `${SITE_URL}/orcamento`;
         if (!turnstileResponse || !turnstileResponse.trim()) {
           if (messageDiv) {
             messageDiv.className = 'p-4 rounded-lg bg-amber-100 border-2 border-amber-600 text-amber-900 text-base font-medium';
-            messageDiv.textContent = 'Please complete the verification before submitting.';
+            messageDiv.textContent = 'Complete a verificação antes de enviar.';
             messageDiv.classList.remove('hidden');
           }
           return;
@@ -235,7 +262,7 @@ const pageUrl = `${SITE_URL}/orcamento`;
 
       if (submitButton) {
         submitButton.disabled = true;
-        (submitButton as HTMLButtonElement).innerHTML = '<i class="fas fa-spinner fa-spin mr-2"></i>Sending...';
+        (submitButton as HTMLButtonElement).innerHTML = '<i class="fas fa-spinner fa-spin mr-2"></i>Enviando...';
       }
       if (messageDiv) messageDiv.classList.add('hidden');
 
@@ -244,25 +271,27 @@ const pageUrl = `${SITE_URL}/orcamento`;
 
         if (messageDiv) {
           messageDiv.className = 'p-4 rounded-lg bg-green-100 border-2 border-green-700 text-green-900 text-base font-medium';
-          messageDiv.innerHTML = '<i class="fas fa-check-circle mr-2"></i>Message sent. We will follow up shortly.';
+          messageDiv.innerHTML = '<i class="fas fa-check-circle mr-2"></i>Recebemos sua solicitação. Retornaremos em breve.';
           messageDiv.classList.remove('hidden');
         }
-        form.reset();
+        (form as HTMLFormElement).reset();
 
         if (TURNSTILE_SITE_KEY && typeof window !== 'undefined' && (window as any).turnstile) {
-          try { (window as any).turnstile.reset(); } catch (_) {}
+          try {
+            (window as any).turnstile.reset();
+          } catch (_) {}
         }
       } catch (err) {
         console.error('EmailJS error:', err);
         if (messageDiv) {
           messageDiv.className = 'p-4 rounded-lg bg-red-100 border-2 border-red-700 text-red-900 text-base font-medium';
-          messageDiv.innerHTML = `<i class="fas fa-exclamation-circle mr-2"></i>Something went wrong. Try <a href="https://wa.me/${CONTACT.whatsapp}" target="_blank" rel="noopener" class="underline font-medium">WhatsApp</a>.`;
+          messageDiv.innerHTML = `<i class="fas fa-exclamation-circle mr-2"></i>Algo deu errado. Tente o <a href="https://wa.me/${CONTACT.whatsapp}" target="_blank" rel="noopener" class="underline font-medium">WhatsApp</a>.`;
           messageDiv.classList.remove('hidden');
         }
       } finally {
         if (submitButton) {
           submitButton.disabled = false;
-          (submitButton as HTMLButtonElement).innerHTML = 'Submit request';
+          (submitButton as HTMLButtonElement).innerHTML = 'Enviar solicitação';
         }
       }
     });
