@@ -18,14 +18,14 @@ export const LOGO_WHITE_PATH = '/assets/logos/LOGO_GRANBEL_BRANCO.png' as const;
 
 export const LOGO_PATH = LOGO_COLOR_PATH;
 
-export const DEFAULT_OG_IMAGE = '/og-default.svg' as const;
+export const DEFAULT_OG_IMAGE = '/assets/og/og-granbel.png' as const;
 
-/** Imagens Unsplash — hero carousel (3ª/4ª: URLs antigas do projeto retornam 404 no CDN). */
+/** Slides do carrossel de fundo da home (`public/assets/hero/`). */
 export const HERO_SLIDES = [
-  'https://images.unsplash.com/photo-1601584115197-04ecc0da31d7?auto=format&fit=crop&w=1920&q=80',
-  'https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?auto=format&fit=crop&w=1920&q=80',
-  'https://images.unsplash.com/photo-1494412574643-ff11b0a5c1c3?auto=format&fit=crop&w=1920&q=80',
-  'https://images.unsplash.com/photo-1600880292203-757bb62b4baf?auto=format&fit=crop&w=1920&q=80',
+  '/assets/hero/hero-carousel-01.png',
+  '/assets/hero/hero-carousel-02.png',
+  '/assets/hero/hero-carousel-03.png',
+  '/assets/hero/hero-carousel-04.png',
 ] as const;
 
 /** Números do banner (home) — animação de contagem no Hero. Ajuste valores com o cliente. */
@@ -36,11 +36,10 @@ export const HERO_STATS = [
   { value: 95, suffix: '%', label: 'Clientes satisfeitos', icon: 'fa-star' },
 ] as const;
 
-/** Fotos de apoio (URLs remotas) — substitua por imagens da Granbel quando houver. */
+/** Hero ilustrativo em Sobre; retrato na citação e na home (`public/assets/sobre/`, `about/`). */
 export const PLACEHOLDER_IMAGES = {
-  heroSlide: HERO_SLIDES[0],
-  portrait:
-    'https://images.unsplash.com/photo-1560250097-0b93528c311a?auto=format&fit=crop&w=400&h=400&q=80',
+  heroSlide: '/assets/sobre/sobre-hero.png',
+  portrait: '/assets/about/about-retrato-direcao.png',
 } as const;
 
 /** Blocos detalhados da página Serviços (imagens próprias por serviço). */
@@ -49,32 +48,28 @@ export const SERVICES_PAGE_BLOCKS = [
     id: 'mudancas-residenciais',
     title: 'Mudanças residenciais',
     text: 'Embalagem organizada, desmontagem e montagem de móveis, proteção de vidros e objetos frágeis, e equipe treinada para tratar sua casa com o mesmo cuidado que você. Planejamos rota, equipe e horários para o dia da mudança ser o mais tranquilo possível.',
-    image:
-      'https://images.unsplash.com/photo-1558618666-fcd25c85cd64?auto=format&fit=crop&w=900&q=80',
+    image: '/assets/servicos/servico-mudanca-residencial.png',
     imageAlt: 'Caixas e preparação para mudança residencial',
   },
   {
     id: 'mudancas-corporativas',
     title: 'Mudanças corporativas',
     text: 'Mudança de escritórios, estações de trabalho e arquivos com cronograma alinhado ao seu time. Minimizamos paradas: rotulagem, inventário e priorização do que precisa estar pronto no primeiro dia útil na nova sede.',
-    image:
-      'https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&w=900&q=80',
+    image: '/assets/servicos/servico-mudanca-corporativa.png',
     imageAlt: 'Ambiente corporativo e logística de escritório',
   },
   {
     id: 'transporte-cargas',
     title: 'Transporte de cargas e fretes',
     text: 'Fretes urbanos e interestaduais com veículos adequados ao volume e à fragilidade da carga. Ideal para lojas online, indústria leve, distribuição e entregas programadas — com acompanhamento da carga e comunicação clara em cada etapa.',
-    image:
-      'https://images.unsplash.com/photo-1600880292203-757bb62b4baf?auto=format&fit=crop&w=900&q=80',
+    image: '/assets/servicos/servico-transporte-cargas.png',
     imageAlt: 'Veículo de entrega em rota — fretes e transporte de cargas',
   },
   {
     id: 'logistica-armazenagem',
     title: 'Logística e armazenagem',
     text: 'Guarda temporária entre mudanças, estoque sob demanda e transferência rápida de mercadoria entre veículos quando você precisa ganhar tempo. Estrutura pensada para acesso seguro, controle de entradas e saídas e flexibilidade de prazo.',
-    image:
-      'https://images.unsplash.com/photo-1553413077-190dd305871c?auto=format&fit=crop&w=900&q=80',
+    image: '/assets/servicos/servico-logistica-armazenagem.png',
     imageAlt: 'Armazém organizado com caixas e prateleiras',
   },
 ] as const;

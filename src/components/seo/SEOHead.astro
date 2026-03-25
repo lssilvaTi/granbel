@@ -35,6 +35,13 @@ const siteUrl = url;
 const pageUrl = canonical || siteUrl + Astro.url.pathname;
 const ogImage = image.startsWith('http') ? image : siteUrl + image;
 const logoAbsolute = siteUrl + LOGO_PATH;
+const ogImageType = /\.png$/i.test(image)
+  ? 'image/png'
+  : /\.jpe?g$/i.test(image)
+    ? 'image/jpeg'
+    : /\.webp$/i.test(image)
+      ? 'image/webp'
+      : 'image/svg+xml';
 ---
 
 <meta charset="UTF-8" />
@@ -56,7 +63,7 @@ const logoAbsolute = siteUrl + LOGO_PATH;
 <meta property="og:description" content={description} />
 <meta property="og:image" content={ogImage} />
 <meta property="og:image:secure_url" content={ogImage} />
-<meta property="og:image:type" content="image/svg+xml" />
+<meta property="og:image:type" content={ogImageType} />
 <meta property="og:image:width" content="1200" />
 <meta property="og:image:height" content="630" />
 <meta property="og:image:alt" content={SITE_NAME} />

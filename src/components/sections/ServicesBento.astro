@@ -1,5 +1,7 @@
 ---
-import { SERVICES } from '../../utils/constants';
+import { SERVICES, SERVICES_PAGE_BLOCKS } from '../../utils/constants';
+
+const bentoBgImage = SERVICES_PAGE_BLOCKS[0].image;
 ---
 
 <section id="services" class="relative py-16 md:py-24 lg:py-28 bg-cardboard">
@@ -19,10 +21,14 @@ import { SERVICES } from '../../utils/constants';
         class="bento-cell lg:col-span-5 lg:row-span-2 group relative rounded-2xl overflow-hidden border border-[var(--color-platinum)]/15 bg-[var(--color-background-dark)] p-8 md:p-10 min-h-[280px] flex flex-col justify-end"
       >
         <div
-          class="absolute inset-0 opacity-[0.12] group-hover:opacity-[0.18] transition-opacity duration-500 bg-[url('https://images.unsplash.com/photo-1558618666-fcd25c85cd64?auto=format&fit=crop&w=800&q=60')] bg-cover bg-center"
+          class="absolute inset-0 opacity-[0.72] group-hover:opacity-[0.82] transition-opacity duration-500 bg-cover bg-center scale-105"
+          style={`background-image: url('${bentoBgImage}')`}
           aria-hidden="true"
         ></div>
-        <div class="absolute inset-0 bg-gradient-to-t from-[var(--color-overlay-deep)] via-[var(--color-overlay-deep)]/70 to-transparent" aria-hidden="true"></div>
+        <div
+          class="absolute inset-0 bg-gradient-to-t from-[var(--color-overlay-deep)]/92 via-[var(--color-overlay-deep)]/35 from-[15%] to-transparent to-[65%]"
+          aria-hidden="true"
+        ></div>
         <div class="relative">
           <span class="inline-block px-2 py-0.5 rounded text-[10px] font-bold tracking-wider uppercase bg-[var(--color-on-primary)]/95 text-[var(--color-primary)] font-sans mb-3">
             Principal
