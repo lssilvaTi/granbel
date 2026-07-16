@@ -31,15 +31,17 @@ const {
   canonical,
 } = Astro.props;
 
-const siteUrl = url;
-const pageUrl = canonical || siteUrl + Astro.url.pathname;
-const ogImage = image.startsWith('http') ? image : siteUrl + image;
-const logoAbsolute = siteUrl + LOGO_PATH;
-const ogImageType = /\.png$/i.test(image)
+const siteOrigin = new URL(SITE_URL).origin;
+const absoluteFromSite = (path: string) => new URL(path, `${siteOrigin}/`).toString();
+const pageUrl = canonical || (url.startsWith('http') ? url : absoluteFromSite(Astro.url.pathname));
+const ogImage = image.startsWith('http') ? image : absoluteFromSite(image);
+const logoAbsolute = absoluteFromSite(LOGO_PATH);
+const ogImagePath = new URL(ogImage).pathname;
+const ogImageType = /\.png$/i.test(ogImagePath)
   ? 'image/png'
-  : /\.jpe?g$/i.test(image)
+  : /\.jpe?g$/i.test(ogImagePath)
     ? 'image/jpeg'
-    : /\.webp$/i.test(image)
+    : /\.webp$/i.test(ogImagePath)
       ? 'image/webp'
       : 'image/svg+xml';
 ---
@@ -87,7 +89,7 @@ const ogImageType = /\.png$/i.test(image)
     '@context': 'https://schema.org',
     '@type': 'MovingCompany',
     name: SITE_NAME,
-    url: siteUrl,
+    url: siteOrigin,
     logo: logoAbsolute,
     description: description,
     address: {
@@ -116,7 +118,7 @@ const ogImageType = /\.png$/i.test(image)
     '@context': 'https://schema.org',
     '@type': 'WebSite',
     name: SITE_NAME,
-    url: siteUrl,
+    url: siteOrigin,
     description: description,
     inLanguage: 'pt-BR',
   })}

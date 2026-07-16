@@ -12,20 +12,20 @@ export const SITE_TAGLINE =
   'Transporte seguro, mudanças planejadas e logística com a cara da sua empresa — do primeiro contato à entrega.' as const;
 
 /** Logo colorido — JSON-LD / referência principal. */
-export const LOGO_COLOR_PATH = '/assets/logos/LOGO_GRANBEL_PRINCIPAL.png' as const;
+export const LOGO_COLOR_PATH = '/assets/logos/LOGO_GRANBEL_PRINCIPAL.webp' as const;
 /** Logo branco — header e rodapé (fundo azul). */
-export const LOGO_WHITE_PATH = '/assets/logos/LOGO_GRANBEL_BRANCO.png' as const;
+export const LOGO_WHITE_PATH = '/assets/logos/LOGO_GRANBEL_BRANCO.webp' as const;
 
 export const LOGO_PATH = LOGO_COLOR_PATH;
 
-export const DEFAULT_OG_IMAGE = '/assets/og/og-granbel.png' as const;
+export const DEFAULT_OG_IMAGE = '/assets/og/og-granbel.webp' as const;
 
 /** Slides do carrossel de fundo da home (`public/assets/hero/`). */
 export const HERO_SLIDES = [
-  '/assets/hero/hero-carousel-01.png',
-  '/assets/hero/hero-carousel-02.png',
-  '/assets/hero/hero-carousel-03.png',
-  '/assets/hero/hero-carousel-04.png',
+  '/assets/hero/hero-carousel-01.webp',
+  '/assets/hero/hero-carousel-02.webp',
+  '/assets/hero/hero-carousel-03.webp',
+  '/assets/hero/hero-carousel-04.webp',
 ] as const;
 
 /** Números do banner (home) — animação de contagem no Hero. Ajuste valores com o cliente. */
@@ -38,8 +38,8 @@ export const HERO_STATS = [
 
 /** Hero ilustrativo em Sobre; retrato na citação e na home (`public/assets/sobre/`, `about/`). */
 export const PLACEHOLDER_IMAGES = {
-  heroSlide: '/assets/sobre/sobre-hero.png',
-  portrait: '/assets/about/about-retrato-direcao.png',
+  heroSlide: '/assets/sobre/sobre-hero.webp',
+  portrait: '/assets/about/about-retrato-direcao.webp',
 } as const;
 
 /** Blocos detalhados da página Serviços (imagens próprias por serviço). */
@@ -48,28 +48,28 @@ export const SERVICES_PAGE_BLOCKS = [
     id: 'mudancas-residenciais',
     title: 'Mudanças residenciais',
     text: 'Embalagem organizada, desmontagem e montagem de móveis, proteção de vidros e objetos frágeis, e equipe treinada para tratar sua casa com o mesmo cuidado que você. Planejamos rota, equipe e horários para o dia da mudança ser o mais tranquilo possível.',
-    image: '/assets/servicos/servico-mudanca-residencial.png',
+    image: '/assets/servicos/servico-mudanca-residencial.webp',
     imageAlt: 'Caixas e preparação para mudança residencial',
   },
   {
     id: 'mudancas-corporativas',
     title: 'Mudanças corporativas',
     text: 'Mudança de escritórios, estações de trabalho e arquivos com cronograma alinhado ao seu time. Minimizamos paradas: rotulagem, inventário e priorização do que precisa estar pronto no primeiro dia útil na nova sede.',
-    image: '/assets/servicos/servico-mudanca-corporativa.png',
+    image: '/assets/servicos/servico-mudanca-corporativa.webp',
     imageAlt: 'Ambiente corporativo e logística de escritório',
   },
   {
     id: 'transporte-cargas',
     title: 'Transporte de cargas e fretes',
     text: 'Fretes urbanos e interestaduais com veículos adequados ao volume e à fragilidade da carga. Ideal para lojas online, indústria leve, distribuição e entregas programadas — com acompanhamento da carga e comunicação clara em cada etapa.',
-    image: '/assets/servicos/servico-transporte-cargas.png',
+    image: '/assets/servicos/servico-transporte-cargas.webp',
     imageAlt: 'Veículo de entrega em rota — fretes e transporte de cargas',
   },
   {
     id: 'logistica-armazenagem',
     title: 'Logística e armazenagem',
     text: 'Guarda temporária entre mudanças, estoque sob demanda e transferência rápida de mercadoria entre veículos quando você precisa ganhar tempo. Estrutura pensada para acesso seguro, controle de entradas e saídas e flexibilidade de prazo.',
-    image: '/assets/servicos/servico-logistica-armazenagem.png',
+    image: '/assets/servicos/servico-logistica-armazenagem.webp',
     imageAlt: 'Armazém organizado com caixas e prateleiras',
   },
 ] as const;

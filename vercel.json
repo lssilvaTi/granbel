@@ -1,6 +1,20 @@
 {
   "framework": "astro",
   "redirects": [
-    { "source": "/form", "destination": "/orcamento", "permanent": true }
+    { "source": "/form", "destination": "/orcamento", "permanent": true },
+    { "source": "/banner-og.png", "destination": "/assets/og/og-granbel.webp", "permanent": true },
+    { "source": "/assets/og/og-granbel.png", "destination": "/assets/og/og-granbel.webp", "permanent": true },
+    { "source": "/assets/hero/hero-carousel-01.png", "destination": "/assets/hero/hero-carousel-01.webp", "permanent": true },
+    { "source": "/assets/hero/hero-carousel-02.png", "destination": "/assets/hero/hero-carousel-02.webp", "permanent": true },
+    { "source": "/assets/hero/hero-carousel-03.png", "destination": "/assets/hero/hero-carousel-03.webp", "permanent": true },
+    { "source": "/assets/hero/hero-carousel-04.png", "destination": "/assets/hero/hero-carousel-04.webp", "permanent": true },
+    { "source": "/assets/sobre/sobre-hero.png", "destination": "/assets/sobre/sobre-hero.webp", "permanent": true },
+    { "source": "/assets/about/about-retrato-direcao.png", "destination": "/assets/about/about-retrato-direcao.webp", "permanent": true },
+    { "source": "/assets/servicos/servico-mudanca-residencial.png", "destination": "/assets/servicos/servico-mudanca-residencial.webp", "permanent": true },
+    { "source": "/assets/servicos/servico-mudanca-corporativa.png", "destination": "/assets/servicos/servico-mudanca-corporativa.webp", "permanent": true },
+    { "source": "/assets/servicos/servico-transporte-cargas.png", "destination": "/assets/servicos/servico-transporte-cargas.webp", "permanent": true },
+    { "source": "/assets/servicos/servico-logistica-armazenagem.png", "destination": "/assets/servicos/servico-logistica-armazenagem.webp", "permanent": true },
+    { "source": "/assets/logos/LOGO_GRANBEL_PRINCIPAL.png", "destination": "/assets/logos/LOGO_GRANBEL_PRINCIPAL.webp", "permanent": true },
+    { "source": "/assets/logos/LOGO_GRANBEL_BRANCO.png", "destination": "/assets/logos/LOGO_GRANBEL_BRANCO.webp", "permanent": true }
   ]
 }
