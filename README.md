@@ -61,20 +61,20 @@ npm run preview  # test production build locally
 
 ## Environment variables
 
-Copy `env.example` to `.env`. All public keys use the `PUBLIC_` prefix (exposed to the browser).
+Copy `env.example` to `.env`. Only tracking values use the `PUBLIC_` prefix; the lead API key is server-only.
 
 | Variable | Required for forms | Purpose |
 |----------|--------------------|---------|
-| `PUBLIC_EMAILJS_SERVICE_ID` | Yes, to send mail | EmailJS service |
-| `PUBLIC_EMAILJS_TEMPLATE_ID` | Yes | Template ID |
-| `PUBLIC_EMAILJS_PUBLIC_KEY` | Yes | Public key (init + send) |
+| `KEEPCONTROL_BASE_URL` | Yes | Server-side KeepControl API base URL |
+| `KEEPCONTROL_API_KEY` | Yes | Secret key used only by `/api/leads` |
+| `PUBLIC_KEEPCONTROL_BASE_URL` | No | Public tracking script base URL |
+| `PUBLIC_KEEPCONTROL_SITE_KEY` | No | Public site key for visit attribution |
+| `PUBLIC_EMAILJS_SERVICE_ID` | No | EmailJS service for an additional email notification |
+| `PUBLIC_EMAILJS_TEMPLATE_ID` | No | EmailJS template ID |
+| `PUBLIC_EMAILJS_PUBLIC_KEY` | No | EmailJS browser public key |
 | `PUBLIC_TURNSTILE_SITE_KEY` | No | If set, Turnstile widget loads on form pages |
 
-**EmailJS template variables** used by this project (align your EmailJS template fields):
-
-- `{{from_name}}`, `{{from_phone}}`, `{{from_email}}`, `{{from_address}}`, `{{message}}`, `{{to_email}}`
-
-If forms are **not** configured, the UI shows a fallback message pointing users to WhatsApp/email (see form scripts in `contato.astro` / `orcamento.astro`).
+The browser submits to the local `/api/leads` endpoint and, when configured, also sends an EmailJS notification. The server endpoint forwards the lead to KeepControl, so `KEEPCONTROL_API_KEY` is never included in browser code. When tracking is configured, visitor and session IDs are forwarded for conversion attribution. The submission is considered delivered when at least one configured channel succeeds.
 
 ---
 
@@ -212,13 +212,14 @@ import StatsBar from '../components/sections/StatsBar.astro';
 
 ### Pages with forms
 
-- **`src/pages/contato.astro`** — contact form + EmailJS script  
-- **`src/pages/orcamento.astro`** — quote form + EmailJS script  
+- **`src/pages/contato.astro`** — contact form + KeepControl and EmailJS submission  
+- **`src/pages/orcamento.astro`** — quote form + KeepControl and EmailJS submission  
+- **`src/pages/api/leads.ts`** — server-side KeepControl proxy  
 
 Both use:
 
 - `novalidate` on `<form>` + JS validation (email regex, English messages in the template)  
-- **US-style phone mask** (10 digits) in JS — replace with another locale in the `<script>` blocks if needed  
+- **Brazilian phone mask** (10 or 11 digits) in JS  
 - Honeypot field `company_website`  
 - Optional Turnstile: `BaseLayout` prop `loadTurnstile={true}` when `PUBLIC_TURNSTILE_SITE_KEY` is set  
 
@@ -227,7 +228,6 @@ Both use:
 1. Delete or replace **`contato.astro`** / **`orcamento.astro`** with static content (phone, email, map only).  
 2. Remove nav/footer links to `/contato` and `/orcamento`.  
 3. Remove **`loadTurnstile`** from `BaseLayout` on those pages (or delete the pages).  
-4. Optionally remove **`@emailjs/browser`** from `package.json` if nothing uses it.  
 
 ### Single form only (e.g. contact only)
 

@@ -264,10 +264,9 @@ const pageUrl = `${SITE_URL}/contato`;
   const EMAILJS_TEMPLATE_ID = import.meta.env.PUBLIC_EMAILJS_TEMPLATE_ID || '';
   const EMAILJS_PUBLIC_KEY = import.meta.env.PUBLIC_EMAILJS_PUBLIC_KEY || '';
   const TURNSTILE_SITE_KEY = import.meta.env.PUBLIC_TURNSTILE_SITE_KEY || '';
+  const EMAILJS_CONFIGURED = !!(EMAILJS_SERVICE_ID && EMAILJS_TEMPLATE_ID && EMAILJS_PUBLIC_KEY);
 
-  if (EMAILJS_PUBLIC_KEY) {
-    emailjs.init(EMAILJS_PUBLIC_KEY);
-  }
+  if (EMAILJS_CONFIGURED) emailjs.init(EMAILJS_PUBLIC_KEY);
 
   /** Máscara Brasil: (DD) NNNNN-NNNN ou (DD) NNNN-NNNN */
   const formatPhoneBR = (value: string): string => {
@@ -315,25 +314,6 @@ const pageUrl = `${SITE_URL}/contato`;
         return;
       }
 
-      const templateParams = {
-        from_name: formData.get('name'),
-        from_address: formData.get('address') || '',
-        from_phone: formData.get('phone'),
-        from_email: formData.get('email'),
-        message: formData.get('message'),
-        to_email: CONTACT.email,
-      };
-
-      if (!EMAILJS_SERVICE_ID || !EMAILJS_TEMPLATE_ID || !EMAILJS_PUBLIC_KEY) {
-        if (messageDiv) {
-          messageDiv.className =
-            'p-4 rounded-lg bg-amber-100 border-2 border-amber-600 text-amber-900 text-sm font-medium';
-          messageDiv.innerHTML = `Formulário ainda não configurado. Fale no <a href="https://wa.me/${CONTACT.whatsapp}" target="_blank" rel="noopener" class="underline font-medium">WhatsApp</a>.`;
-          messageDiv.classList.remove('hidden');
-        }
-        return;
-      }
-
       if (TURNSTILE_SITE_KEY) {
         const turnstileResponse = (form.querySelector('[name="cf-turnstile-response"]') as HTMLInputElement | HTMLTextAreaElement)?.value;
         if (!turnstileResponse || !turnstileResponse.trim()) {
@@ -354,7 +334,42 @@ const pageUrl = `${SITE_URL}/contato`;
       if (messageDiv) messageDiv.classList.add('hidden');
 
       try {
-        await emailjs.send(EMAILJS_SERVICE_ID, EMAILJS_TEMPLATE_ID, templateParams);
+        const keepcontrol = (window as any).keepcontrol;
+        const leadData = {
+          name: String(formData.get('name') || '').trim(),
+          phone: String(formData.get('phone') || '').trim(),
+          email,
+          address: String(formData.get('address') || '').trim(),
+          message: String(formData.get('message') || '').trim(),
+          visitorId: keepcontrol?.visitorId,
+          sessionId: keepcontrol?.sessionId,
+        };
+        const keepControlRequest = fetch('/api/leads', {
+          method: 'POST',
+          headers: { 'content-type': 'application/json' },
+          body: JSON.stringify(leadData),
+        }).then(async (response) => {
+          const result = await response.json().catch(() => ({}));
+          if (!response.ok) throw new Error(result.message || 'KeepControl não recebeu o formulário.');
+          return result;
+        });
+
+        const requests: Promise<unknown>[] = [keepControlRequest];
+        if (EMAILJS_CONFIGURED) {
+          requests.push(emailjs.send(EMAILJS_SERVICE_ID, EMAILJS_TEMPLATE_ID, {
+            from_name: leadData.name,
+            from_phone: leadData.phone,
+            from_email: leadData.email,
+            from_address: leadData.address,
+            message: leadData.message,
+            to_email: CONTACT.email,
+          }));
+        }
+
+        const results = await Promise.allSettled(requests);
+        const failures = results.filter((result) => result.status === 'rejected');
+        failures.forEach((failure) => console.error('Form delivery error:', (failure as PromiseRejectedResult).reason));
+        if (failures.length === results.length) throw new Error('Nenhum canal recebeu o formulário.');
 
         if (messageDiv) {
           messageDiv.className =
@@ -370,7 +385,7 @@ const pageUrl = `${SITE_URL}/contato`;
           } catch (_) {}
         }
       } catch (err) {
-        console.error('EmailJS error:', err);
+        console.error('Form submission error:', err);
         if (messageDiv) {
           messageDiv.className =
             'p-4 rounded-lg bg-red-100 border-2 border-red-700 text-red-900 text-sm font-medium';

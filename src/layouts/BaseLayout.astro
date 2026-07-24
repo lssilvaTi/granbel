@@ -32,6 +32,9 @@ const {
   noindex = false,
   loadTurnstile = false,
 } = Astro.props;
+
+const KEEPCONTROL_BASE_URL = import.meta.env.PUBLIC_KEEPCONTROL_BASE_URL || '';
+const KEEPCONTROL_SITE_KEY = import.meta.env.PUBLIC_KEEPCONTROL_SITE_KEY || '';
 ---
 
 <!doctype html>
@@ -56,6 +59,13 @@ const {
     />
     {loadTurnstile && (
       <script src="https://challenges.cloudflare.com/turnstile/v0/api.js" async defer></script>
+    )}
+    {KEEPCONTROL_BASE_URL && KEEPCONTROL_SITE_KEY && (
+      <script
+        async
+        src={`${KEEPCONTROL_BASE_URL.replace(/\/$/, '')}/track.js`}
+        data-site-key={KEEPCONTROL_SITE_KEY}
+      ></script>
     )}
   </head>
   <body>
