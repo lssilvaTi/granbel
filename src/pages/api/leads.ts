@@ -30,7 +30,7 @@ export const POST: APIRoute = async ({ request }) => {
   const email = text(input.email);
   const phone = text(input.phone);
   const address = text(input.address);
-  const originalMessage = text(input.message);
+  const message = text(input.message);
 
   if (!name || name.length > 120 || (!email && !phone)) {
     return json({ message: 'Informe seu nome e pelo menos um meio de contato.' }, 400);
@@ -42,7 +42,6 @@ export const POST: APIRoute = async ({ request }) => {
     return json({ message: 'E-mail ou telefone acima do tamanho permitido.' }, 400);
   }
 
-  const message = [originalMessage, address && `Endereço: ${address}`].filter(Boolean).join('\n\n');
   if (message.length > 2000) {
     return json({ message: 'A mensagem deve ter no máximo 2.000 caracteres.' }, 400);
   }
@@ -50,6 +49,7 @@ export const POST: APIRoute = async ({ request }) => {
   const payload: Record<string, string> = { name };
   if (email) payload.email = email;
   if (phone) payload.phone = phone;
+  if (address) payload.address = address;
   if (message) payload.message = message;
 
   const visitorId = text(input.visitorId);
